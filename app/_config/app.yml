@@ -1,0 +1,14 @@
+---
+Name: app
+---
+
+SilverStripe\Core\Manifest\ModuleManifest:
+  project: app
+
+GDBackend:
+  default_quality: 100
+
+Upload_Validator:
+  default_max_file_size:
+    '[image]': '5m'
+    '[doc]': '10m'

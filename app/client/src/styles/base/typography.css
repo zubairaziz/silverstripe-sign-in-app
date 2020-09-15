@@ -1,0 +1,26 @@
+[data-icon]:not([class]) {
+  width: 1em;
+  height: 1em;
+}
+
+[data-icon='circle-check'] {
+  @apply relative text-primary;
+  top: 3px;
+}
+
+[data-icon='circle-check-white'] {
+  @apply relative;
+  top: 3px;
+}
+
+strong {
+  @apply font-medium;
+}
+
+a:not([class]) {
+  @apply text-primary underline transition-all ease-in-out duration-300;
+
+  &:hover {
+    @apply text-primary-darker no-underline;
+  }
+}

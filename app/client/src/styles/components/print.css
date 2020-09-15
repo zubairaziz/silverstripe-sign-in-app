@@ -1,0 +1,25 @@
+@screen print {
+  * {
+    box-sizing: border-box;
+    color: black !important;
+    background: transparent !important;
+    font-size: 18px !important;
+  }
+
+  img,
+  form {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  div,
+  p {
+    display: block !important;
+    max-width: 100% !important;
+  }
+
+  span {
+    display: inline !important;
+    max-width: 100% !important;
+  }
+}

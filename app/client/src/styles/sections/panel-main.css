@@ -1,0 +1,88 @@
+.panel-main {
+  @apply flex flex-col;
+
+  @screen lg {
+    @apply flex-row flex-no-wrap justify-around;
+  }
+
+  @screen 3xl {
+    @apply justify-between;
+  }
+
+  &-item {
+    h2 {
+      @apply font-semibold;
+      font-size: 25px;
+
+      strong {
+        @apply font-semibold text-primary;
+      }
+
+      @screen md {
+        font-size: 30px;
+      }
+
+      @screen lg {
+        font-size: 35px;
+      }
+
+      @screen xl {
+        font-size: 40px;
+      }
+
+      @screen 2xl {
+        font-size: 45px;
+      }
+    }
+    &.form {
+      @apply relative;
+      h2 {
+        @apply text-center;
+        @screen lg {
+          @apply text-left pl-2;
+        }
+      }
+      @screen lg {
+        max-width: 690px;
+      }
+      .btn-toolbar {
+        @apply grid;
+        place-content: center;
+        margin: 0 auto 2rem;
+
+        @screen lg {
+          @apply block px-2;
+        }
+      }
+    }
+    &.divider {
+      display: none;
+      @screen lg {
+        @apply block;
+        width: 1px;
+      }
+    }
+    &.job {
+      @apply text-center flex flex-col justify-start items-center;
+      @screen lg {
+        @apply text-right;
+        max-width: 450px;
+      }
+
+      .job-icons {
+        @apply py-8;
+        max-width: 200px;
+
+        @screen md {
+          max-width: 225px;
+        }
+
+        @screen lg {
+          padding-top: 2.8rem;
+          padding-bottom: 2.8rem;
+          max-width: 250px;
+        }
+      }
+    }
+  }
+}

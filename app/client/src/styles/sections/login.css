@@ -1,0 +1,65 @@
+form#MemberLoginForm_LoginForm {
+  @apply px-4 py-8;
+
+  .field:not(.checkbox) {
+    @apply py-2 px-2 pt-8;
+
+    label {
+      @apply text-xs;
+      transform: translateX(-12px) translateY(-30px) !important;
+
+      @screen lg {
+        transform: translateX(-16px) translateY(-48px) !important;
+      }
+      &.blur {
+        @apply text-xs;
+        transform: translateX(-12px) translateY(-30px) !important;
+
+        @screen lg {
+          transform: translateX(-16px) translateY(-48px) !important;
+        }
+      }
+    }
+  }
+
+  .field.checkbox {
+    @apply inline-flex justify-start items-center p-2 w-1/2;
+
+    input {
+      max-width: 50px;
+    }
+    label {
+      width: auto;
+      max-width: 100%;
+    }
+  }
+
+  .btn-toolbar {
+    @apply flex flex-col w-full items-start;
+
+    p {
+      @apply py-2;
+
+      a {
+        @apply text-primary transition-colors duration-300 ease-in-out;
+
+        &:hover {
+          @apply text-secondary;
+        }
+      }
+    }
+  }
+
+  input[type='submit'] {
+    @apply inline-block w-full px-4 py-3 text-sm font-medium text-center uppercase text-accent border border-accent bg-transparent transition-colors duration-300 ease-in-out;
+    cursor: pointer;
+
+    @screen xl {
+      @apply px-5 py-4 text-base;
+    }
+
+    &:hover {
+      @apply text-white bg-accent;
+    }
+  }
+}

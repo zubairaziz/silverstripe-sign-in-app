@@ -1,0 +1,35 @@
+.date-time {
+  @apply w-full grid place-content-center text-center;
+
+  .clock {
+    @apply text-5xl;
+
+    @screen md {
+      @apply text-6xl;
+    }
+
+    @screen lg {
+      @apply text-7xl;
+    }
+
+    @screen xl {
+      @apply text-8xl;
+    }
+  }
+
+  .date-group {
+    @apply text-lg;
+
+    @screen md {
+      @apply text-xl;
+    }
+
+    @screen lg {
+      @apply text-2xl;
+    }
+
+    @screen xl {
+      @apply text-3xl;
+    }
+  }
+}

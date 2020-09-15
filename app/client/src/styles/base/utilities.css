@@ -1,0 +1,141 @@
+@keyframes loading-dots {
+  0% {
+    background-color: rgba(0, 0, 0, 1);
+    box-shadow: 12px 0px 0px 0px rgba(0, 0, 0, 0.2), 24px 0px 0px 0px rgba(0, 0, 0, 0.2);
+  }
+
+  25% {
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 12px 0px 0px 0px rgba(0, 0, 0, 2), 24px 0px 0px 0px rgba(0, 0, 0, 0.2);
+  }
+
+  75% {
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 12px 0px 0px 0px rgba(0, 0, 0, 0.2), 24px 0px 0px 0px rgba(0, 0, 0, 1);
+  }
+}
+
+.border-link {
+  @apply font-medium border-b-2 border-accent;
+}
+
+.border-link-primary {
+  @apply text-primary;
+
+  [data-whatinput='mouse'] &:hover {
+    @apply border-primary;
+  }
+}
+
+.border-link-dark {
+  @apply text-black;
+
+  [data-whatinput='mouse'] &:hover {
+    @apply border-primary;
+  }
+}
+
+.border-link-light {
+  @apply text-white;
+
+  [data-whatinput='mouse'] &:hover {
+    @apply border-white;
+  }
+}
+
+.richtext-on-dark {
+  a:not([class]) {
+    @apply border-link border-link-light;
+  }
+}
+
+.richtext {
+  p {
+    @apply my-4;
+  }
+
+  &:not(.richtext-on-dark) {
+    a:not([class]) {
+      @apply underline text-primary;
+
+      &:hover {
+        @apply text-primary;
+      }
+    }
+  }
+}
+
+.wysiwyg {
+  h1,
+  h2 {
+    @apply mb-2 text-2xl  text-primary;
+
+    @screen md {
+      @apply text-4xl;
+    }
+
+    @screen lg {
+      @apply text-6xl;
+    }
+  }
+
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-lg font-medium text-primary;
+
+    @screen lg {
+      @apply text-2xl;
+    }
+  }
+
+  h2 + h3 {
+    @apply mt-6;
+  }
+
+  hr {
+    @apply my-8;
+
+    @screen lg {
+      @apply my-12;
+    }
+  }
+
+  ul:not([class]) {
+    li {
+      @apply relative my-2;
+      padding-left: 1.25em;
+
+      &:before {
+        content: '\2022';
+        color: theme(colors.primary.default);
+        font-weight: bold;
+        font-size: 1.5em;
+        line-height: 0.9;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    }
+  }
+
+  ol:not([class]) {
+    @apply list-decimal list-inside;
+  }
+}
+
+.title-outline {
+  @apply text-xl  leading-none;
+
+  @screen lg {
+    @apply text-4xl;
+  }
+
+  strong {
+    @apply block leading-none text-transparent uppercase;
+    font-size: 250%;
+    stroke: 1px theme(colors.accent);
+    -webkit-text-stroke: 1px theme(colors.accent);
+  }
+}

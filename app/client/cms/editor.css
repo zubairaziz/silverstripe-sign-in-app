@@ -1,0 +1,13 @@
+.Section-Title {
+  text-transform: uppercase;
+  color: #00758D;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.Paragraph-Title {
+  text-transform: uppercase;
+  color: #00758D;
+  font-weight: bold;
+  display: block;
+}

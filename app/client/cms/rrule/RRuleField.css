@@ -1,0 +1,81 @@
+#Form_ItemEditForm_RRule_Holder {
+  display: block;
+}
+
+#Form_ItemEditForm_RRule {
+  display: none;
+}
+
+.rrulefield .wrapper-label {
+  display: inline-block;
+  font-weight: bold;
+  min-width: 105px;
+  text-align: right;
+  margin-right: 10px;
+}
+
+.rrulefield .field-wrapper {
+  display: block;
+  margin: 8px 0;
+  clear: both;
+}
+
+.rrulefield select {
+  float: left;
+  width: auto;
+}
+
+.rrulefield .optionset {
+  display: inline-block;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.rrulefield .optionset li {
+  float: none;
+  display: inline-block;
+  width: auto;
+  padding: 0;
+  margin-right: 12px;
+}
+
+.rrulefield .optionset li input {
+  margin-right: 3px;
+}
+
+.rrulefield .interval-wrapper {
+  margin-top: 0;
+}
+
+.rrulefield .chosen-container {
+  width: 100px !important;
+}
+
+.rrulefield .interval-label {
+  display: inline-block;
+  line-height: 21px;
+  margin-left: 10px;
+}
+
+.rrulefield .control-fields {
+  background: #f5f5f5;
+  padding: 20px;
+  margin: 10px 0;
+  min-height: 180px;
+  box-sizing: border-box;
+  min-width: 480px;
+}
+
+.rrule-summary {
+  font-weight: bold;
+  background: #ffff99;
+  padding: 8px;
+  color: #333;
+  margin: 10px 0;
+  text-align: center;
+  display: none;
+}
+
+.control-fields {
+  display: none;
+}

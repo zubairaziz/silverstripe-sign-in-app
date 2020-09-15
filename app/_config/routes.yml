@@ -1,0 +1,12 @@
+---
+Name: app-routes
+After:
+  - '#rootroutes'
+  - '#coreroutes'
+---
+
+SilverStripe\Control\Director:
+  rules:
+    '_downloadfile//$Action': App\Control\FileDownloadController
+    '_formsubmit//$Action': App\Form\FormController
+    'subscription//$Action': App\Subscription\SubscriptionController

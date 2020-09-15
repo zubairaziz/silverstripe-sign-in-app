@@ -1,0 +1,61 @@
+---
+Name: app-extensions
+---
+
+SilverStripe\Admin\LeftAndMain:
+  extra_requirements_css:
+    - app/client/cms/overrides.css
+  extra_requirements_javascript:
+    - app/client/cms/overrides.js
+  extensions:
+    - App\Extension\LeftAndMain
+
+SilverStripe\Assets\File:
+  allowed_extensions:
+    - svg
+  app_categories:
+    image:
+      - svg
+    image/supported:
+      - svg
+
+SilverStripe\CMS\Controllers\CMSMain:
+  extensions:
+    - App\Extension\CMSMain
+
+SilverStripe\CMS\Model\SiteTree:
+  extensions:
+    - App\Extension\CallToAction
+    - App\Extension\SiteTree
+
+SilverStripe\Forms\FieldList:
+  extensions:
+    - App\Extension\FieldList
+
+SilverStripe\Forms\FormField:
+  extensions:
+    - App\Extension\FormField
+
+SilverStripe\Forms\HTMLEditor\TinyMCEConfig:
+  editor_css:
+    - 'app/client/cms/editor.css'
+
+SilverStripe\SiteConfig\SiteConfig:
+  extensions:
+    - App\Extension\SiteConfig
+
+SilverStripe\UserForms\Control\UserDefinedFormController:
+  extensions:
+    - App\Extension\UserDefinedFormController
+
+SilverStripe\UserForms\Form\UserForm:
+  extensions:
+    - App\Extension\StyledUserform
+
+SilverStripe\UserForms\Model\UserDefinedForm:
+  extensions:
+    - App\Extension\UserDefinedForm
+
+SilverStripe\UserForms\Model\Submission\SubmittedForm:
+  extensions:
+    - App\Extension\UserformSubmittedForm

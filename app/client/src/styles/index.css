@@ -1,0 +1,18 @@
+@import 'tailwindcss/base';
+
+/* Base */
+@import 'base/utilities';
+@import 'base/layout';
+@import 'tailwindcss/utilities';
+
+/* Typography */
+@import 'base/typography';
+
+/* Components*/
+@import 'components/button';
+@import 'components/form';
+@import 'components/clock';
+
+/* Sections*/
+
+@import 'components/print';

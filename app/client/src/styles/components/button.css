@@ -1,0 +1,77 @@
+.button {
+  @apply inline-block w-full px-4 py-2 text-base font-medium text-center uppercase border border-transparent rounded-md transition-colors duration-300 ease-in-out;
+  max-width: 160px;
+
+  @screen xl {
+    @apply px-5 py-3 text-lg;
+    max-width: 200px;
+  }
+}
+
+.button-hollow-dark {
+  @apply text-black border border-black;
+
+  &:hover,
+  &:focus,
+  &:active {
+    @apply bg-black border-black text-white;
+  }
+}
+
+.button-primary {
+  @apply border text-white border-primary bg-primary;
+
+  &:hover,
+  &:focus,
+  &:active {
+    @apply bg-primary-darker text-white border-primary-darker;
+  }
+}
+
+.button-secondary {
+  @apply border text-white border-secondary bg-secondary;
+
+  &:hover,
+  &:focus,
+  &:active {
+    @apply bg-secondary-darker text-white border-secondary-darker;
+  }
+}
+
+.button-group {
+  .button:not(:last-child) {
+    @apply mr-2;
+
+    @screen md {
+      @apply mr-3;
+    }
+
+    @screen xl {
+      @apply mr-4;
+    }
+  }
+}
+
+.button-toolbar {
+  @apply flex items-center justify-start;
+}
+
+.button-toolbar-center {
+  @apply my-4 flex items-center justify-center;
+}
+
+.button-loading {
+  @apply relative overflow-hidden text-transparent pointer-events-none;
+
+  &:before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    animation: loading-dots 1s linear infinite alternate;
+    position: absolute;
+    top: calc(50% - 3px);
+    left: calc(50% - 12px);
+    opacity: 0.8;
+  }
+}

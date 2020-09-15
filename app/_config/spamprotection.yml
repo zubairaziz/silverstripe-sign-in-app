@@ -1,0 +1,18 @@
+---
+Name: app-spamprotection
+After:
+  - akismet
+---
+
+SilverStripe\SpamProtection\Extension\FormSpamProtection:
+  default_spam_protector: AkismetSpamProtector
+
+SilverStripe\Akismet\AkismetSpamProtector:
+  api_key: a79ae2901ac1
+
+# SilverStripe\SpamProtection\Extension\FormSpamProtectionExtension:
+#   default_spam_protector: UndefinedOffset\NoCaptcha\Forms\NocaptchaProtector
+
+# UndefinedOffset\NoCaptcha\Forms\NocaptchaField:
+#   site_key: "6LceC9sUAAAAAAJgr5UlevnZ4AELaplzGSxv66pI"
+#   secret_key: "6LceC9sUAAAAAHMwKjkXvfEBCmGdbLDGz6mPXThV"
