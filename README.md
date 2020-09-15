@@ -21,6 +21,5 @@ Run `yarn run build`
 The following tasks need to be added to the server's crontab file
 
 ```sh
-* * * * * [project-path...]/vendor/bin/sake dev/tasks/SendSubscriptionNotificationTask
-0 0 * * * [project-path...]/vendor/bin/sake dev/tasks/MultiFormPurgeTask
+* * * * * [project-path...]/vendor/bin/sake dev/tasks/
 ```
