@@ -1,5 +1,5 @@
 <article>
-  <%-- <% include PageHeader %>
+  <%-- <% include PageHeader %> --%>
 
   <div class="container">
     <section class="page-container">
@@ -9,5 +9,5 @@
         $Form
       </div>
     </section>
-  </div> --%>
+  </div>
 </article>

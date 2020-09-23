@@ -1,0 +1,64 @@
+<?php
+
+namespace App\Model;
+
+use App\Security\CMSPermissionProvider;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\ReadonlyField;
+use SilverStripe\ORM\DataObject;
+
+class Timesheet extends DataObject
+{
+    use CMSPermissionProvider;
+
+    private static $table_name = 'Timesheet';
+
+    private static $db = [
+        'Date' => 'Date',
+        'SignInTime' => 'Datetime',
+        'SignOutTime' => 'Datetime',
+        'LunchInTime' => 'Datetime',
+        'LunchOutTime' => 'Datetime',
+        'AppointmentInTime' => 'Datetime',
+        'AppointmentOutTime' => 'Datetime',
+        'OOTO' => 'Boolean',
+        'OOTOReason' => 'Varchar',
+        'TotalHours' => 'Int'
+    ];
+
+    private static $has_one = [
+        'Employee' => Employee::class
+    ];
+
+    private static $default_sort = 'Date';
+
+    private static $indexes = [
+        'Date' => true,
+    ];
+
+    private static $searchable_fields = [
+        'Date',
+    ];
+
+    private static $summary_fields = [
+        'Date' => 'Date',
+        'Employee.FullName' => 'Employee',
+    ];
+
+    public function getTitle()
+    {
+        return sprintf('%s - %s', $this->dbObject('Date')->Nice(), $this->Employee()->getTitle());
+    }
+
+    public function getCMSFields()
+    {
+        $fields = FieldList::create(
+            ReadonlyField::create(
+                'name',
+                'name'
+            )
+        );
+
+        return $fields;
+    }
+}

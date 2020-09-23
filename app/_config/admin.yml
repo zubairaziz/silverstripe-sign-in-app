@@ -13,18 +13,18 @@ SilverStripe\Admin\LeftAndMain:
     cms_drawer_color: currentColor
     cms_icon_color: currentColor
     menu_groups:
-        Pages:
-            priority: 99
-            items:
-                - SilverStripe-CMS-Controllers-CMSPagesController
-        Files:
+        Employees:
             priority: 98
             items:
-                - SilverStripe-AssetAdmin-Controller-AssetAdmin
-        Employees:
+                - App-Admin-EmployeeAdmin
+        Messages:
             priority: 97
             items:
-                - App-Admin-EmployeesAdmin
+                - App-Message-MessageAdmin
+        Backgrounds:
+            priority: 96
+            items:
+                - App-Background-BackgroundAdmin
         Settings:
             priority: 2
             items:
@@ -33,6 +33,8 @@ SilverStripe\Admin\LeftAndMain:
             priority: 1
             icon_class: 'fas fa-folder'
             items:
+                - SilverStripe-CMS-Controllers-CMSPagesController
+                - SilverStripe-AssetAdmin-Controller-AssetAdmin
                 - App-Admin-FormAdmin
                 - SilverStripe-Admin-SecurityAdmin
                 - SilverStripe-CampaignAdmin-CampaignAdmin

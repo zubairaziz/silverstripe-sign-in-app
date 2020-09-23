@@ -40,7 +40,11 @@ class Employee extends DataObject
         'Image'
     ];
 
-    private static $default_sort = '"LastName", "FirstName"';
+    private static $has_many = [
+        'Timesheets' => Timesheet::class
+    ];
+
+    private static $default_sort = '"ActiveEmployee", "LastName", "FirstName"';
 
     private static $indexes = [
         'Email' => true,
@@ -54,10 +58,11 @@ class Employee extends DataObject
     ];
 
     private static $summary_fields = [
+        'Image.CMSThumbnail' => 'Image',
         'FullName' => 'Name',
-        'Email',
-        'Phone',
-        // 'ActiveEmployee.Nice' => 'Active Employee'
+        // 'Email',
+        // 'Phone',
+        'ActiveEmployee.Nice' => 'Active Employee'
     ];
 
     public function populateDefaults()
