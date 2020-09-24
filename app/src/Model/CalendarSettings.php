@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Message;
+namespace App\Model;
 
 use App\Extension\AppSettings;
 use App\Security\CMSPermissionProvider;

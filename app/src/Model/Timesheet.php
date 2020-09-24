@@ -3,6 +3,8 @@
 namespace App\Model;
 
 use App\Security\CMSPermissionProvider;
+use DateTime;
+use SilverStripe\Forms\FieldGroup;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\ReadonlyField;
 use SilverStripe\ORM\DataObject;
@@ -41,7 +43,7 @@ class Timesheet extends DataObject
     ];
 
     private static $summary_fields = [
-        'Date' => 'Date',
+        'Date.Nice' => 'Date',
         'Employee.FullName' => 'Employee',
     ];
 
@@ -53,12 +55,36 @@ class Timesheet extends DataObject
     public function getCMSFields()
     {
         $fields = FieldList::create(
-            ReadonlyField::create(
-                'name',
-                'name'
-            )
+            ReadonlyField::create('Date.Nice', 'Date', $this->dbObject('Date')->Nice()),
+            ReadonlyField::create('Name', 'Name', $this->Employee()->getTitle()),
+            FieldGroup::create(
+                'Sign In',
+                ReadonlyField::create('SignInTime'),
+                ReadonlyField::create('SignOutTime')
+            ),
+            FieldGroup::create(
+                'Lunch',
+                ReadonlyField::create('LunchOutTime'),
+                ReadonlyField::create('LunchInTime')
+            ),
+            FieldGroup::create(
+                'Appointment',
+                ReadonlyField::create('AppointmentOutTime'),
+                ReadonlyField::create('AppointmentInTime')
+            ),
         );
 
         return $fields;
+    }
+
+    public function onBeforeWrite()
+    {
+        parent::onBeforeWrite();
+
+        if (!$this->Date) {
+            $date = new DateTime();
+            $date = $date->format('Y-m-d');
+            $this->Date = $date;
+        }
     }
 }

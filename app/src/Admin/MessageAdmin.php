@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Message;
+namespace App\Admin;
 
-use App\Admin\SettingsAdmin;
+use App\Model\MessageSettings;
 use SilverStripe\Security\PermissionProvider;
 
 class MessageAdmin extends SettingsAdmin implements PermissionProvider

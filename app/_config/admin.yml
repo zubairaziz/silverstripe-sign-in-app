@@ -14,17 +14,25 @@ SilverStripe\Admin\LeftAndMain:
     cms_icon_color: currentColor
     menu_groups:
         Employees:
-            priority: 98
+            priority: 99
             items:
                 - App-Admin-EmployeeAdmin
+        Calendar:
+            priority: 99
+            items:
+                - App-Admin-CalendarAdmin
         Messages:
             priority: 97
             items:
-                - App-Message-MessageAdmin
+                - App-Admin-MessageAdmin
         Backgrounds:
             priority: 96
             items:
-                - App-Background-BackgroundAdmin
+                - App-Admin-BackgroundAdmin
+        Timesheets:
+            priority: 95
+            items:
+                - App-Admin-TimesheetAdmin
         Settings:
             priority: 2
             items:

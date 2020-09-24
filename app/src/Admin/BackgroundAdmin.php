@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Background;
+namespace App\Admin;
 
-use App\Admin\SettingsAdmin;
+use App\Model\BackgroundSettings;
 use SilverStripe\Security\PermissionProvider;
 
 class BackgroundAdmin extends SettingsAdmin implements PermissionProvider

@@ -4,6 +4,7 @@ namespace App\Model;
 
 use App\Form\Field\PINField;
 use App\Security\CMSPermissionProvider;
+use DateTime;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\Image;
 use SilverStripe\Forms\CheckboxField;
@@ -60,9 +61,8 @@ class Employee extends DataObject
     private static $summary_fields = [
         'Image.CMSThumbnail' => 'Image',
         'FullName' => 'Name',
-        // 'Email',
-        // 'Phone',
-        'ActiveEmployee.Nice' => 'Active Employee'
+        'ActiveEmployee.Nice' => 'Active Employee',
+        'CurrentStatus' => 'Status'
     ];
 
     public function populateDefaults()
@@ -109,6 +109,30 @@ class Employee extends DataObject
         $digits = 4;
         $pin = rand(pow(10, $digits-1), pow(10, $digits)-1);
         return $pin;
+    }
+
+    public function getCurrentStatus()
+    {
+        $date = new DateTime();
+        $date = $date->format('Y-m-d');
+        $today = $this->Timesheets()->filter(['Date' => $date]);
+        $status = 'Not Signed In';
+        if ($this->OOTO) {
+            $status = 'Out of the Office';
+            if ($this->OOTOReason) {
+                $status = $this->OOTOReason;
+            }
+        }
+        if ($today->SignInTime) {
+            $status = 'Signed In';
+        }
+        if ($today->LunchOutTime && !$today->LunchInTime) {
+            $status = 'Out to Lunch';
+        }
+        if ($today->AppointmentOutTime && !$today->AppointmentInTime) {
+            $status = 'Out to Appointment';
+        }
+        return $status;
     }
 
     public function checkPinAvailability($pin)
@@ -160,5 +184,12 @@ class Employee extends DataObject
         }
 
         return $result;
+    }
+
+    public function onBeforeWrite()
+    {
+        parent::onBeforeWrite();
+
+        $this->Email = trim($this->Email);
     }
 }

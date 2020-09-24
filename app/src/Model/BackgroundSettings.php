@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Background;
+namespace App\Model;
 
 use App\Extension\AppSettings;
-use App\Model\SortableImage;
 use App\Security\CMSPermissionProvider;
 use App\Util\Util;
 use SilverStripe\AssetAdmin\Forms\UploadField;
