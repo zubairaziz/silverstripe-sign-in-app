@@ -84,7 +84,7 @@ class Employee extends DataObject
         return sprintf('%s %s', $this->FirstName, $this->LastName);
     }
 
-    public function getEmployeeByPin($pin)
+    public static function getEmployeeByPin($pin)
     {
         $employee = null;
         if (self::get()->filter('PIN', $pin)->first()) {

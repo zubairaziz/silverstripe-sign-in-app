@@ -2,6 +2,7 @@
 
 namespace App\View;
 
+use App\Form\FormController;
 use App\Util\AssetUtil;
 use App\Util\TextUtil;
 use App\Util\Util;
@@ -20,8 +21,8 @@ class SiteTemplateGlobalProvider implements TemplateGlobalProvider
                 'casting' => 'HTMLFragment'
             ],
             'GetPageByType' => 'GetPageByType',
-            'DonationPage' => 'DonationPage',
-            'SubscribeForm' => 'SubscribeForm',
+            'SignInForm' => 'SignInForm',
+            'SignOutForm' => 'SignOutForm',
             'SiteCSS' => 'SiteCSS',
             'SiteLiveCSS' => 'SiteLiveCSS',
             'SiteJS' => 'SiteJS',
@@ -56,6 +57,20 @@ class SiteTemplateGlobalProvider implements TemplateGlobalProvider
             ],
             'IsLive' => 'IsLive'
         ];
+    }
+
+    public static function SignInForm()
+    {
+        $controller = FormController::create();
+
+        return $controller->SignInForm();
+    }
+
+    public static function SignOutForm()
+    {
+        $controller = FormController::create();
+
+        return $controller->SignOutForm();
     }
 
     public static function PhoneLink($number)

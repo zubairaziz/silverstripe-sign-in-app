@@ -4,7 +4,6 @@ namespace App\Task;
 
 use App\Model\Employee;
 use SilverStripe\Dev\BuildTask;
-use SilverStripe\Dev\Debug;
 
 class GenerateDailyTimesheets extends BuildTask
 {
@@ -16,7 +15,6 @@ class GenerateDailyTimesheets extends BuildTask
     {
         $employees = Employee::get()->filter(['ActiveEmployee' => true]);
         foreach ($employees as $employee) {
-            // Debug::show($employee);
             if (!$employee->getTodaysTimesheet()) {
                 $employee->generateTimesheet();
             }

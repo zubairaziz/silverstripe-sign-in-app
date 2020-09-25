@@ -12,9 +12,11 @@ class FormController extends Controller
 {
     private static $allowed_actions = [
         'ContactForm',
-        'NominationForm',
-        'ContactForm',
+        'SignInForm',
+        'SignOutForm',
+        'getSession',
         'handleemail',
+        'handlelogin',
         'handleresponse',
         'handleerrorresponse'
     ];
@@ -31,9 +33,14 @@ class FormController extends Controller
         return ContactForm::create($this, __FUNCTION__);
     }
 
-    public function NominationForm()
+    public function SignInForm()
     {
-        return NominationForm::create($this, __FUNCTION__);
+        return SignInForm::create($this, __FUNCTION__);
+    }
+
+    public function SignOutForm()
+    {
+        return SignOutForm::create($this, __FUNCTION__);
     }
 
     public function handleemail($success, $submission, $subject, $formSettings, $attachments = [])
@@ -66,7 +73,7 @@ class FormController extends Controller
         }
     }
 
-    public function handleresponse($success, $formSettings)
+    public function handleresponse($success, $formSettings = null)
     {
         if (Director::is_ajax($this->getRequest())) {
             if (!SecurityToken::inst()->checkRequest($this->getRequest())) {
@@ -84,6 +91,60 @@ class FormController extends Controller
             $response = [
                 'success' => $success,
                 'message' => $message
+            ];
+
+            return Convert::array2json($response);
+        }
+
+        return $this->redirectBack();
+    }
+
+    public function handlelogin($success, $employeeID)
+    {
+        if (Director::is_ajax($this->getRequest())) {
+            if (!SecurityToken::inst()->checkRequest($this->getRequest())) {
+                return $this->httpError(400);
+            }
+
+            if ($success) {
+                $message = 'Logged In';
+            } else {
+                $message = 'Sorry, there was a problem with your submission';
+            }
+
+            $this->getResponse()->addHeader('Content-Type', 'application/json');
+
+            $response = [
+                'success' => $success,
+                'message' => $message,
+                'employee' => $employeeID
+            ];
+
+            return Convert::array2json($response);
+        }
+
+        return $this->redirectBack();
+    }
+
+    public function handlelogout()
+    {
+        if (Director::is_ajax($this->getRequest())) {
+            if (!SecurityToken::inst()->checkRequest($this->getRequest())) {
+                return $this->httpError(400);
+            }
+
+            if ($success) {
+                $message = 'Logged In';
+            } else {
+                $message = 'Sorry, there was a problem with your submission';
+            }
+
+            $this->getResponse()->addHeader('Content-Type', 'application/json');
+
+            $response = [
+                'success' => $success,
+                'message' => $message,
+                'employee' => $employeeID
             ];
 
             return Convert::array2json($response);
@@ -111,5 +172,12 @@ class FormController extends Controller
         }
 
         return $this->redirectBack();
+    }
+
+    public function getSession()
+    {
+        $session = $this->getRequest()->getSession();
+        // Debug::show($session);
+        return $session;
     }
 }
