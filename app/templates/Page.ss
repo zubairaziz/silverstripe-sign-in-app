@@ -17,14 +17,14 @@
   <% end_if %>
 </head>
 
-<body class="$BodyClasses">
+<body class="$BodyClasses" x-data="{ 'showModal': false }" @keydown.escape="showModal = false" x-cloak>
   <% if $SiteConfig.GoogleID %>
   <% include GoogleTagManager NoScript="true", GoogleID=$SiteConfig.GoogleID %>
   <% end_if %>
   <div class="content-wrapper">
-    <main id="main-content" class="page-wrapper">
+    <%-- <main id="main-content" class="page-wrapper"> --%>
       $Layout
-    </main>
+    <%-- </main> --%>
   </div>
   $SiteJS
   <script type="text/javascript" src="//cdn.callrail.com/companies/819978231/59d8105bc90e19ab2c84/12/swap.js"></script>

@@ -21,7 +21,8 @@ class SignInForm extends Form
             TextField::create('PIN', '')
                 ->setAttribute('placeholder', 'Insert 4 digit PIN')
                 ->setAttribute('type', 'number')
-                ->setAttribute('minlength', 4),
+                ->setAttribute('minlength', 4)
+                ->addExtraClass('text-center')
         ]);
 
         $actions = FieldList::create(
@@ -40,15 +41,6 @@ class SignInForm extends Form
         $this->setAttribute('data-form-scroll', true);
         // $this->setAttribute('data-form-ajax', true);
         $this->setAttribute('data-form-hide-on-submit', true);
-
-        // Setup fly labels
-        foreach ($fields as $field) {
-            $types = explode(' ', $field->Type());
-
-            if (!empty(array_intersect($types, ['text', 'email', 'tel']))) {
-                $field->enableFlyField();
-            }
-        }
     }
 
     public function forTemplate()

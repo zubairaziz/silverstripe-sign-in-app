@@ -1,4 +1,5 @@
 import './styles/index.css'
+import 'alpinejs'
 
 document.addEventListener('DOMContentLoaded', () => {
   ;((r) => {

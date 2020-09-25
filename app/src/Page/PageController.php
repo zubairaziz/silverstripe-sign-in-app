@@ -19,6 +19,11 @@ class PageController extends ContentController
         return $this->getRequest()->getSession()->get('LoggedIn');
     }
 
+    public function getLoggedInEmployee()
+    {
+        return $this->getRequest()->getSession()->get('Employee');
+    }
+
     public function getSession()
     {
         $session = $this->getRequest()->getSession();

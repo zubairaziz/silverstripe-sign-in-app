@@ -1,8 +1,10 @@
 form {
-  select {
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
+    margin: 0;
   }
 
   legend {
@@ -18,7 +20,7 @@ form {
 
   input,
   textarea {
-    @apply w-full px-4 py-3 text-black border  bg-transparent rounded-none font-medium;
+    @apply w-full px-4 py-3 text-gray-900 border-b border-primary-darker bg-transparent rounded-none font-medium;
 
     @screen lg {
       @apply px-5 py-4;
