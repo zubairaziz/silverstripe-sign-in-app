@@ -4,7 +4,7 @@ namespace App\Model;
 
 use App\Form\Field\PINField;
 use App\Security\CMSPermissionProvider;
-use DateTime;
+use App\Util\Util;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\Image;
 use SilverStripe\Forms\CheckboxField;
@@ -103,6 +103,25 @@ class Employee extends DataObject
         }
     }
 
+    public function getTodaysTimesheet()
+    {
+        if ($timesheet = $this->Timesheets()->filter(['Date' => Util::getTodaysDate()])->first()) {
+            return $timesheet;
+        }
+        return false;
+    }
+
+    public function generateTimesheet()
+    {
+        if (!$this->Timesheets()->filter(['Date' => Util::getTodaysDate()])->count()) {
+            $timesheet = Timesheet::create();
+            $timesheet->EmployeeID = $this->ID;
+            $timesheet->write();
+            $this->Timesheets()->add($timesheet);
+        }
+        return;
+    }
+
     public function generatePIN()
     {
         $pin = null;
@@ -113,8 +132,7 @@ class Employee extends DataObject
 
     public function getCurrentStatus()
     {
-        $date = new DateTime();
-        $date = $date->format('Y-m-d');
+        $date = Util::getTodaysDate();
         $today = $this->Timesheets()->filter(['Date' => $date]);
         $status = 'Not Signed In';
         if ($this->OOTO) {

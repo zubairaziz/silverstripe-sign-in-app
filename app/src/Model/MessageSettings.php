@@ -21,12 +21,14 @@ class MessageSettings extends DataObject
     ];
 
     private static $db = [
+        'WelcomeMessage' => 'Text',
         'SignInMessage' => 'Text',
         'SignOutMessage' => 'Text',
         'LunchOut' => 'Text',
-        'LunchBack' => 'Text',
+        'LunchIn' => 'Text',
         'AppointmentOut' => 'Text',
-        'AppointmentBack' => 'Text',
+        'AppointmentIn' => 'Text',
+        'BirthdayMessage' => 'Text',
     ];
 
     public function getCMSFields()
@@ -35,7 +37,14 @@ class MessageSettings extends DataObject
             TabSet::create('Root')
         );
 
-        $fields->addFieldsToTab('Root.Messages.In/Out', [
+        $fields->addFieldsToTab('Root.Messages.Welcome', [
+            TextareaField::create(
+                'WelcomeMessage',
+                'Welcome Message'
+            ),
+        ]);
+
+        $fields->addFieldsToTab('Root.Messages.Sign In', [
             TextareaField::create(
                 'SignInMessage',
                 'Sign In Message'
@@ -52,7 +61,7 @@ class MessageSettings extends DataObject
                 'Out to Lunch Message'
             ),
             TextareaField::create(
-                'LunchBack',
+                'LunchIn',
                 'Back from Lunch Message'
             ),
         ]);
@@ -63,10 +72,18 @@ class MessageSettings extends DataObject
                 'Out to Appointment Message'
             ),
             TextareaField::create(
-                'AppointmentBack',
+                'AppointmentIn',
                 'Back from Appointment Message'
             ),
         ]);
+
+        $fields->addFieldsToTab('Root.Messages.Birthday', [
+            TextareaField::create(
+                'BirthdayMessage',
+                'Birthday Message'
+            ),
+        ]);
+
 
         $this->extend('updateCMSFields', $fields);
 

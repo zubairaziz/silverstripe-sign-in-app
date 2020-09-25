@@ -2,6 +2,7 @@
 
 namespace App\Util;
 
+use DateTime;
 use SilverStripe\AssetAdmin\Controller\AssetAdmin;
 use SilverStripe\Assets\Image;
 use SilverStripe\Forms\GridField\GridFieldAddExistingAutocompleter;
@@ -16,7 +17,6 @@ use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\SS_List;
-use SilverStripe\Security\Group;
 use SilverStripe\Versioned\GridFieldArchiveAction;
 use SilverStripe\View\ArrayData;
 use SilverStripe\View\SSViewer;
@@ -278,5 +278,12 @@ class Util
         }
 
         return $lists;
+    }
+
+    public static function getTodaysDate()
+    {
+        $date = new DateTime();
+        $date = $date->format('Y-m-d');
+        return $date;
     }
 }

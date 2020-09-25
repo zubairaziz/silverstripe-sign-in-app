@@ -3,7 +3,7 @@
 namespace App\Model;
 
 use App\Security\CMSPermissionProvider;
-use DateTime;
+use App\Util\Util;
 use SilverStripe\Forms\FieldGroup;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\ReadonlyField;
@@ -82,8 +82,7 @@ class Timesheet extends DataObject
         parent::onBeforeWrite();
 
         if (!$this->Date) {
-            $date = new DateTime();
-            $date = $date->format('Y-m-d');
+            $date = Util::getTodaysDate();
             $this->Date = $date;
         }
     }
