@@ -4,6 +4,8 @@
   <div class="employee-card my-2 p-4 flex flex-col items-center justify-center">
     <img src="$Image.AbsoluteURL" alt="$FullName" class="inline-block h-32 w-32 rounded-full text-white shadow-solid">
     <h2>$FullName</h2>
+    <h3>Today's Activity</h3>
+
   </div>
   <% end_with %>
   <div class="button-toolbar-center">
@@ -19,8 +21,7 @@
       x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100">
 
       <!--Title-->
-      <div class="flex justify-between items-center pb-3">
-        <p class="text-2xl text-center text-3xl font-bold">Sign In!</p>
+      <div class="flex justify-end items-center pb-3">
         <div class="cursor-pointer z-50" @click="showModal = false">
           $AssetIcon('x-close')
         </div>

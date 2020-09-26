@@ -4,7 +4,8 @@ namespace App\Form;
 
 use App\Model\Employee;
 use App\Page\HomePage;
-use SilverStripe\Dev\Debug;
+use DateTime;
+use DateTimeZone;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FormAction;
@@ -52,18 +53,28 @@ class SignInForm extends Form
 
     public function submit($data, $form)
     {
-        $success = true;
+        $success = false;
 
+        $employeeID = null;
         $employee = Employee::getEmployeeByPin($data['PIN']);
 
-        // Debug::show($employee);
-
         if ($employee) {
+            $success = true;
             $session = $this->controller->getSession();
-            $session->set('LoggedIn', true);
-            $session->set('EmployeeID', $employee->ID);
-            $session->set('Employee', $employee);
-            $employeeID = $employee->ID;
+            if ($employee->hasSignedIn()) {
+                $session->set('LoggedIn', true);
+                $session->set('EmployeeID', $employee->ID);
+                $session->set('Employee', $employee);
+                $employeeID = $employee->ID;
+            } else {
+                $tz = 'America/New_York';
+                $timestamp = time();
+                $time = new DateTime("now", new DateTimeZone($tz)); //first argument "must" be a string
+                $time->setTimestamp($timestamp); //adjust the object to correct timestamp
+                $timesheet = $employee->getTodaysTimesheet();
+                $timesheet->SignInTime = $time->format('H:i');
+                $timesheet->write();
+            }
         }
 
         return $this->controller->handlelogin($success, $employeeID);

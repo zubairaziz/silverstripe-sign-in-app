@@ -100,7 +100,7 @@ class FormController extends Controller
         return $this->redirectBack();
     }
 
-    public function handlelogin($success, $employeeID)
+    public function handlelogin($success, $employeeID = null)
     {
         if (Director::is_ajax($this->getRequest())) {
             if (!SecurityToken::inst()->checkRequest($this->getRequest())) {
@@ -112,7 +112,7 @@ class FormController extends Controller
             if ($success) {
                 $message = $settings->WelcomeMessage;
             } else {
-                $message = 'Sorry, there was a problem with your submission';
+                $message = 'Incorrect PIN';
             }
 
             $this->getResponse()->addHeader('Content-Type', 'application/json');

@@ -122,6 +122,15 @@ class Employee extends DataObject
         return;
     }
 
+    public function hasSignedIn()
+    {
+        $timesheet = $this->getTodaysTimesheet();
+        if ($timesheet->SignInTime) {
+            return true;
+        }
+        return false;
+    }
+
     public function generatePIN()
     {
         $pin = null;

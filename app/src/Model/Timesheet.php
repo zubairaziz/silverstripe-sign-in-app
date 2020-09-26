@@ -17,12 +17,12 @@ class Timesheet extends DataObject
 
     private static $db = [
         'Date' => 'Date',
-        'SignInTime' => 'Datetime',
-        'SignOutTime' => 'Datetime',
-        'LunchInTime' => 'Datetime',
-        'LunchOutTime' => 'Datetime',
-        'AppointmentInTime' => 'Datetime',
-        'AppointmentOutTime' => 'Datetime',
+        'SignInTime' => 'Time',
+        'SignOutTime' => 'Time',
+        'LunchInTime' => 'Time',
+        'LunchOutTime' => 'Time',
+        'AppointmentInTime' => 'Time',
+        'AppointmentOutTime' => 'Time',
         'OOTO' => 'Boolean',
         'OOTOReason' => 'Varchar',
         'TotalHours' => 'Int'

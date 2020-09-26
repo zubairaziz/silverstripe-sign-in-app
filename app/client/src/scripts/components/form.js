@@ -28,7 +28,7 @@ const fn = {
     const isLoginForm = $form.classList.contains('sign-in-form')
 
     if (isValid) {
-      const $formMessages = $form.querySelector('.form-messages')
+      const $formMessages = $form.parentElement.querySelector('.form-messages')
       const $submitButton = $form.querySelector('[type=submit]')
       fn.toggleSubmit($submitButton)
 
@@ -40,7 +40,7 @@ const fn = {
           if (res.success) {
             $form.reset()
 
-            if ($form.dataset.hideOnSubmit) {
+            if ($form.dataset.formHideOnSubmit) {
               $form.style.display = 'none'
             }
 
@@ -48,6 +48,7 @@ const fn = {
           }
 
           if (res.message) {
+            $formMessages.classList.add('py-4')
             fn.showFormMessages($formMessages, res.message)
           }
         })
@@ -58,7 +59,12 @@ const fn = {
           )
         })
         .finally(() => {
-          fn.toggleSubmit($submitButton, isLoginForm)
+          fn.toggleSubmit($submitButton)
+          if (isLoginForm) {
+            setTimeout(() => {
+              location.reload()
+            }, 5000)
+          }
         })
     }
   },
@@ -72,24 +78,20 @@ const fn = {
     })
   },
 
-  toggleSubmit: ($submitButton, isLoginForm) => {
+  toggleSubmit: ($submitButton) => {
     $submitButton.disabled = !$submitButton.disabled
     $submitButton.classList.toggle('btn-loading')
-    // console.log($form.classList)
-    if (isLoginForm) {
-      setTimeout(() => {
-        location.reload()
-      }, 5500)
-    }
   },
 
-  showFormMessages: ($holder, message) => {
+  showFormMessages: ($holder, message, hide = false) => {
     $holder.innerHTML = message
     $holder.style.display = 'block'
 
-    setTimeout(() => {
-      $holder.style.display = 'none'
-    }, 5000)
+    if (hide) {
+      setTimeout(() => {
+        $holder.style.display = 'none'
+      }, 5000)
+    }
   },
 }
 
