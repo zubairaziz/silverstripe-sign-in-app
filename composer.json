@@ -21,7 +21,7 @@
         "axllent/silverstripe-image-optimiser": "^1.0",
         "unclecheese/display-logic": "^2.0",
         "jonom/focuspoint": "^3.1",
-        "cakephp/chronos": "^1.2",
+        "cakephp/chronos": "^2.0",
         "spatie/calendar-links": "^1.2",
         "silverstripe/userforms": "^5.4",
         "tplaner/when": "^3.0.0",
