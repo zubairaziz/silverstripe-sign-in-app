@@ -1,5 +1,6 @@
 <?php
 
+use App\Model\Employee;
 use SilverStripe\CMS\Controllers\ContentController;
 use SilverStripe\Dev\Debug;
 
@@ -22,6 +23,11 @@ class PageController extends ContentController
     public function getLoggedInEmployee()
     {
         return $this->getRequest()->getSession()->get('Employee');
+    }
+
+    public function getAllEmployees()
+    {
+        return Employee::get()->filter(['ActiveEmployee' => true]);
     }
 
     public function getSession()
