@@ -1,7 +1,4 @@
 <form $AttributesHTML autocomplete="off" novalidate>
-  <div class="form-messages text-center py-4"></div>
-  <div class="form-error-message"></div>
-
   <% loop HiddenFields %>
   $FieldHolder
   <% end_loop %>

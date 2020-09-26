@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Email\Mailer;
+use App\Model\MessageSettings;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
 use SilverStripe\Core\Convert;
@@ -106,8 +107,10 @@ class FormController extends Controller
                 return $this->httpError(400);
             }
 
+            $settings = MessageSettings::current_settings();
+
             if ($success) {
-                $message = 'Logged In';
+                $message = $settings->WelcomeMessage;
             } else {
                 $message = 'Sorry, there was a problem with your submission';
             }

@@ -106,10 +106,10 @@
         "alpinejs": "^2.7.0",
         "delegated-events": "^1.1.2",
         "easydropdown": "^4.2.0",
+        "imask": "^6.0.5",
         "jump.js": "^1.0.2",
         "scrollreveal": "^4.0.7",
         "tailwindcss": "^1.8.6",
-        "tingle.js": "^0.15.3",
         "validate.js": "^0.13.1",
         "verge": "^1.10.2",
         "wretch": "^1.7.2"

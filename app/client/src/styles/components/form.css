@@ -7,97 +7,15 @@ form {
     margin: 0;
   }
 
-  legend {
-    @apply mb-2 text-center;
-    margin: 0 auto 0.5rem;
+  input {
+    @apply w-full py-2 px-3 border-b border-gray-600;
 
-    @screen lg {
-      @apply mb-4 text-left;
-      margin: 0 0 1rem;
-      padding-left: 0.5rem;
+    @screen md {
+      @apply py-3 px-4;
     }
   }
 
-  input,
-  textarea {
-    @apply w-full px-4 py-3 text-gray-900 border-b border-primary-darker bg-transparent rounded-none font-medium;
-
-    @screen lg {
-      @apply px-5 py-4;
-    }
-
-    &:hover {
-      @apply border-gray-700;
-    }
-
-    &.has-error {
-      @apply border-red-700;
-    }
-  }
-
-  .field {
-    @apply relative;
-
-    .form-field-message {
-      @apply absolute;
-    }
-  }
-
-  .field.text,
-  .field.textarea,
-  .field.dropdown,
-  .field.statedropdown,
-  .field.file {
-    label {
-      @apply inline-block px-3 mb-1 text-lg absolute bottom-0 pb-2 transition duration-300 ease-in-out;
-
-      @screen lg {
-        @apply mb-2;
-        @apply px-4;
-      }
-
-      &.blur {
-        @apply text-xs;
-        transform: translateX(-12px) translateY(-36px);
-
-        @screen lg {
-          transform: translateX(-16px) translateY(-42px);
-        }
-      }
-    }
-  }
-}
-
-.form-field-description {
-  @apply inline-block px-3 mt-2 text-xs;
-
-  @screen lg {
-    @apply px-4;
-  }
-}
-
-.contact-form {
-  fieldset {
-    @screen lg {
-      max-width: 600px;
-    }
-
-    @screen 2xl {
-      max-width: 650px;
-    }
-  }
-}
-
-.fieldset-message {
-  @apply mx-auto text-center;
-
-  @screen md {
-    @apply w-3/4;
-  }
-
-  &:not(&--wide) {
-    @screen lg {
-      @apply w-2/3;
-    }
+  .message.required {
+    @apply hidden;
   }
 }

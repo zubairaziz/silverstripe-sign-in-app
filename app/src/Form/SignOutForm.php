@@ -16,7 +16,7 @@ class SignOutForm extends Form
         $fields = null;
 
         $actions = FieldList::create(
-            FormAction::create('submit', 'Sign Out')->setUseButtonTag(true)->addExtraClass('button button-secondary')
+            FormAction::create('submit', 'Cancel')->setUseButtonTag(true)->addExtraClass('button button-secondary')
         );
 
         $required = null;

@@ -46,20 +46,6 @@ class AssetUtil
             ['defer' => true]
         );
 
-        // No need for polyfills
-        // Handle polyfills that babel-preset-env doesn't support
-        // $polyfills = [
-        //     'Element.prototype.closest',
-        //     'NodeList.prototype.forEach',
-        //     'Node.prototype.contains'
-        // ];
-
-        // if (!empty($polyfills)) {
-        //     $polyfillUrl = 'https://polyfill.io/v3/polyfill.min.js?flags=gated&features=default%2C';
-
-        //     Requirements::javascript($polyfillUrl . join('%2C', $polyfills));
-        // }
-
         $manifest = self::getManifest();
 
         if (!empty($manifest['entrypoints'])) {

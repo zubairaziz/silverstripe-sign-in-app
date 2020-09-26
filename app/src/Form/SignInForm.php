@@ -21,7 +21,9 @@ class SignInForm extends Form
             TextField::create('PIN', '')
                 ->setAttribute('placeholder', 'Insert 4 digit PIN')
                 ->setAttribute('type', 'number')
+                // ->setAttribute('pattern', '[0-9]{4}')
                 ->setAttribute('minlength', 4)
+                ->setAttribute('maxlength', 4)
                 ->addExtraClass('text-center')
         ]);
 
@@ -39,7 +41,7 @@ class SignInForm extends Form
 
         $this->addExtraClass('sign-in-form');
         $this->setAttribute('data-form-scroll', true);
-        // $this->setAttribute('data-form-ajax', true);
+        $this->setAttribute('data-form-ajax', true);
         $this->setAttribute('data-form-hide-on-submit', true);
     }
 
@@ -65,7 +67,5 @@ class SignInForm extends Form
         }
 
         return $this->controller->handlelogin($success, $employeeID);
-
-        // return $this->controller->handleresponse($success);
     }
 }

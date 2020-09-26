@@ -72,7 +72,7 @@ const WebpackConfig = {
       },
       {
         test: /\.css$/,
-        sideEffects: true, // https://github.com/nolimits4web/swiper/issues/3673#issuecomment-658924505
+        sideEffects: true,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
@@ -154,14 +154,14 @@ const WebpackConfig = {
           noErrorOnMissing: true,
         },
         {
-          from: 'svg',
-          to: 'svg/',
+          from: 'icons',
+          to: 'icons/',
           context: PATHS.SRC,
           noErrorOnMissing: true,
         },
       ],
     }),
-    new SVGSpritemapPlugin(path.join(PATHS.SRC, 'svg/*.svg'), {
+    new SVGSpritemapPlugin(path.join(PATHS.SRC, 'icons/*.svg'), {
       styles: {
         filename: '~spritemap.scss',
       },

@@ -1,30 +1,31 @@
 import { on } from 'delegated-events'
-import {
-  handleValidation,
-  handleBlur,
-  handleBlurFlyField,
-  handleFlyField,
-  handleRemoveFlyField,
-} from '../common/validation'
+// import IMask from 'imask'
+import { handleValidation, handleBlur } from '../common/validation'
 
 const fn = {
   init: () => {
-    on('keyup', 'input', handleFlyField, { capture: true })
-    on('focus', 'input', handleFlyField, { capture: true })
-    on('blur', 'input', handleBlurFlyField, { capture: true })
-    on('change', 'input', handleFlyField, { capture: true })
-    on('change', 'input', handleRemoveFlyField, { capture: true })
+    // fn.handleMasking
     on('blur', '.has-error', handleBlur, { capture: true })
     on('change', '.has-error', handleBlur, { capture: true })
     on('change', '.has-error blur', handleBlur, { capture: true })
     on('submit', '[data-form-ajax]', fn.handleAjax)
   },
 
+  // handleMasking: () => {
+  //   const $form = document.querySelector('.sign-in-form')
+  //   const $field = $form.querySelector('input[type="number"]')
+  //   let mask = IMask($field, {
+  //     mask: '0000',
+  //   })
+  //   return mask
+  // },
+
   handleAjax: (e) => {
     e.preventDefault()
 
     const $form = e.target
     const isValid = handleValidation($form)
+    const isLoginForm = $form.classList.contains('sign-in-form')
 
     if (isValid) {
       const $formMessages = $form.querySelector('.form-messages')
@@ -57,7 +58,7 @@ const fn = {
           )
         })
         .finally(() => {
-          fn.toggleSubmit($submitButton)
+          fn.toggleSubmit($submitButton, isLoginForm)
         })
     }
   },
@@ -71,9 +72,15 @@ const fn = {
     })
   },
 
-  toggleSubmit: ($submitButton) => {
+  toggleSubmit: ($submitButton, isLoginForm) => {
     $submitButton.disabled = !$submitButton.disabled
     $submitButton.classList.toggle('btn-loading')
+    // console.log($form.classList)
+    if (isLoginForm) {
+      setTimeout(() => {
+        location.reload()
+      }, 5500)
+    }
   },
 
   showFormMessages: ($holder, message) => {
@@ -82,7 +89,7 @@ const fn = {
 
     setTimeout(() => {
       $holder.style.display = 'none'
-    }, 6000)
+    }, 5000)
   },
 }
 

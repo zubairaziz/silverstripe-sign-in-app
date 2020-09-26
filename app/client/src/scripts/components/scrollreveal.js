@@ -2,7 +2,7 @@ import ScrollReveal from 'scrollreveal'
 
 const fn = {
   init: () => {
-    ScrollReveal().reveal('[data-reveal]', { duration: 500, scale: 0.75 })
+    ScrollReveal().reveal('[data-reveal]', { duration: 300, scale: 0.75 })
   },
 }
 

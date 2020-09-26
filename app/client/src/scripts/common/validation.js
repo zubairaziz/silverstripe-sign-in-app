@@ -13,56 +13,6 @@ const findFieldWrapper = ($el) => {
   }
 }
 
-export const handleFlyField = (e) => {
-  const $fieldWrapper = findFieldWrapper(e.target)
-
-  if ($fieldWrapper) {
-    const $label = $fieldWrapper.parentNode.querySelector('label')
-    if ($label) {
-      $label.classList.add('blur')
-      window.setTimeout(function () {
-        if (
-          e.target.value === '' ||
-          e.target.value === null ||
-          !e.target.value.length
-        ) {
-          $label.classList.remove('blur')
-        }
-      }, 2500)
-    }
-  }
-}
-
-export const handleBlurFlyField = (e) => {
-  const $fieldWrapper = findFieldWrapper(e.target)
-
-  if ($fieldWrapper) {
-    const $label = $fieldWrapper.parentNode.querySelector('label')
-    if ($label) {
-      $label.classList.add('blur')
-    }
-  }
-}
-
-export const handleRemoveFlyField = (e) => {
-  const $fieldWrapper = findFieldWrapper(e.target)
-
-  if ($fieldWrapper) {
-    const $label = $fieldWrapper.parentNode.querySelector('label')
-    if ($label) {
-      if (
-        e.target.value === '' ||
-        e.target.value === null ||
-        !e.target.value.length
-      ) {
-        if (e.target.classList.contains('blur')) {
-          e.target.classList.remove('blur')
-        }
-      }
-    }
-  }
-}
-
 export const handleBlur = (e) => {
   const $fieldWrapper = findFieldWrapper(e.target)
 

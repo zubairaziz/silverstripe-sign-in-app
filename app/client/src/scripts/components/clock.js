@@ -1,11 +1,3 @@
-// import Selectors from '../common/selectors'
-
-// const SELECTORS = Selectors({
-//     time: 'time',
-//     clock: 'clock',
-//     date: 'date',
-// })
-
 const addZero = (val) => (val <= 9 ? `0${val}` : val)
 
 const fn = {

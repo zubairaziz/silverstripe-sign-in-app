@@ -1,4 +1,4 @@
-<div class="date-time">
+<div class="date-time justify-self-center">
   <h1 class="clock">
     <span class="hours"></span>:<span class="minutes"></span> <span class="am"><small>am</small></span>
     <span class="pm"><small>pm</small></span>
