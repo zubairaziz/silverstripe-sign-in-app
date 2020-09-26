@@ -5,13 +5,13 @@
 
 version: 2
 updates:
-  - package-ecosystem: "package.json" # See documentation for possible values
+  - package-ecosystem: "npm" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
 
 updates:
-  - package-ecosystem: "composer.json" # See documentation for possible values
+  - package-ecosystem: "composer" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
