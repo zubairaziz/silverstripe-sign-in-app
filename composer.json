@@ -7,7 +7,7 @@
         "url": "https://github.com/trainordigital/silverstripe-fulltextsearch"
     }],
     "require": {
-        "php": ">=5.6.0",
+        "php": ">=7.2.0",
         "silverstripe/recipe-plugin": "^1.2",
         "silverstripe/recipe-cms": "^4.6",
         "kinglozzer/metatitle": "^2.0",
