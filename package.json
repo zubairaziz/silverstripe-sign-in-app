@@ -45,7 +45,8 @@
         },
         "globals": {
             "Selectors": true,
-            "ajax": true
+            "ajax": true,
+            "state": true
         },
         "ignorePatterns": [
             "node_modules"

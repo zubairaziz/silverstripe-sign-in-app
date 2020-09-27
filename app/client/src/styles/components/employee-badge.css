@@ -1,0 +1,9 @@
+.employee-badge {
+  img {
+    &.is-green {
+    }
+    &.is-red {
+      filter: grayscale(75%);
+    }
+  }
+}

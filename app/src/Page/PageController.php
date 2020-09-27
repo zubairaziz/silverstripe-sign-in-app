@@ -27,6 +27,11 @@ class PageController extends ContentController
 
     public function getAllEmployees()
     {
+        if ($this->getIsLoggedIn()) {
+            return Employee::get()
+                ->filter(['ActiveEmployee' => true])
+                ->exclude(['ID' => $this->getLoggedInEmployee()->ID]);
+        }
         return Employee::get()->filter(['ActiveEmployee' => true]);
     }
 

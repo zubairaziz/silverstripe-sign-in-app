@@ -9,30 +9,40 @@ use SilverStripe\Forms\FormAction;
 
 class SignOutForm extends Form
 {
-    public function __construct($controller, $name)
+    public function __construct($controller, $name, $isNavigation = false)
     {
         $page = HomePage::get()->first();
 
         $fields = null;
 
-        $actions = FieldList::create(
-            FormAction::create('submit', 'Cancel')->setUseButtonTag(true)->addExtraClass('button button-secondary')
-        );
+        if ($isNavigation) {
+            $this->addExtraClass('inline-block w-12 h-12');
+            $actions = FieldList::create(
+                FormAction::create('submit', 'Cancel')->setUseButtonTag(true)
+            );
+        } else {
+            $actions = FieldList::create(
+                FormAction::create('submit', 'Cancel')->setUseButtonTag(true)->addExtraClass('button button-secondary')
+            );
+        }
 
         $required = null;
 
         parent::__construct($controller, $name, $fields, $actions, $required);
 
         $this->addExtraClass('sign-out-form');
-        // $this->setAttribute('data-form-scroll', true);
-        // $this->setAttribute('data-form-ajax', true);
-        $this->setAttribute('data-form-hide-on-submit', true);
+
+        if ($isNavigation) {
+            $this->setTemplate('App/Form/NavigationSignOutForm');
+        } else {
+            $this->setTemplate('App/Form/SingleActionForm');
+        }
     }
 
-    public function forTemplate()
-    {
-        return $this->renderWith('App/Form/SignOutForm');
-    }
+    // public function forTemplate()
+    // {
+    //     return $this->renderWith('App/Form/SingleActionForm');
+    // }
 
     public function submit($data, $form)
     {
@@ -43,8 +53,6 @@ class SignOutForm extends Form
         $session->set('EmployeeID', null);
         $session->set('Employee', null);
 
-        return $this->controller->handlelogout();
-
-        // return $this->controller->handleresponse($success);
+        return $this->controller->handlelogout($success);
     }
 }

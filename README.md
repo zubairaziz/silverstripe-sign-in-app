@@ -1,6 +1,6 @@
 # Sign In App
 
-* [Live Site](https://www.signinapp.com/)
+<!-- * [Live Site](https://www.signinapp.com/) -->
 * [Dev Site](https://signinapp.trainor.dev/)
 
 ## Development
@@ -21,7 +21,7 @@ Run `yarn run build`
 The following tasks need to be added to the server's crontab file
 
 ```sh
-* * * * * [project-path...]/vendor/bin/sake dev/tasks/
+0 0 * 1-12 0-6 [project-path]/vendor/bin/sake dev/tasks/App-Task-GenerateDailyTimesheets
 ```
 
 

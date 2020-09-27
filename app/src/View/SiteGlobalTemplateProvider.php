@@ -23,6 +23,10 @@ class SiteTemplateGlobalProvider implements TemplateGlobalProvider
             'GetPageByType' => 'GetPageByType',
             'SignInForm' => 'SignInForm',
             'SignOutForm' => 'SignOutForm',
+            'LunchOutForm' => 'LunchOutForm',
+            'AppointmentOutForm' => 'AppointmentOutForm',
+            'LunchInForm' => 'LunchInForm',
+            'AppointmentInForm' => 'AppointmentInForm',
             'SiteCSS' => 'SiteCSS',
             'SiteLiveCSS' => 'SiteLiveCSS',
             'SiteJS' => 'SiteJS',
@@ -66,11 +70,39 @@ class SiteTemplateGlobalProvider implements TemplateGlobalProvider
         return $controller->SignInForm();
     }
 
-    public static function SignOutForm()
+    public static function SignOutForm($isNavigation = false)
     {
         $controller = FormController::create();
 
-        return $controller->SignOutForm();
+        return $controller->SignOutForm($isNavigation);
+    }
+
+    public static function LunchOutForm()
+    {
+        $controller = FormController::create();
+
+        return $controller->LunchOutForm();
+    }
+
+    public static function AppointmentOutForm()
+    {
+        $controller = FormController::create();
+
+        return $controller->AppointmentOutForm();
+    }
+
+    public static function LunchInForm()
+    {
+        $controller = FormController::create();
+
+        return $controller->LunchInForm();
+    }
+
+    public static function AppointmentInForm()
+    {
+        $controller = FormController::create();
+
+        return $controller->AppointmentInForm();
     }
 
     public static function PhoneLink($number)

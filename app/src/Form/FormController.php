@@ -15,9 +15,18 @@ class FormController extends Controller
         'ContactForm',
         'SignInForm',
         'SignOutForm',
+        'LunchOutForm',
+        'LunchInForm',
+        'AppointmentOutForm',
+        'AppointmentInForm',
         'getSession',
         'handleemail',
         'handlelogin',
+        'handlelogout',
+        'handlelunchout',
+        'handlelunchin',
+        'handleappointmentout',
+        'handleappointmentin',
         'handleresponse',
         'handleerrorresponse'
     ];
@@ -39,9 +48,34 @@ class FormController extends Controller
         return SignInForm::create($this, __FUNCTION__);
     }
 
-    public function SignOutForm()
+    public function SignOutForm($isNavigation = false)
     {
-        return SignOutForm::create($this, __FUNCTION__);
+        return SignOutForm::create($this, __FUNCTION__, $isNavigation);
+    }
+
+    public function LunchOutForm()
+    {
+        return LunchOutForm::create($this, __FUNCTION__);
+    }
+
+    public function LunchInForm()
+    {
+        return LunchInForm::create($this, __FUNCTION__);
+    }
+
+    public function AppointmentOutForm()
+    {
+        return AppointmentOutForm::create($this, __FUNCTION__);
+    }
+
+    public function AppointmentInForm()
+    {
+        return AppointmentInForm::create($this, __FUNCTION__);
+    }
+
+    public function getLoggedInEmployee()
+    {
+        return $this->getRequest()->getSession()->get('Employee');
     }
 
     public function handleemail($success, $submission, $subject, $formSettings, $attachments = [])
@@ -52,12 +86,6 @@ class FormController extends Controller
 
         // Send admin email
         $adminRecipients = $formSettings->EmailRecipients()->column('Email');
-
-        // Allow additional recipients
-        if ($formSettings->AdditionalRecipients && $formSettings->AdditionalRecipients->count()) {
-            $adminRecipients = array_merge($adminRecipients, $formSettings->AdditionalRecipients->column('Email'));
-            $adminRecipients = array_unique($adminRecipients);
-        }
 
         if (count($adminRecipients)) {
             $to = $adminRecipients;
@@ -129,15 +157,11 @@ class FormController extends Controller
         return $this->redirectBack();
     }
 
-    public function handlelogout()
+    public function handlelogout($success)
     {
         if (Director::is_ajax($this->getRequest())) {
-            if (!SecurityToken::inst()->checkRequest($this->getRequest())) {
-                return $this->httpError(400);
-            }
-
             if ($success) {
-                $message = 'Logged In';
+                $message = 'Logged Out';
             } else {
                 $message = 'Sorry, there was a problem with your submission';
             }
@@ -147,7 +171,83 @@ class FormController extends Controller
             $response = [
                 'success' => $success,
                 'message' => $message,
-                'employee' => $employeeID
+            ];
+
+            return Convert::array2json($response);
+        }
+
+        return $this->redirectBack();
+    }
+
+    public function handlelunchout($success)
+    {
+        return $this->redirectBack();
+    }
+
+    public function handlelunchin($success)
+    {
+        if (Director::is_ajax($this->getRequest())) {
+            $settings = MessageSettings::current_settings();
+
+            if ($success) {
+                $message = $settings->LunchIn;
+            } else {
+                $message = 'Sorry, there was a problem with this action';
+            }
+
+            $this->getResponse()->addHeader('Content-Type', 'application/json');
+
+            $response = [
+                'success' => $success,
+                'message' => $message,
+            ];
+
+            return Convert::array2json($response);
+        }
+
+        return $this->redirectBack();
+    }
+
+    public function handleappointmentout($success)
+    {
+        if (Director::is_ajax($this->getRequest())) {
+            $settings = MessageSettings::current_settings();
+
+            if ($success) {
+                $message = $settings->AppointmentOut;
+            } else {
+                $message = 'Sorry, there was a problem with this action';
+            }
+
+            $this->getResponse()->addHeader('Content-Type', 'application/json');
+
+            $response = [
+                'success' => $success,
+                'message' => $message,
+            ];
+
+            return Convert::array2json($response);
+        }
+
+        return $this->redirectBack();
+    }
+
+    public function handleappointmentin($success)
+    {
+        if (Director::is_ajax($this->getRequest())) {
+            $settings = MessageSettings::current_settings();
+
+            if ($success) {
+                $message = $settings->AppointmentIn;
+            } else {
+                $message = 'Sorry, there was a problem with this action';
+            }
+
+            $this->getResponse()->addHeader('Content-Type', 'application/json');
+
+            $response = [
+                'success' => $success,
+                'message' => $message,
             ];
 
             return Convert::array2json($response);

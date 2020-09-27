@@ -1,19 +1,20 @@
 <div class="absolute top-0 right-0 p-4">
   <% if IsLoggedIn %>
-  <form id="SignOutForm_SignOutForm" action="/_formsubmit/SignOutForm/" method="post"
-    enctype="application/x-www-form-urlencoded" class="sign-out-form inline-block w-12 h-12">
-    <input type="hidden" name="SecurityID" value="d6d194d7885c99172bc8f0a972ef28e003df5a9b" class="hidden"
-      id="SignOutForm_SignOutForm_SecurityID">
-    <button type="submit" name="action_submit" value="Sign Out" class="action"
-      id="SignOutForm_SignOutForm_action_submit">
+  <%-- <form id="SignOutForm_SignOutForm" action="/_formsubmit/SignOutForm/" method="post"
+    enctype="application/x-www-form-urlencoded" class="sign-out-form inline-block w-12 h-12"
+    autocomplete="off" novalidate=""
+    data-form-ajax="true">
+    <input type="hidden" name="SecurityID" value="" class="hidden" id="SignOutForm_SignOutForm_SecurityID">
+    <button type="submit" name="action_submit" value="Cancel" class="action">
       <svg class="transform rotate-180 w-12 h-12" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
         stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
           d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
       </svg>
-      <span class="sr-only">Sign Out</span>
+      <span class="sr-only">Cancel</span>
     </button>
-  </form>
+  </form> --%>
+  $SignOutForm($IsLoggedIn)
   <% else %>
   <button role="button" class="ml-4" @click="showModal = true">
     <svg class="transform rotate-180 w-12 h-12" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"

@@ -1,37 +1,27 @@
 <article>
   <% if IsLoggedIn %>
   <% with LoggedInEmployee %>
-  <div class="employee-card my-2 p-4 flex flex-col items-center justify-center">
-    <img src="$Image.AbsoluteURL" alt="$FullName" class="inline-block h-32 w-32 rounded-full text-white shadow-solid">
-    <h2>$FullName</h2>
-    <h3>Today's Activity</h3>
-
+  <div class="h-full w-full grid place-content-center">
+    <% include EmployeeCard %>
   </div>
   <% end_with %>
-  <div class="button-toolbar-center">
-    $SignOutForm
-  </div>
   <% else %>
-  <div class="overflow-auto" style="background-color: rgba(0,0,0,0.5)" x-show="showModal"
-    :class="{ 'absolute inset-0 z-10 flex items-center justify-center': showModal }">
-    <div class="bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg py-4 text-left px-6" x-show="showModal"
-      @click.away="showModal = false" x-transition:enter="ease-out duration-300"
-      x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100">
-      <div class="flex justify-end items-center pb-3">
-        <div class="cursor-pointer z-50" @click="showModal = false">
-          $AssetIcon('x-close')
-        </div>
-      </div>
-      $SignInForm
-
-      <div class="flex justify-center items-center pt-2">
-        <button class="modal-close button button-primary"
-          @click="showModal = false">
-          Cancel
-        </button>
-      </div>
-
-    </div>
-  </div>
+  <% include SignInModal %>
   <% end_if %>
+  <div class="flex">
+    <% loop AllEmployees %>
+    <div class="employee-badge flex flex-col items-center justify-center">
+      <figure class="group relative grid place-content-center">
+        <img src="$Image.AbsoluteURL" alt="$FullName"
+          class="relative inline-block h-24 w-24 rounded-full text-white shadow-solid mx-auto is-{$CurrentStatusColor}">
+        <div
+          class="absolute w-4 h-4 bg-{$CurrentStatusColor}-500 border border-{$CurrentStatusColor}-700 rounded-full bottom-0 right-0 transform -translate-y-6 -translate-x-3">
+        </div>
+        <figcaption class="text-gray-700 text-center">$FullName</figcaption>
+      </figure>
+      <span
+        class="bg-{$CurrentStatusColor}-200 text-{$CurrentStatusColor}-800 px-2 py-1 text-xs rounded-full text-center">$CurrentStatus</span>
+    </div>
+    <% end_loop %>
+  </div>
 </article>

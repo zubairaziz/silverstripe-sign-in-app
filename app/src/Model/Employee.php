@@ -142,7 +142,7 @@ class Employee extends DataObject
     public function getCurrentStatus()
     {
         $date = Util::getTodaysDate();
-        $today = $this->Timesheets()->filter(['Date' => $date]);
+        $today = $this->Timesheets()->filter(['Date' => $date])->first();
         $status = 'Not Signed In';
         if ($this->OOTO) {
             $status = 'Out of the Office';
@@ -160,6 +160,29 @@ class Employee extends DataObject
             $status = 'Out to Appointment';
         }
         return $status;
+    }
+
+    public function getCurrentStatusColor()
+    {
+        $date = Util::getTodaysDate();
+        $today = $this->Timesheets()->filter(['Date' => $date])->first();
+        $color = 'red';
+        if ($this->OOTO) {
+            $color = 'red';
+            if ($this->OOTOReason) {
+                $color = $this->OOTOReason;
+            }
+        }
+        if ($today->SignInTime) {
+            $color = 'green';
+        }
+        if ($today->LunchOutTime && !$today->LunchInTime) {
+            $color = 'red';
+        }
+        if ($today->AppointmentOutTime && !$today->AppointmentInTime) {
+            $color = 'red';
+        }
+        return $color;
     }
 
     public function checkPinAvailability($pin)
