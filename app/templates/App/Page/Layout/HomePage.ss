@@ -1,4 +1,4 @@
-<article>
+<article class="">
   <% if IsLoggedIn %>
   <% with LoggedInEmployee %>
   <div class="h-full w-full grid place-content-center">
@@ -6,22 +6,28 @@
   </div>
   <% end_with %>
   <% else %>
-  <% include SignInModal %>
+  <div>
+    <% include SignInModal %>
+  </div>
   <% end_if %>
-  <div class="flex">
-    <% loop AllEmployees %>
-    <div class="employee-badge flex flex-col items-center justify-center">
-      <figure class="group relative grid place-content-center">
-        <img src="$Image.AbsoluteURL" alt="$FullName"
-          class="relative inline-block h-24 w-24 rounded-full text-white shadow-solid mx-auto is-{$CurrentStatusColor}">
-        <div
-          class="absolute w-4 h-4 bg-{$CurrentStatusColor}-500 border border-{$CurrentStatusColor}-700 rounded-full bottom-0 right-0 transform -translate-y-6 -translate-x-3">
-        </div>
-        <figcaption class="text-gray-700 text-center">$FullName</figcaption>
-      </figure>
-      <span
-        class="bg-{$CurrentStatusColor}-200 text-{$CurrentStatusColor}-800 px-2 py-1 text-xs rounded-full text-center">$CurrentStatus</span>
+  <div class="tabset relative bg-gray-500 h-full w-full rounded-t p-4 shadow-lg">
+    <button class="tabset-close w-full text-center outline-none focus:outline-none grid place-content-center">
+      <svg class="transform w-8 h-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 13l-7 7-7-7m14-8l-7 7-7-7" />
+      </svg>
+    </button>
+    <div>
+      <div class="tab absolute" id="tab-1" x-cloak>
+        <% include EmployeeList %>
+      </div>
+
+      <div class="tab absolute" id="tab-2" x-cloak>
+        <% include Calendar %>
+      </div>
+
+      <div class="tab absolute" id="tab-3" x-cloak>
+        <p>Upload</p>
+      </div>
     </div>
-    <% end_loop %>
   </div>
 </article>

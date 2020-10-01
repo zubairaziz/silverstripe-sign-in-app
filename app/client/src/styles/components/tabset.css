@@ -1,0 +1,25 @@
+:root {
+  --tabset-height: 0;
+  --tabset-position: 'translate3d(0, 100vh, 0)';
+}
+
+.tabset {
+  height: var(--tabset-height);
+  transform: var(--tabset-position);
+  transition: all 0.4s ease-in-out;
+
+  &.active {
+    --tabset-position: 'translate3d(0, 0, 0)';
+  }
+}
+
+.tab {
+  /* display: none; */
+  opacity: 0;
+  transition: all 0.25s linear;
+
+  &.active {
+    /* display: block; */
+    opacity: 1;
+  }
+}

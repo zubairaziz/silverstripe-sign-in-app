@@ -1,19 +1,5 @@
-<div class="absolute top-0 right-0 p-4">
+<div class="flex absolute top-0 right-0 p-4">
   <% if IsLoggedIn %>
-  <%-- <form id="SignOutForm_SignOutForm" action="/_formsubmit/SignOutForm/" method="post"
-    enctype="application/x-www-form-urlencoded" class="sign-out-form inline-block w-12 h-12"
-    autocomplete="off" novalidate=""
-    data-form-ajax="true">
-    <input type="hidden" name="SecurityID" value="" class="hidden" id="SignOutForm_SignOutForm_SecurityID">
-    <button type="submit" name="action_submit" value="Cancel" class="action">
-      <svg class="transform rotate-180 w-12 h-12" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-        stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-      </svg>
-      <span class="sr-only">Cancel</span>
-    </button>
-  </form> --%>
   $SignOutForm($IsLoggedIn)
   <% else %>
   <button role="button" class="ml-4" @click="showModal = true">
@@ -27,7 +13,7 @@
     </span>
   </button>
   <% end_if %>
-  <button role="button" class="ml-4">
+  <a href="#" data-tab="#tab-1" role="button" class="ml-4">
     <svg class="transform w-12 h-12" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
       stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -36,8 +22,8 @@
     <span class="sr-only">
       Employees
     </span>
-  </button>
-  <button role="button" class="ml-4">
+  </a>
+  <a href="#" data-tab="#tab-2" role="button" class="ml-4">
     <svg class="transform w-12 h-12" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
       stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -46,5 +32,15 @@
     <span class="sr-only">
       Calendar
     </span>
-  </button>
+  </a>
+  <a href="#" data-tab="#tab-3" role="button" class="ml-4">
+    <svg class="transform w-12 h-12" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+      stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+    </svg>
+    <span class="sr-only">
+      Upload
+    </span>
+  </a>
 </div>

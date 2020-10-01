@@ -5,7 +5,7 @@
   <% include SiteMeta %>
   <% if $IsLive %>
   <style>
-    { $SiteLiveCSS.RAW }
+    {$SiteLiveCSS.RAW}
   </style>
   <% else %>
   <link rel="preconnect" href="http://localhost:8081" crossorigin>
@@ -17,11 +17,8 @@
   <% end_if %>
 </head>
 
-<body
-  class="$BodyClasses h-screen w-screen"
-  x-data="{ 'showModal': false }"
-  @keydown.escape="showModal = false"
-  x-cloak>
+<body class="$BodyClasses h-screen w-screen" x-data="{ 'showModal': false, activeTab: '#tab1' }"
+  @keydown.escape="showModal = false" x-cloak>
   <main id="main-content" class="h-screen w-screen p-4">
     <% include SiteHeader %>
     $Layout

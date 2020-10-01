@@ -1,5 +1,5 @@
 <div
-  class="employee-card my-2 p-4 flex flex-col items-center justify-center rounded-lg border bg-gray-100 border-gray-500 grid place-content-center max-w-lg shadow-md">
+  class="employee-card my-2 p-4 flex flex-col items-center justify-center rounded-lg border bg-gray-100 border-gray-500 grid place-content-center max-w-lg shadow-lg">
   <img src="$Image.AbsoluteURL" alt="$FullName" class="inline-block h-32 w-32 rounded-full text-white shadow-solid">
   <h2>$FullName</h2>
   <h3>Today's Activity</h3>

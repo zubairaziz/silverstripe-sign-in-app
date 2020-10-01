@@ -13,6 +13,7 @@
 @import 'components/form';
 @import 'components/clock';
 @import 'components/employee-badge';
+@import 'components/tabset';
 
 /* Sections*/
 
