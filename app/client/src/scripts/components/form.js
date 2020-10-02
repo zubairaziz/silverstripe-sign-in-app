@@ -5,9 +5,15 @@ import { handleValidation, handleBlur } from '../common/validation'
 const fn = {
   init: () => {
     // fn.handleMasking
-    on('blur', '.has-error', handleBlur, { capture: true })
-    on('change', '.has-error', handleBlur, { capture: true })
-    on('change', '.has-error blur', handleBlur, { capture: true })
+    on('blur', '.has-error', handleBlur, {
+      capture: true,
+    })
+    on('change', '.has-error', handleBlur, {
+      capture: true,
+    })
+    on('change', '.has-error blur', handleBlur, {
+      capture: true,
+    })
     on('submit', '[data-form-ajax]', fn.handleAjax)
   },
 
@@ -63,7 +69,7 @@ const fn = {
           if (isLoginForm) {
             setTimeout(() => {
               location.reload()
-            }, 5000)
+            }, 3000)
           }
         })
     }

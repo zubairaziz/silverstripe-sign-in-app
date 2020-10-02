@@ -18,11 +18,14 @@ class SignOutForm extends Form
         if ($isNavigation) {
             $this->addExtraClass('inline-block w-12 h-12');
             $actions = FieldList::create(
-                FormAction::create('submit', 'Cancel')->setUseButtonTag(true)
+                FormAction::create('submit', 'Cancel')
+                    ->setUseButtonTag(true)
             );
         } else {
             $actions = FieldList::create(
-                FormAction::create('submit', 'Cancel')->setUseButtonTag(true)->addExtraClass('button button-secondary')
+                FormAction::create('submit', 'Cancel')
+                    ->setUseButtonTag(true)
+                    ->addExtraClass('button button-secondary my-1')
             );
         }
 

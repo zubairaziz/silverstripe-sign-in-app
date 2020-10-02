@@ -14,6 +14,8 @@
 @import 'components/clock';
 @import 'components/employee-badge';
 @import 'components/tabset';
+@import '../../../../node_modules/@splidejs/splide/dist/css/splide.min.css';
+@import 'components/background';
 
 /* Sections*/
 

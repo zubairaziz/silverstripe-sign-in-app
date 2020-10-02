@@ -1,5 +1,6 @@
 <?php
 
+use App\Model\BackgroundSettings;
 use App\Model\Employee;
 use SilverStripe\CMS\Controllers\ContentController;
 use SilverStripe\Dev\Debug;
@@ -33,6 +34,24 @@ class PageController extends ContentController
                 ->exclude(['ID' => $this->getLoggedInEmployee()->ID]);
         }
         return Employee::get()->filter(['ActiveEmployee' => true]);
+    }
+
+    public function getBackgroundImages()
+    {
+        $backgroundSettings = BackgroundSettings::current_settings();
+        if ($backgroundSettings->BackgroundImages()->count()) {
+            return $backgroundSettings->BackgroundImages();
+        }
+        return null;
+    }
+
+    public function getAnimationDuration()
+    {
+        $backgroundSettings = BackgroundSettings::current_settings();
+        if ($num = $backgroundSettings->BackgroundImages()->count()) {
+            return $num * 6;
+        }
+        return null;
     }
 
     public function getSession()

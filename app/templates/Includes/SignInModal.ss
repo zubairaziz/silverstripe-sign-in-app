@@ -9,10 +9,10 @@
       </div>
     </div>
     $SignInForm
-    <div class="flex justify-center items-center pt-2">
+    <%-- <div class="flex justify-center items-center pt-2">
       <button class="modal-close button button-primary" @click="showModal = false">
         Cancel
       </button>
-    </div>
+    </div> --%>
   </div>
 </div>

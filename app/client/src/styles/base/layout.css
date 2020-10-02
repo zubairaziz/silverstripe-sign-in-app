@@ -19,14 +19,14 @@
   max-width: calc(var(--container-width) + (2 * var(--container-padding)));
 }
 
-.content-wrapper {
-  @apply grid place-content-center;
-}
-
 [x-cloak] {
   display: none;
 }
 
+:root,
+html,
 body {
   overflow-y: hidden;
+  overflow-x: hidden;
+  overflow: hidden;
 }

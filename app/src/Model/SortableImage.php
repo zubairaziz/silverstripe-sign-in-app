@@ -55,6 +55,13 @@ class SortableImage extends DataObject
         return $this->Image();
     }
 
+    public function Delay()
+    {
+        $seconds = 5; // Delay in seconds
+        $delay = $seconds + ($seconds * $this->Sort);
+        return $delay;
+    }
+
     public function getTitle()
     {
         return 'Image';
