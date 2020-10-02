@@ -56,6 +56,8 @@ class AppointmentInForm extends Form
             $timesheet->write();
         }
 
+        $this->controller->handlelogout($success);
+
         return $this->controller->handleappointmentin($success);
     }
 

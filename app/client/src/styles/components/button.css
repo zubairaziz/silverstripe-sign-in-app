@@ -73,3 +73,21 @@
     opacity: 0.8;
   }
 }
+
+@keyframes loading-dots {
+  0% {
+    background-color: #ffffffff;
+    box-shadow: 12px 0px 0px 0px #ffffff33, 24px 0px 0px 0px #ffffff33;
+  }
+
+  25% {
+    background-color: #ffffff99;
+    box-shadow: 12px 0px 0px 0px #ffffffff, 24px 0px 0px 0px #ffffff33;
+  }
+
+  75% {
+    background-color: #ffffff99;
+    box-shadow: 12px 0px 0px 0px #ffffff33, 24px 0px 0px 0px #ffffffdd;
+  }
+}
+

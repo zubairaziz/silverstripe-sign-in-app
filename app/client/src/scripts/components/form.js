@@ -1,10 +1,9 @@
 import { on } from 'delegated-events'
-// import IMask from 'imask'
 import { handleValidation, handleBlur } from '../common/validation'
 
 const fn = {
   init: () => {
-    // fn.handleMasking
+    // fn.handleSignInForm()
     on('blur', '.has-error', handleBlur, {
       capture: true,
     })
@@ -17,14 +16,19 @@ const fn = {
     on('submit', '[data-form-ajax]', fn.handleAjax)
   },
 
-  // handleMasking: () => {
-  //   const $form = document.querySelector('.sign-in-form')
-  //   const $field = $form.querySelector('input[type="number"]')
-  //   let mask = IMask($field, {
-  //     mask: '0000',
-  //   })
-  //   return mask
-  // },
+  handleSignInForm: () => {
+    const $form = document.querySelector('.sign-in-form')
+    if ($form) {
+      const $input = $form.querySelector('input[name="PIN"]')
+      console.log($input)
+      $input.addEventListener('keyup', () => {
+        console.log($input.value)
+        if ($input.value.length == 4) {
+          $input.disabled = true
+        }
+      })
+    }
+  },
 
   handleAjax: (e) => {
     e.preventDefault()
@@ -34,7 +38,7 @@ const fn = {
     const isLoginForm = $form.classList.contains('sign-in-form')
 
     if (isValid) {
-      const $formMessages = $form.parentElement.querySelector('.form-messages')
+      const $formMessages = document.querySelector('.form-messages')
       const $submitButton = $form.querySelector('[type=submit]')
       fn.toggleSubmit($submitButton)
 
@@ -86,18 +90,18 @@ const fn = {
 
   toggleSubmit: ($submitButton) => {
     $submitButton.disabled = !$submitButton.disabled
-    $submitButton.classList.toggle('btn-loading')
+    $submitButton.classList.toggle('button-loading')
   },
 
-  showFormMessages: ($holder, message, hide = false) => {
+  showFormMessages: ($holder, message) => {
     $holder.innerHTML = message
     $holder.style.display = 'block'
 
-    if (hide) {
-      setTimeout(() => {
-        $holder.style.display = 'none'
-      }, 5000)
-    }
+    // if (hide) {
+    //   setTimeout(() => {
+    //     $holder.style.display = 'none'
+    //   }, 5000)
+    // }
   },
 }
 

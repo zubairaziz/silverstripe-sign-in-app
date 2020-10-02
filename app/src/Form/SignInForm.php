@@ -22,9 +22,8 @@ class SignInForm extends Form
             TextField::create('PIN', '')
                 ->setAttribute('placeholder', 'Insert 4 digit PIN')
                 ->setAttribute('type', 'number')
-                // ->setAttribute('pattern', '[0-9]{4}')
-                ->setAttribute('minlength', 4)
                 ->setAttribute('maxlength', 4)
+                ->setAttribute('max', '9999')
                 ->addExtraClass('text-center')
         ]);
 

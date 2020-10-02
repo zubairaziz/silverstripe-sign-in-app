@@ -56,6 +56,8 @@ class LunchOutForm extends Form
             $timesheet->write();
         }
 
+        $this->controller->handlelogout($success);
+
         return $this->controller->handlelunchout($success);
     }
 
