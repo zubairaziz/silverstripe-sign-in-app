@@ -1,14 +1,18 @@
 :root {
+  --tabset-transition: 'none';
+  --tabset-opacity: 0;
   --tabset-height: 0;
   --tabset-position: 'translate3d(0, 100vh, 0)';
 }
 
 .tabset {
+  opacity: var(--tabset-opacity);
   height: var(--tabset-height);
   transform: var(--tabset-position);
-  transition: all 0.4s ease-in-out;
+  transition: var(--tabset-transition);
 
   &.active {
+    /* transition: transform 0.4s linear; */
     --tabset-position: 'translate3d(0, 0, 0)';
   }
 }
@@ -17,6 +21,7 @@
   display: none;
   opacity: 0;
   transition: all 0.25s linear;
+  overflow-y: scroll;
 
   &.active {
     display: block;

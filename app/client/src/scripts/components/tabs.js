@@ -16,6 +16,13 @@ const fn = {
       '--tabset-position',
       `translate3d(0, calc(100vh - ${$headerRect.height}px - 1rem), 0)`
     )
+    document.documentElement.style.setProperty('--tabset-opacity', '1')
+    window.setTimeout(() => {
+      document.documentElement.style.setProperty(
+        '--tabset-transition',
+        'transform 0.5s linear'
+      )
+    }, 250)
   },
 
   setDisplayedTab: (tabname) => {

@@ -1,8 +1,8 @@
-<div class="flex absolute top-0 right-0 p-4">
+<div class="flex absolute top-0 right-0 p-4 z-50">
   <% if IsLoggedIn %>
   $SignOutForm($IsLoggedIn)
   <% else %>
-  <button role="button" class="ml-4" @click="showModal = true">
+  <button role="button" class="ml-4 z-50" @click="showModal = true">
     <svg class="transform rotate-180 w-12 h-12" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
       stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -13,7 +13,7 @@
     </span>
   </button>
   <% end_if %>
-  <a href="#" data-tab="#tab-1" role="button" class="ml-4">
+  <a href="#" data-tab="#tab-1" role="button" class="ml-4 z-50">
     <svg class="transform w-12 h-12" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
       stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -23,7 +23,7 @@
       Employees
     </span>
   </a>
-  <a href="#" data-tab="#tab-2" role="button" class="ml-4">
+  <a href="#" data-tab="#tab-2" role="button" class="ml-4 z-50">
     <svg class="transform w-12 h-12" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
       stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -33,7 +33,7 @@
       Calendar
     </span>
   </a>
-  <a href="#" data-tab="#tab-3" role="button" class="ml-4">
+  <a href="#" data-tab="#tab-3" role="button" class="ml-4 z-50">
     <svg class="transform w-12 h-12" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
       stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

@@ -1,24 +1,12 @@
 <form $AttributesHTML autocomplete="off" novalidate>
   <fieldset>
     <legend data-reveal>(*) indicates required field</legend>
-    <div class="flex flex-col md:flex-row md:flex-wrap" data-reveal>
+    <div class="flex flex-col md:flex-row md:flex-wrap">
       <div class="relative w-full px-2 my-3 md:my-4 lg:my-5 md:w-1/2">
         $Fields.fieldByName(FirstName).FieldHolder
       </div>
       <div class="relative w-full px-2 my-3 md:my-4 lg:my-5 md:w-1/2">
         $Fields.fieldByName(LastName).FieldHolder
-      </div>
-      <div class="relative w-full px-2 my-3 md:my-4 lg:my-5 md:w-1/2">
-        $Fields.fieldByName(Company).FieldHolder
-      </div>
-      <div class="relative w-full px-2 my-3 md:my-4 lg:my-5 md:w-1/2">
-        $Fields.fieldByName(JobTitle).FieldHolder
-      </div>
-      <div class="relative w-full px-2 my-3 md:my-4 lg:my-5 md:w-1/2">
-        $Fields.fieldByName(Phone).FieldHolder
-      </div>
-      <div class="relative w-full px-2 my-3 md:my-4 lg:my-5 md:w-1/2">
-        $Fields.fieldByName(Email).FieldHolder
       </div>
     </div>
   </fieldset>

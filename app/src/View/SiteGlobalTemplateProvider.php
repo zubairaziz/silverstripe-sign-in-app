@@ -21,6 +21,7 @@ class SiteTemplateGlobalProvider implements TemplateGlobalProvider
                 'casting' => 'HTMLFragment'
             ],
             'GetPageByType' => 'GetPageByType',
+            'ContactForm' => 'ContactForm',
             'SignInForm' => 'SignInForm',
             'SignOutForm' => 'SignOutForm',
             'LunchOutForm' => 'LunchOutForm',
@@ -61,6 +62,13 @@ class SiteTemplateGlobalProvider implements TemplateGlobalProvider
             ],
             'IsLive' => 'IsLive'
         ];
+    }
+
+    public static function ContactForm()
+    {
+        $controller = FormController::create();
+
+        return $controller->ContactForm();
     }
 
     public static function SignInForm()

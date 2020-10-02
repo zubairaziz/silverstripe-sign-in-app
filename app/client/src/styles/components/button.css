@@ -91,3 +91,10 @@
   }
 }
 
+button {
+  @apply outline-none;
+
+  &:focus {
+    @apply outline-none;
+  }
+}

@@ -14,6 +14,6 @@
   </div>
 
   <div class="tab w-full" id="tab-3" x-cloak>
-    <p>Upload</p>
+    <% include UploadForm %>
   </div>
 </div>
