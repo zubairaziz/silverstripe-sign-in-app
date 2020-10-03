@@ -2,7 +2,7 @@
   <input x-ref="searchField" x-model="search" x-on:keydown.window.prevent.slash="$refs.searchField.focus()"
     placeholder="Search for an employee..." type="search"
     class="block w-full bg-gray-200 focus:outline-none focus:bg-white focus:shadow text-gray-700 font-bold rounded-lg px-4 py-3" />
-  <div class="mt-4 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4">
+  <div class="mt-4 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4 h-full">
     <template x-for="item in filteredEmployees" :key="item">
       <div
         class="employee-badge grid place-content-center text-center rounded shadow p-3">

@@ -59,6 +59,7 @@ class SignInForm extends Form
 
         if ($employee) {
             $success = true;
+            $showMessage = false;
             $session = $this->controller->getSession();
             if ($employee->hasSignedIn()) {
                 $session->set('LoggedIn', true);
@@ -73,9 +74,10 @@ class SignInForm extends Form
                 $timesheet = $employee->getTodaysTimesheet();
                 $timesheet->SignInTime = $time->format('H:i');
                 $timesheet->write();
+                $showMessage = true;
             }
         }
 
-        return $this->controller->handlelogin($success, $employeeID);
+        return $this->controller->handlelogin($success, $employeeID, $showMessage);
     }
 }

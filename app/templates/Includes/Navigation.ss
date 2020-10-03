@@ -1,4 +1,4 @@
-<div class="flex absolute top-0 right-0 p-4 z-50">
+<nav class="flex absolute top-0 right-0 p-4 z-50">
   <% if IsLoggedIn %>
   $SignOutForm($IsLoggedIn)
   <% else %>
@@ -43,4 +43,4 @@
       Upload
     </span>
   </a>
-</div>
+</nav>

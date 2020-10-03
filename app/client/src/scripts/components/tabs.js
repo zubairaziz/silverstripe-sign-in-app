@@ -36,6 +36,21 @@ const fn = {
     const $tabset = document.querySelector('.tabset')
     if (!$tabset.classList.contains('active')) {
       $tabset.classList.add('active')
+      window.setTimeout(() => {
+        window.addEventListener('click', fn.handleClickOutside, {
+          passive: true,
+        })
+      }, 250)
+    }
+  },
+
+  handleClickOutside: (e) => {
+    const $tabset = document.querySelector('.tabset')
+    const $navigation = document.querySelector('nav')
+    var isClickInsideElement =
+      $tabset.contains(e.target) || $navigation.contains(e.target)
+    if (!isClickInsideElement) {
+      fn.deactivateTabset()
     }
   },
 
@@ -43,21 +58,24 @@ const fn = {
     const $tabset = document.querySelector('.tabset')
     if ($tabset.classList.contains('active')) {
       $tabset.classList.remove('active')
+      window.removeEventListener('click', fn.handleClickOutside, {
+        passive: true,
+      })
     }
   },
 
   handleLinkClick: () => {
-    const tabs = document.querySelectorAll('.tab')
-    const anchors = document.querySelectorAll('a')
-    anchors.forEach((anchor) => {
-      anchor.onclick = () => {
+    const $tabs = document.querySelectorAll('.tab')
+    const $anchors = document.querySelectorAll('a')
+    $anchors.forEach(($anchor) => {
+      $anchor.onclick = () => {
         fn.activateTabset()
-        tabs.forEach((tab) => {
-          if (tab.classList.contains('active')) {
-            tab.classList.remove('active')
+        $tabs.forEach(($tab) => {
+          if ($tab.classList.contains('active')) {
+            $tab.classList.remove('active')
           }
         })
-        fn.setDisplayedTab(`${anchor.getAttribute('data-tab')}`)
+        fn.setDisplayedTab(`${$anchor.getAttribute('data-tab')}`)
         return false
       }
     })

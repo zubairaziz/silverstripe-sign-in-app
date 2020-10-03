@@ -128,7 +128,7 @@ class FormController extends Controller
         return $this->redirectBack();
     }
 
-    public function handlelogin($success, $employeeID = null)
+    public function handlelogin($success, $employeeID = null, $showMessage = false)
     {
         if (Director::is_ajax($this->getRequest())) {
             if (!SecurityToken::inst()->checkRequest($this->getRequest())) {
@@ -138,18 +138,27 @@ class FormController extends Controller
             $settings = MessageSettings::current_settings();
 
             if ($success) {
-                $message = $settings->WelcomeMessage;
+                $message = $settings->SignInMessage;
             } else {
                 $message = 'Incorrect PIN';
             }
 
             $this->getResponse()->addHeader('Content-Type', 'application/json');
 
-            $response = [
-                'success' => $success,
-                'message' => $message,
-                'employee' => $employeeID
-            ];
+            if ($showMessage) {
+                $response = [
+                    'success' => $success,
+                    'message' => $message,
+                    'employee' => $employeeID
+                ];
+            } else {
+                $response = [
+                    'success' => $success,
+                    'message' => null,
+                    'employee' => $employeeID
+                ];
+            }
+
 
             return Convert::array2json($response);
         }

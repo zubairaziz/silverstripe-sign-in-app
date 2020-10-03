@@ -63,7 +63,8 @@
                     "singleQuote": true,
                     "semi": false
                 }
-            ]
+            ],
+            "object-property-newline": "warn"
         },
         "plugins": [
             "prettier"

@@ -3,7 +3,6 @@ import { handleValidation, handleBlur } from '../common/validation'
 
 const fn = {
   init: () => {
-    // fn.handleSignInForm()
     on('blur', '.has-error', handleBlur, {
       capture: true,
     })
@@ -16,24 +15,11 @@ const fn = {
     on('submit', '[data-form-ajax]', fn.handleAjax)
   },
 
-  handleSignInForm: () => {
-    const $form = document.querySelector('.sign-in-form')
-    if ($form) {
-      const $input = $form.querySelector('input[name="PIN"]')
-      console.log($input)
-      $input.addEventListener('keyup', () => {
-        console.log($input.value)
-        if ($input.value.length == 4) {
-          $input.disabled = true
-        }
-      })
-    }
-  },
-
   handleAjax: (e) => {
     e.preventDefault()
 
     const $form = e.target
+    const $signInModal = document.querySelector('sign-in-modal')
     const isValid = handleValidation($form)
     const isLoginForm = $form.classList.contains('sign-in-form')
 
@@ -50,8 +36,18 @@ const fn = {
           if (res.success) {
             $form.reset()
 
-            if ($form.dataset.formHideOnSubmit) {
-              $form.style.display = 'none'
+            if (isLoginForm) {
+              if (res.message) {
+                if ($form.dataset.formHideOnSubmit) {
+                  $form.style.display = 'none'
+                }
+              } else {
+                $signInModal.style.display = 'none'
+              }
+            } else {
+              if ($form.dataset.formHideOnSubmit) {
+                $form.style.display = 'none'
+              }
             }
 
             fn.removeBlur()
@@ -70,11 +66,11 @@ const fn = {
         })
         .finally(() => {
           fn.toggleSubmit($submitButton)
-          if (isLoginForm) {
-            setTimeout(() => {
-              location.reload()
-            }, 3000)
-          }
+          // if (isLoginForm) {
+          setTimeout(() => {
+            location.reload()
+          }, 2500)
+          // }
         })
     }
   },

@@ -141,6 +141,7 @@ class Employee extends DataObject
 
     public function getCurrentStatus()
     {
+        $this->generateTimesheet();
         $date = Util::getTodaysDate();
         $today = $this->Timesheets()->filter(['Date' => $date])->first();
         $status = 'Not Signed In';
@@ -164,6 +165,7 @@ class Employee extends DataObject
 
     public function getCurrentStatusColor()
     {
+        $this->generateTimesheet();
         $date = Util::getTodaysDate();
         $today = $this->Timesheets()->filter(['Date' => $date])->first();
         $color = 'red';
