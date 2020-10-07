@@ -3,10 +3,11 @@
   $SignOutForm($IsLoggedIn)
   <% else %>
   <button role="button" class="ml-4 z-50" @click="showModal = true">
-    <svg class="transform rotate-180 w-12 h-12" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-      stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-        d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+    <svg class="transform rotate-180 w-12 h-12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1"
+      stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
+      <path d="M20 12h-13l3 -3m0 6l-3 -3" />
     </svg>
     <span class="sr-only">
       Sign In
@@ -14,30 +15,39 @@
   </button>
   <% end_if %>
   <a href="#" data-tab="#tab-1" role="button" class="ml-4 z-50">
-    <svg class="transform w-12 h-12" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-      stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+    <svg xmlns="http://www.w3.org/2000/svg" class="transform w-12 h-12" viewBox="0 0 24 24" stroke-width="1"
+      stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <circle cx="9" cy="7" r="4" />
+      <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+      <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
     </svg>
     <span class="sr-only">
       Employees
     </span>
   </a>
   <a href="#" data-tab="#tab-2" role="button" class="ml-4 z-50">
-    <svg class="transform w-12 h-12" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-      stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+    <svg xmlns="http://www.w3.org/2000/svg" class="transform w-12 h-12" viewBox="0 0 24 24" stroke-width="1"
+      stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <rect x="4" y="5" width="16" height="16" rx="2" />
+      <line x1="16" y1="3" x2="16" y2="7" />
+      <line x1="8" y1="3" x2="8" y2="7" />
+      <line x1="4" y1="11" x2="20" y2="11" />
+      <rect x="8" y="15" width="2" height="2" />
     </svg>
     <span class="sr-only">
       Calendar
     </span>
   </a>
   <a href="#" data-tab="#tab-3" role="button" class="ml-4 z-50">
-    <svg class="transform w-12 h-12" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-      stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-        d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+    <svg xmlns="http://www.w3.org/2000/svg" class="transform w-12 h-12" viewBox="0 0 24 24" stroke-width="1"
+      stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-1" />
+      <polyline points="9 15 12 12 15 15" />
+      <line x1="12" y1="12" x2="12" y2="21" />
     </svg>
     <span class="sr-only">
       Upload

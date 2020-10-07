@@ -4,10 +4,11 @@
   <% end_loop %>
 
   <button type="submit" name="action_submit" value="Cancel" class="action">
-    <svg class="transform rotate-180 w-12 h-12" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-      stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+    <svg xmlns="http://www.w3.org/2000/svg" class="transform rotate-180 w-12 h-12" viewBox="0 0 24 24" stroke-width="1"
+      stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
+      <path d="M7 12h14l-3 -3m0 6l3 -3" />
     </svg>
     <span class="sr-only">Sign Out</span>
   </button>

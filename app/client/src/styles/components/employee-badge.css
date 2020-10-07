@@ -3,7 +3,7 @@
     &.is-green {
     }
     &.is-red {
-      filter: grayscale(75%);
+      filter: grayscale(90%);
     }
   }
 }

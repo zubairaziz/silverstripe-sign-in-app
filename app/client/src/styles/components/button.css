@@ -1,8 +1,8 @@
 .button {
-  @apply inline-block w-full px-4 py-2 text-base font-medium text-center uppercase border border-transparent rounded-md transition-colors duration-300 ease-in-out;
+  @apply inline-block w-full px-3 py-1 text-base font-medium text-center border border-transparent rounded-md transition-colors duration-300 ease-in-out;
 
   @screen xl {
-    @apply px-5 py-3 text-lg;
+    @apply px-4 py-2 text-lg;
   }
 }
 

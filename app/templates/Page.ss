@@ -43,36 +43,6 @@
     $Layout
   </main>
   $SiteJS
-  <script>
-    function loadEmployees() {
-      return {
-        search: "",
-        myForData: sourceData,
-        get filteredEmployees() {
-          if (this.search === "") {
-            return this.myForData;
-          }
-          return this.myForData.filter((item) => {
-            return item.employee_name
-              .toLowerCase()
-              .includes(this.search.toLowerCase());
-          });
-        },
-      };
-    }
-
-    var sourceData = [
-      <% loop AllEmployees %>
-      {
-        id: "$ID",
-        employee_name: "{$FullName}",
-        employee_status_color: "{$CurrentStatusColor}",
-        employee_status: "{$CurrentStatus}",
-        profile_image: "{$Image.FocusFill(300, 300).AbsoluteURL}",
-      },
-      <% end_loop %>
-    ]
-  </script>
 </body>
 
 </html>
