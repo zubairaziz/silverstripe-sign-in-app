@@ -88,6 +88,7 @@ module.exports = {
   },
   variants: {
     fontFamily: false,
+    hidden: ['responsive', 'hover', 'focus', 'group-hover', 'group-focus'],
   },
   corePlugins: {
     container: false,
