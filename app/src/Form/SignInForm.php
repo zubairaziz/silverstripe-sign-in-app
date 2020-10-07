@@ -20,11 +20,13 @@ class SignInForm extends Form
 
         $fields = FieldList::create([
             TextField::create('PIN', '')
-                ->setAttribute('placeholder', 'Insert 4 digit PIN')
-                ->setAttribute('type', 'number')
-                ->setAttribute('maxlength', 4)
-                ->setAttribute('max', '9999')
-                ->addExtraClass('text-center')
+                ->setAttribute('inputmode', 'numeric')
+                ->addExtraClass('text-center text-xl tracking-widest')
+                ->setAttribute('data-mask', '####')
+                // ->setAttribute('placeholder', '____')
+                // ->setAttribute('type', 'number')
+                // ->setAttribute('maxlength', 4)
+                // ->setAttribute('max', '9999')
         ]);
 
         $actions = FieldList::create(
@@ -41,7 +43,7 @@ class SignInForm extends Form
 
         $this->addExtraClass('sign-in-form');
         $this->setAttribute('data-form-scroll', true);
-        $this->setAttribute('data-form-ajax', true);
+        // $this->setAttribute('data-form-ajax', true);
         $this->setAttribute('data-form-hide-on-submit', true);
     }
 
@@ -76,6 +78,9 @@ class SignInForm extends Form
                 $timesheet->write();
                 $showMessage = true;
             }
+        } else {
+            $success = false;
+            $showMessage = false;
         }
 
         return $this->controller->handlelogin($success, $employeeID, $showMessage);
