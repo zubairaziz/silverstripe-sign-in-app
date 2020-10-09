@@ -27,6 +27,6 @@ const fn = {
 }
 
 export default {
-  can: () => true,
+  can: () => document.querySelector('.splide'),
   run: fn.init,
 }

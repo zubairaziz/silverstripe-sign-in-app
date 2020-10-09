@@ -30,3 +30,7 @@ body {
   overflow-x: hidden;
   overflow: hidden;
 }
+
+body {
+  height: 100vh !important;
+}
