@@ -46,7 +46,8 @@
         "globals": {
             "Selectors": true,
             "ajax": true,
-            "state": true
+            "state": true,
+            "FullCalendar": true
         },
         "ignorePatterns": [
             "node_modules"
@@ -106,17 +107,18 @@
         "webpack-merge": "^5.1.4"
     },
     "dependencies": {
+        "@fullcalendar/core": "^5.3.1",
+        "@fullcalendar/daygrid": "^5.3.2",
         "@splidejs/splide": "^2.4.14",
         "alpinejs": "^2.7.0",
         "delegated-events": "^1.1.2",
         "easydropdown": "^4.2.0",
+        "fastclick": "^1.0.6",
         "imask": "^6.0.5",
         "jump.js": "^1.0.2",
-        "maska": "^1.2.0",
         "scrollreveal": "^4.0.7",
         "tailwindcss": "^1.8.6",
         "validate.js": "^0.13.1",
-        "vanilla-masker": "^1.2.0",
         "verge": "^1.10.2",
         "wretch": "^1.7.2"
     }

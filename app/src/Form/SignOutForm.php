@@ -42,11 +42,6 @@ class SignOutForm extends Form
         }
     }
 
-    // public function forTemplate()
-    // {
-    //     return $this->renderWith('App/Form/SingleActionForm');
-    // }
-
     public function submit($data, $form)
     {
         $success = true;

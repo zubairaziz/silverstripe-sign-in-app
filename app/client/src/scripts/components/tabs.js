@@ -22,7 +22,7 @@ const fn = {
         '--tabset-transition',
         'transform 0.5s linear'
       )
-    }, 250)
+    }, 50)
   },
 
   setDisplayedTab: (tabname) => {

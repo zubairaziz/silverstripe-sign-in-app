@@ -1,5 +1,16 @@
 import './styles/index.css'
 import 'alpinejs'
+import FastClick from 'fastclick'
+
+if ('addEventListener' in document) {
+  document.addEventListener(
+    'DOMContentLoaded',
+    () => {
+      FastClick.attach(document.body)
+    },
+    false
+  )
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   ;((r) => {

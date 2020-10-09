@@ -1,0 +1,111 @@
+@media (min-width: 768px) {
+  .single .masthead-blog {
+    padding-top: 60px !important;
+    padding-bottom: 50px !important;
+  }
+}
+.header-menu-button {
+  margin-left: 20px;
+}
+.masthead-blog {
+  background: white;
+}
+.single .masthead-blog {
+  height: 0vh !important;
+}
+.footer-menu li a {
+  color: #a90e1e;
+}
+.footer-menu li + li:before {
+  color: black;
+}
+.page-id-212 .unlimited-page-header .header-menu-button {
+  color: white !important;
+  margin-left: 20px;
+}
+.product_meta {
+  display: none;
+}
+
+.page-header {
+  padding-bottom: 9px;
+  margin: 40px 0 20px;
+  border-bottom: 0px solid;
+}
+
+.woocommerce #respond input#submit,
+.woocommerce a.button,
+.woocommerce button.button,
+.woocommerce input.button {
+  color: #fff;
+  background-color: black;
+}
+.woocommerce .cart_totals {
+  padding: 1rem;
+}
+.product-template-default .lead-heading,
+.product-template-default .breadcrumbs {
+  display: none;
+}
+.woocommerce-page p {
+  font: 300 14px/28px 'Poppins', sans-serif;
+  margin-bottom: 15px;
+  color: black !important;
+}
+
+.woocommerce form .form-row .input-checkbox {
+  display: inline;
+  margin: -2px 8px 0 0;
+  text-align: center;
+  vertical-align: middle;
+  margin-top: 5px;
+}
+.woocommerce-terms-and-conditions-checkbox-text {
+  padding-left: 20px;
+}
+
+#blog {
+  padding: 20px 0 113px;
+}
+.woocommerce-info {
+  border-top-color: black;
+}
+
+table tbody tr td,
+.widget table tr td {
+  font-size: 16px;
+  color: #333;
+}
+.woocommerce-cart table.cart td.actions .coupon .input-text {
+  min-width: 150px;
+}
+.woocommerce #payment #place_order,
+.woocommerce-page #payment #place_order {
+  float: right;
+  min-width: 200px;
+  padding: 20px;
+}
+.woocommerce div.product p.price,
+.woocommerce div.product span.price,
+.woocommerce ul.products li.product .price {
+  color: #a90e1e !important;
+}
+.woocommerce-breadcrumb,
+.breadcrubms {
+  display: none;
+}
+@media (max-width: 991px) {
+  .alt-bg .navbar-default.is-scrolling .navbar-collapse,
+  .navbar-default .navbar-collapse {
+    background: #000;
+    border: none;
+  }
+}
+@media (max-width: 640px) {
+  .btn-primary.btn-lg {
+    font-size: 18px !important;
+  }
+}
+.section-header {
+  padding: 1rem;
+}

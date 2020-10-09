@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Page\HomePage;
+use App\Util\Util;
 use DateTime;
 use DateTimeZone;
 use SilverStripe\Control\Controller;
@@ -56,7 +57,7 @@ class AppointmentInForm extends Form
             $timesheet->write();
         }
 
-        $this->controller->handlelogout($success);
+        Util::signOut();
 
         return $this->controller->handleappointmentin($success);
     }

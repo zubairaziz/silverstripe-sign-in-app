@@ -1,7 +1,7 @@
 :root {
   --tabset-transition: 'none';
   --tabset-opacity: 0;
-  --tabset-height: 0;
+  --tabset-height: 100vh;
   --tabset-position: 'translate3d(0, 100vh, 0)';
 }
 

@@ -71,8 +71,8 @@ class SignInForm extends Form
             } else {
                 $tz = 'America/New_York';
                 $timestamp = time();
-                $time = new DateTime("now", new DateTimeZone($tz)); //first argument "must" be a string
-                $time->setTimestamp($timestamp); //adjust the object to correct timestamp
+                $time = new DateTime("now", new DateTimeZone($tz));
+                $time->setTimestamp($timestamp);
                 $timesheet = $employee->getTodaysTimesheet();
                 $timesheet->SignInTime = $time->format('H:i');
                 $timesheet->write();

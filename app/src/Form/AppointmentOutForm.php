@@ -56,7 +56,8 @@ class AppointmentOutForm extends Form
             $timesheet->write();
         }
 
-        $this->controller->handlelogout($success);
+        Util::signOut();
+
 
         return $this->controller->handleappointmentout($success);
     }

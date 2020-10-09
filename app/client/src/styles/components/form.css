@@ -23,3 +23,63 @@ form {
     @apply hidden;
   }
 }
+
+.contact-form {
+  label {
+    @apply block text-gray-700 text-sm font-bold mb-2;
+  }
+  input,
+  textarea {
+    @apply appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight;
+
+    &:focus {
+      @apply outline-none shadow-outline;
+    }
+
+    &:hover {
+      @apply border-gray-700;
+    }
+
+    @screen md {
+      @apply py-3 px-4;
+    }
+  }
+
+  .field.file {
+    @apply relative;
+
+    input[type='file'] {
+      @apply absolute inset-0 opacity-0 pointer-events-none;
+    }
+
+    &.has-error {
+      .file-input-placeholder {
+        @apply border-red-800;
+      }
+    }
+
+    .file-input-placeholder {
+      @apply relative flex items-center bg-white truncate border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight cursor-pointer;
+
+      @screen md {
+        @apply py-3 px-4;
+      }
+
+      &.filled {
+        @apply font-normal;
+
+        @screen md {
+          @apply;
+        }
+      }
+
+      &:hover {
+        @apply border-gray-700;
+      }
+    }
+
+    .description {
+      @apply text-xs;
+    }
+  }
+}

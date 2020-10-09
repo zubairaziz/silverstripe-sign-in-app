@@ -1,12 +1,15 @@
 <form $AttributesHTML autocomplete="off" novalidate>
   <fieldset>
-    <legend data-reveal>(*) indicates required field</legend>
-    <div class="flex flex-col md:flex-row md:flex-wrap">
-      <div class="relative w-full px-2 my-3 md:my-4 lg:my-5 md:w-1/2">
-        $Fields.fieldByName(FirstName).FieldHolder
+    <legend class="text-center">(*) indicates required field</legend>
+    <div class="flex flex-col">
+      <div class="relative w-full px-2 my-3 md:my-4 lg:my-5">
+        $Fields.fieldByName(Name).FieldHolder
       </div>
-      <div class="relative w-full px-2 my-3 md:my-4 lg:my-5 md:w-1/2">
-        $Fields.fieldByName(LastName).FieldHolder
+      <div class="relative w-full px-2 my-3 md:my-4 lg:my-5">
+        $Fields.fieldByName(Resource).FieldHolder
+      </div>
+      <div class="relative w-full px-2 my-3 md:my-4 lg:my-5">
+        $Fields.fieldByName(Description).FieldHolder
       </div>
     </div>
   </fieldset>
@@ -19,7 +22,7 @@
   <% end_loop %>
 
   <% if $Actions %>
-  <div class="btn-toolbar" data-reveal>
+  <div class="btn-toolbar">
     <% loop $Actions %>
     $Field
     <% end_loop %>

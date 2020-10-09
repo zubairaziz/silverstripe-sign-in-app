@@ -5,6 +5,7 @@ namespace App\Util;
 use DateTime;
 use SilverStripe\AssetAdmin\Controller\AssetAdmin;
 use SilverStripe\Assets\Image;
+use SilverStripe\Control\Controller;
 use SilverStripe\Forms\GridField\GridFieldAddExistingAutocompleter;
 use SilverStripe\Forms\GridField\GridFieldAddNewButton;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
@@ -285,5 +286,13 @@ class Util
         $date = new DateTime();
         $date = $date->format('Y-m-d');
         return $date;
+    }
+
+    public static function signOut()
+    {
+        $session = Controller::curr()->getSession();
+        $session->set('LoggedIn', false);
+        $session->set('EmployeeID', null);
+        $session->set('Employee', null);
     }
 }

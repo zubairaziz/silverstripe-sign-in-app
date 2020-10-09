@@ -4,9 +4,11 @@ namespace App\Form;
 
 use App\Page\HomePage;
 use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\FileField;
 use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\RequiredFields;
+use SilverStripe\Forms\TextareaField;
 use SilverStripe\Forms\TextField;
 
 class ContactForm extends Form
@@ -18,8 +20,12 @@ class ContactForm extends Form
         $page = HomePage::get()->first();
 
         $fields = FieldList::create([
-            TextField::create('FirstName', 'First Name'),
-            TextField::create('LastName', 'Last Name'),
+            TextField::create('Name', 'Name'),
+            FileField::create('Resource', 'Image or Video')
+                ->setAllowedExtensions(['mp4', 'webm', 'jpg', 'jpeg', 'png', 'gif', 'webp'])
+                ->setDescription('mp4, webm, jpg, jpeg, png and gif file formats accepted')
+                ->setAttribute('data-placeholder', 'Select file to upload'),
+            TextareaField::create('Description', 'Description')
         ]);
 
         $actions = FieldList::create(
@@ -27,8 +33,8 @@ class ContactForm extends Form
         );
 
         $requiredFields = [
-            'FirstName',
-            'LastName',
+            'Name',
+            'Resource'
         ];
 
         $required = RequiredFields::create($requiredFields);

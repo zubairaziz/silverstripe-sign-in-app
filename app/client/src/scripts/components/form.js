@@ -18,6 +18,7 @@ const fn = {
     on('submit', '[data-form-ajax]', fn.handleAjax)
     on('submit', '.sign-in-form', fn.handleSignInAjax)
     fn.setupPINMasking()
+    fn.setupSpecialFields()
   },
 
   handleAjax: (e) => {
@@ -133,6 +134,31 @@ const fn = {
         mask: '0 0 0 0',
       })
     }
+  },
+
+  setupSpecialFields: () => {
+    document.querySelectorAll('form').forEach(($form) => {
+      // Setup file inputs
+      $form.querySelectorAll('input[type=file]').forEach(($input) => {
+        const $placeholder = document.createElement('div')
+        $placeholder.classList.add('file-input-placeholder')
+
+        if ($input.value) {
+          $placeholder.textContent = $input.files[0].name
+        } else {
+          $placeholder.textContent = $input.dataset.placeholder
+        }
+
+        $input.parentNode.insertBefore($placeholder, $input)
+
+        $placeholder.addEventListener('click', () => $input.click())
+
+        $input.addEventListener('change', (e) => {
+          $placeholder.textContent = e.target.files[0].name
+          $placeholder.classList.add('filled')
+        })
+      })
+    })
   },
 
   removeBlur: () => {
