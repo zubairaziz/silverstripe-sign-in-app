@@ -57,6 +57,26 @@ class CalendarSettings extends DataObject
         'Holidays' => Holiday::class,
     ];
 
+    public function populateDefaults()
+    {
+        $this->MondayActive = true;
+        $this->MondayStart = '';
+        $this->MondayEnd = '';
+        $this->TuesdayActive = true;
+        $this->TuesdayStart = '';
+        $this->TuesdayEnd = '';
+        $this->WednesdayActive = true;
+        $this->WednesdayStart = '';
+        $this->WednesdayEnd = '';
+        $this->ThursdayActive = true;
+        $this->ThursdayStart = '';
+        $this->ThursdayEnd = '';
+        $this->FridayActive = true;
+        $this->FridayStart = '';
+        $this->FridayEnd = '';
+        parent::populateDefaults();
+    }
+
     public function getCMSFields()
     {
         $fields = FieldList::create(
