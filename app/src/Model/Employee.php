@@ -214,7 +214,7 @@ class Employee extends DataObject
 
     public function checkPinAvailability($pin)
     {
-        if (self::get()->filter('PIN', $pin)->first()) {
+        if (self::get()->exclude('ID', $this->ID)->filter('PIN', $pin)->first()) {
             return false;
         }
         return true;

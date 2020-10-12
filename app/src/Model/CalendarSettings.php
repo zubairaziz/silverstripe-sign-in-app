@@ -60,20 +60,20 @@ class CalendarSettings extends DataObject
     public function populateDefaults()
     {
         $this->MondayActive = true;
-        $this->MondayStart = '';
-        $this->MondayEnd = '';
+        $this->MondayStart = '8:30:00';
+        $this->MondayEnd = '17:00:00';
         $this->TuesdayActive = true;
-        $this->TuesdayStart = '';
-        $this->TuesdayEnd = '';
+        $this->TuesdayStart = '8:30:00';
+        $this->TuesdayEnd = '17:00:00';
         $this->WednesdayActive = true;
-        $this->WednesdayStart = '';
-        $this->WednesdayEnd = '';
+        $this->WednesdayStart = '8:30:00';
+        $this->WednesdayEnd = '17:00:00';
         $this->ThursdayActive = true;
-        $this->ThursdayStart = '';
-        $this->ThursdayEnd = '';
+        $this->ThursdayStart = '8:30:00';
+        $this->ThursdayEnd = '17:00:00';
         $this->FridayActive = true;
-        $this->FridayStart = '';
-        $this->FridayEnd = '';
+        $this->FridayStart = '8:30:00';
+        $this->FridayEnd = '17:00:00';
         parent::populateDefaults();
     }
 
@@ -208,7 +208,7 @@ class CalendarSettings extends DataObject
             $birthdays->add(
                 new ArrayData([
                     'Name' => $employee->getTitle(),
-                    'Birthday' => $employee->Birthday,
+                    'Birthday' => $employee->dbObject('Birthday')->Nice(),
                     'NiceBirthday' => sprintf(
                         '%s %s',
                         $employee->dbObject('Birthday')->Month(),
@@ -220,7 +220,7 @@ class CalendarSettings extends DataObject
             );
         }
 
-        $birthdays = $birthdays->sort('Month');
+        $birthdays = $birthdays->sort(['Month' => 'ASC', 'Day' => 'ASC']);
 
         $birthdayGrid = GridField::create(
             'Birthdays',

@@ -78,6 +78,6 @@ const fn = {
 }
 
 export default {
-  can: () => true,
+  can: () => document.querySelector('.clock'),
   run: fn.init,
 }

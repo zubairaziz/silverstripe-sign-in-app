@@ -93,6 +93,6 @@ const fn = {
 }
 
 export default {
-  can: () => true,
+  can: () => document.querySelector('.tabset'),
   run: fn.init,
 }

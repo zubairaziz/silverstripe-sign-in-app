@@ -1,6 +1,7 @@
 import './styles/index.css'
 import 'alpinejs'
 import FastClick from 'fastclick'
+require('video.js')
 
 if ('addEventListener' in document) {
   document.addEventListener(

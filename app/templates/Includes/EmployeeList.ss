@@ -48,7 +48,7 @@
       employee_name: "{$FullName}",
       employee_status_color: "{$CurrentStatusColor}",
       employee_status: "{$CurrentStatus}",
-      profile_image: "{$Image.FocusFill(300, 300).AbsoluteURL}",
+      profile_image: "<% if Image %>{$Image.FocusFill(300, 300).AbsoluteURL}<% else %>{$Asset('images/default-image.svg')}<% end_if %>",
     },
     <% end_loop %>
   ]

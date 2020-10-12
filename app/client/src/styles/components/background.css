@@ -1,9 +1,33 @@
 .splide::after {
+  display: block;
   position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0px;
-  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  content: '';
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.7525385154061625) 10%,
+    rgba(0, 0, 0, 0.5032387955182073) 20%,
+    rgba(0, 0, 0, 0.30155812324929976) 100%
+  );
+}
+
+.bg-cover {
+  display: block;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   z-index: 0;
   content: '';
   background: rgb(0, 0, 0);

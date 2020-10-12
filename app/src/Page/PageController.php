@@ -45,6 +45,15 @@ class PageController extends ContentController
         return null;
     }
 
+    public function getBackgroundVideo()
+    {
+        $backgroundSettings = BackgroundSettings::current_settings();
+        if ($backgroundSettings->BackgroundVideo()->exists()) {
+            return $backgroundSettings->BackgroundVideo();
+        }
+        return null;
+    }
+
     public function getAnimationDuration()
     {
         $backgroundSettings = BackgroundSettings::current_settings();
