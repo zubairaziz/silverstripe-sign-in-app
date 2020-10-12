@@ -36,6 +36,16 @@
   }
 }
 
+.button-disabled {
+  @apply border text-white border-gray-400 bg-gray-400 cursor-not-allowed;
+
+  &:hover,
+  &:focus,
+  &:active {
+    @apply bg-gray-400 text-white border-gray-400;
+  }
+}
+
 .button-group {
   .button:not(:last-child) {
     @apply mr-2;

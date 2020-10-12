@@ -15,6 +15,7 @@ class FormController extends Controller
         'ContactForm',
         'SignInForm',
         'SignOutForm',
+        'LogOutForm',
         'LunchOutForm',
         'LunchInForm',
         'AppointmentOutForm',
@@ -48,29 +49,34 @@ class FormController extends Controller
         return SignInForm::create($this, __FUNCTION__);
     }
 
-    public function SignOutForm($isNavigation = false)
+    public function SignOutForm($disabled = false)
     {
-        return SignOutForm::create($this, __FUNCTION__, $isNavigation);
+        return SignOutForm::create($this, __FUNCTION__, $disabled);
     }
 
-    public function LunchOutForm()
+    public function LogOutForm($isNavigation = false)
     {
-        return LunchOutForm::create($this, __FUNCTION__);
+        return LogOutForm::create($this, __FUNCTION__, $isNavigation);
     }
 
-    public function LunchInForm()
+    public function LunchOutForm($disabled = false)
     {
-        return LunchInForm::create($this, __FUNCTION__);
+        return LunchOutForm::create($this, __FUNCTION__, $disabled);
     }
 
-    public function AppointmentOutForm()
+    public function LunchInForm($disabled = false)
     {
-        return AppointmentOutForm::create($this, __FUNCTION__);
+        return LunchInForm::create($this, __FUNCTION__, $disabled);
     }
 
-    public function AppointmentInForm()
+    public function AppointmentOutForm($disabled = false)
     {
-        return AppointmentInForm::create($this, __FUNCTION__);
+        return AppointmentOutForm::create($this, __FUNCTION__, $disabled);
+    }
+
+    public function AppointmentInForm($disabled = false)
+    {
+        return AppointmentInForm::create($this, __FUNCTION__, $disabled);
     }
 
     public function getLoggedInEmployee()

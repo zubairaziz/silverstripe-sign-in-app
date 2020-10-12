@@ -2,30 +2,34 @@
 
 namespace App\Form;
 
+use App\Model\Employee;
 use App\Page\HomePage;
+use SilverStripe\Control\Controller;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FormAction;
 
 class SignOutForm extends Form
 {
-    public function __construct($controller, $name, $isNavigation = false)
+    public function __construct($controller, $name, $disabled = false)
     {
         $page = HomePage::get()->first();
 
         $fields = null;
 
-        if ($isNavigation) {
-            $this->addExtraClass('inline-block w-12 h-12');
+        if ($disabled) {
             $actions = FieldList::create(
-                FormAction::create('submit', 'Cancel')
-                    ->setUseButtonTag(true)
+                FormAction::create('submit', 'End Of Day')
+                ->setUseButtonTag(true)
+                ->addExtraClass('button button-disabled disabled my-1')
+                ->setAttribute('formaction', $this->Link('submit'))
+                ->setAttribute('disabled', true)
             );
         } else {
             $actions = FieldList::create(
-                FormAction::create('submit', 'Cancel')
+                FormAction::create('submit', 'End Of Day')
                     ->setUseButtonTag(true)
-                    ->addExtraClass('button button-secondary my-1')
+                    ->addExtraClass('button button-primary my-1')
             );
         }
 
@@ -34,23 +38,43 @@ class SignOutForm extends Form
         parent::__construct($controller, $name, $fields, $actions, $required);
 
         $this->addExtraClass('sign-out-form');
+        $this->setAttribute('data-form-ajax', true);
 
-        if ($isNavigation) {
-            $this->setTemplate('App/Form/NavigationSignOutForm');
-        } else {
-            $this->setTemplate('App/Form/SingleActionForm');
-        }
+        $this->setTemplate('App/Form/SingleActionForm');
     }
 
     public function submit($data, $form)
     {
-        $success = true;
+        $success = false;
 
-        $session = $this->controller->getSession();
-        $session->set('LoggedIn', false);
-        $session->set('EmployeeID', null);
-        $session->set('Employee', null);
+        $employeeID = null;
+        $employee = Employee::getEmployeeByPin($data['PIN']);
 
-        return $this->controller->handlelogout($success);
+        if ($employee) {
+            $success = true;
+            $showMessage = false;
+            $session = $this->controller->getSession();
+            $tz = 'America/New_York';
+            $timestamp = time();
+            $time = new DateTime("now", new DateTimeZone($tz));
+            $time->setTimestamp($timestamp);
+            $timesheet = $employee->getTodaysTimesheet();
+            $timesheet->SignOutTime = $time->format('H:i');
+            $timesheet->write();
+            $showMessage = true;
+        } else {
+            $success = false;
+            $showMessage = false;
+        }
+
+        return $this->controller->handlelogin($success, $employeeID, $showMessage);
+    }
+
+    public function Link($action = null)
+    {
+        return Controller::join_links(
+            '_formsubmit',
+            $action
+        );
     }
 }

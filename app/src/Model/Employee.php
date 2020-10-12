@@ -124,11 +124,32 @@ class Employee extends DataObject
 
     public function hasSignedIn()
     {
-        $timesheet = $this->getTodaysTimesheet();
-        if ($timesheet->SignInTime) {
-            return true;
-        }
-        return false;
+        $this->generateTimesheet();
+        $today = $this->getTodaysTimesheet();
+        return $today->SignInTime;
+    }
+
+    public function IsLunch()
+    {
+        $this->generateTimesheet();
+        $today = $this->getTodaysTimesheet();
+        return $today->LunchOutTime && !$today->LunchInTime;
+    }
+
+    public function IsAppointment()
+    {
+        $this->generateTimesheet();
+        $today = $this->getTodaysTimesheet();
+        return $today->AppointmentOutTime && !$today->AppointmentInTime;
+    }
+
+    public function AppointmentOrLunch()
+    {
+        $this->generateTimesheet();
+        $today = $this->getTodaysTimesheet();
+        return
+            ($today->AppointmentOutTime && !$today->AppointmentInTime) ||
+            ($today->LunchOutTime && !$today->LunchInTime);
     }
 
     public function generatePIN()
@@ -142,8 +163,7 @@ class Employee extends DataObject
     public function getCurrentStatus()
     {
         $this->generateTimesheet();
-        $date = Util::getTodaysDate();
-        $today = $this->Timesheets()->filter(['Date' => $date])->first();
+        $today = $this->getTodaysTimesheet();
         $status = 'Not Signed In';
         if ($this->OOTO) {
             $status = 'Out of the Office';
@@ -160,14 +180,16 @@ class Employee extends DataObject
         if ($today->AppointmentOutTime && !$today->AppointmentInTime) {
             $status = 'Out to Appointment';
         }
+        if ($today->SignOutTime) {
+            $status = 'Signed Out';
+        }
         return $status;
     }
 
     public function getCurrentStatusColor()
     {
         $this->generateTimesheet();
-        $date = Util::getTodaysDate();
-        $today = $this->Timesheets()->filter(['Date' => $date])->first();
+        $today = $this->getTodaysTimesheet();
         $color = 'red';
         if ($this->OOTO) {
             $color = 'red';
@@ -183,6 +205,9 @@ class Employee extends DataObject
         }
         if ($today->AppointmentOutTime && !$today->AppointmentInTime) {
             $color = 'red';
+        }
+        if ($today->SignOutTime) {
+            $status = 'red';
         }
         return $color;
     }

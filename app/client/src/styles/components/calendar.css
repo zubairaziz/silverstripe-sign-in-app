@@ -1,0 +1,14 @@
+.fc {
+  .fc-button-primary {
+    @apply button-primary;
+  }
+
+  .fc-button-primary:disabled {
+    @apply bg-primary-light border-primary-light cursor-not-allowed;
+  }
+
+  .fc-button-primary:not(:disabled).fc-button-active,
+  .fc-button-primary:not(:disabled):active {
+    @apply bg-primary-darkest;
+  }
+}

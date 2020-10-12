@@ -4,7 +4,7 @@
   <% end_loop %>
 
   <% if $Actions %>
-  <div class="button-toolbar" data-reveal>
+  <div class="button-toolbar">
     <% loop $Actions %>
     $Field
     <% end_loop %>

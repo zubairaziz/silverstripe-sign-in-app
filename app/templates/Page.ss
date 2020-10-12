@@ -11,21 +11,12 @@
   <link rel="preconnect" href="http://localhost:8081" crossorigin>
   $SiteCSS
   <% end_if %>
-  <%-- <% if AnimationDuration %>
-    <style>
-      .slideshow li span {
-      }
-    </style>
-  <% end_if %> --%>
-
-  <% if $SiteConfig.GoogleID %>
-  <% include GoogleTagManager GoogleID=$SiteConfig.GoogleID %>
-  <% end_if %>
 </head>
 
 <body class="$BodyClasses relative h-screen w-screen" x-data="{ 'showModal': false }"
   @keydown.escape="showModal = false" x-cloak>
-  <% if BackgroundImages %>
+  <% if ClassName = 'App\Page\HomePage' %>
+    <% if BackgroundImages %>
     <div class="splide absolute z-0 inset-0 w-screen h-screen">
       <div class="splide__track">
         <ul class="splide__list">
@@ -37,12 +28,15 @@
         </ul>
       </div>
     </div>
-  <% else %>
-  <div class="absolute z-0 inset-0 w-screen h-screen bg-primary-dark">
-  </div>
+    <% else %>
+    <div class="absolute z-0 inset-0 w-screen h-screen bg-primary-dark">
+    </div>
+    <% end_if %>
   <% end_if %>
   <main id="main-content" class="absolute inset-0 h-screen w-screen p-4">
+    <% if ClassName = 'App\Page\HomePage' %>
     <% include SiteHeader %>
+    <% end_if %>
     $Layout
   </main>
   $SiteJS

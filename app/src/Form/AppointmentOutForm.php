@@ -12,18 +12,28 @@ use SilverStripe\Forms\FormAction;
 
 class AppointmentOutForm extends Form
 {
-    public function __construct($controller, $name)
+    public function __construct($controller, $name, $disabled = false)
     {
         $page = HomePage::get()->first();
 
         $fields = null;
 
-        $actions = FieldList::create(
-            FormAction::create('appointmentout', 'Appointment')
-            ->setUseButtonTag(true)
-            ->addExtraClass('button button-primary my-1')
-            ->setAttribute('formaction', $this->Link('appointmentout'))
-        );
+        if ($disabled) {
+            $actions = FieldList::create(
+                FormAction::create('appointmentout', 'Appointment')
+                ->setUseButtonTag(true)
+                ->addExtraClass('button button-disabled disabled my-1')
+                ->setAttribute('formaction', $this->Link('appointmentout'))
+                ->setAttribute('disabled', true)
+            );
+        } else {
+            $actions = FieldList::create(
+                FormAction::create('appointmentout', 'Appointment')
+                ->setUseButtonTag(true)
+                ->addExtraClass('button button-primary my-1')
+                ->setAttribute('formaction', $this->Link('appointmentout'))
+            );
+        }
 
         $required = null;
 

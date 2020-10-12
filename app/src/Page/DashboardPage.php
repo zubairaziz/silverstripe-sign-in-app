@@ -6,13 +6,13 @@ use App\Extension\SinglePageInstance;
 use Page;
 use SilverStripe\SiteConfig\SiteConfig;
 
-class HomePage extends Page
+class DashboardPage extends Page
 {
-    private static $table_name = 'HomePage';
-    private static $singular_name = 'Home Page';
-    private static $plural_name = 'Home Pages';
-    private static $description = 'The main Home Page for the site';
-    private static $icon_class = 'font-icon-p-home';
+    private static $table_name = 'DashboardPage';
+    private static $singular_name = 'Dashboard Page';
+    private static $plural_name = 'Dashboard Pages';
+    private static $description = 'Dashboard for admins';
+    private static $icon_class = 'font-icon-p-data';
 
     private static $extensions = [
         SinglePageInstance::class

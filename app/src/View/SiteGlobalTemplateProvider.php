@@ -24,6 +24,7 @@ class SiteTemplateGlobalProvider implements TemplateGlobalProvider
             'ContactForm' => 'ContactForm',
             'SignInForm' => 'SignInForm',
             'SignOutForm' => 'SignOutForm',
+            'LogOutForm' => 'LogOutForm',
             'LunchOutForm' => 'LunchOutForm',
             'AppointmentOutForm' => 'AppointmentOutForm',
             'LunchInForm' => 'LunchInForm',
@@ -78,39 +79,46 @@ class SiteTemplateGlobalProvider implements TemplateGlobalProvider
         return $controller->SignInForm();
     }
 
-    public static function SignOutForm($isNavigation = false)
+    public static function SignOutForm($disabled = false)
     {
         $controller = FormController::create();
 
-        return $controller->SignOutForm($isNavigation);
+        return $controller->SignOutForm($disabled);
     }
 
-    public static function LunchOutForm()
+    public static function LogOutForm($isNavigation = false)
     {
         $controller = FormController::create();
 
-        return $controller->LunchOutForm();
+        return $controller->LogOutForm($isNavigation);
     }
 
-    public static function AppointmentOutForm()
+    public static function LunchOutForm($disabled = false)
     {
         $controller = FormController::create();
 
-        return $controller->AppointmentOutForm();
+        return $controller->LunchOutForm($disabled);
     }
 
-    public static function LunchInForm()
+    public static function AppointmentOutForm($disabled = false)
     {
         $controller = FormController::create();
 
-        return $controller->LunchInForm();
+        return $controller->AppointmentOutForm($disabled);
     }
 
-    public static function AppointmentInForm()
+    public static function LunchInForm($disabled = false)
     {
         $controller = FormController::create();
 
-        return $controller->AppointmentInForm();
+        return $controller->LunchInForm($disabled);
+    }
+
+    public static function AppointmentInForm($disabled = false)
+    {
+        $controller = FormController::create();
+
+        return $controller->AppointmentInForm($disabled);
     }
 
     public static function PhoneLink($number)
