@@ -2,11 +2,15 @@
 
 namespace App\Model;
 
+use App\Extension\Sluggable;
 use App\Form\Field\PINField;
+use App\Page\DashboardPage;
 use App\Security\CMSPermissionProvider;
 use App\Util\Util;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\Image;
+use SilverStripe\Control\Controller;
+use SilverStripe\Control\Director;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\DateField;
 use SilverStripe\Forms\EmailField;
@@ -21,6 +25,10 @@ class Employee extends DataObject
     use CMSPermissionProvider;
 
     private static $table_name = 'Employee';
+
+    private static $extensions = [
+        Sluggable::class
+    ];
 
     private static $db = [
         'FirstName' => 'Varchar',
@@ -42,7 +50,8 @@ class Employee extends DataObject
     ];
 
     private static $has_many = [
-        'Timesheets' => Timesheet::class
+        'Timesheets' => Timesheet::class,
+        'LateSignIns' => LateSignIn::class
     ];
 
     private static $default_sort = '"ActiveEmployee", "LastName", "FirstName"';
@@ -261,6 +270,23 @@ class Employee extends DataObject
         }
 
         return $result;
+    }
+
+    public function AbsoluteLink()
+    {
+        return Director::absoluteURL($this->Link());
+    }
+
+    public function Link($action = null)
+    {
+        if ($holderPage = DashboardPage::get()->first()) {
+            return Controller::join_links(
+                $holderPage->Link(),
+                'employee',
+                $this->URLSegment,
+                $action
+            );
+        }
     }
 
     public function onBeforeWrite()

@@ -62,7 +62,7 @@ export const slideDown = (element, duration = 400) => {
   })
 }
 
-export const slideToggle = (target, duration = 300) => {
+export const slideToggle = (target, duration = 400) => {
   if (window.getComputedStyle(target).display === 'none') {
     return slideDown(target, duration)
   } else {
