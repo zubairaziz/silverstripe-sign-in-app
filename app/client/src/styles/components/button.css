@@ -1,8 +1,12 @@
 .button {
-  @apply inline-block w-full px-3 py-1 text-base font-medium text-center transition-colors duration-300 ease-in-out border border-transparent rounded-md;
+  @apply inline-block w-full px-3 py-1 text-base font-medium text-center transition-colors duration-300 ease-in-out border border-transparent rounded-md outline-none;
 
   @screen xl {
     @apply px-4 py-2 text-lg;
+  }
+
+  &:focus {
+    @apply outline-none;
   }
 }
 
@@ -60,14 +64,6 @@
   }
 }
 
-.button-toolbar {
-  @apply flex items-center justify-start;
-}
-
-.button-toolbar-center {
-  @apply flex items-center justify-center my-4;
-}
-
 .button-loading {
   @apply relative overflow-hidden text-transparent pointer-events-none;
 
@@ -101,10 +97,18 @@
   }
 }
 
+.button-toolbar {
+  @apply flex items-center justify-start;
+}
+
+.button-toolbar-center {
+  @apply flex items-center justify-center my-4;
+}
+
 button {
   @apply outline-none;
 
   &:focus {
-    @apply outline-none;
+    @apply outline-none opacity-75;
   }
 }

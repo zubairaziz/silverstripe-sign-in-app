@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Page\HomePage;
+use App\Util\Util;
 use DateTime;
 use DateTimeZone;
 use SilverStripe\Control\Controller;
@@ -41,6 +42,7 @@ class LunchInForm extends Form
 
         $this->addExtraClass('lunch-form');
         $this->setAttribute('data-form-ajax', true);
+        $this->setAttribute('data-form-hide-on-submit', true);
     }
 
     public function forTemplate()
@@ -68,7 +70,7 @@ class LunchInForm extends Form
 
         Util::signOut();
 
-        return $this->controller->handlelunchin($success);
+        return $this->controller->handlelunchin($success, $employee);
     }
 
     public function Link($action = null)

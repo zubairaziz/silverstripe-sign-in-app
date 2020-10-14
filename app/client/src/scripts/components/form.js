@@ -13,19 +13,20 @@ const fn = {
     on('change', '.has-error blur', handleBlur, {
       capture: true,
     })
-    on('submit', '[data-form-ajax]', fn.handleAjax)
+    on('submit', '[data-form-ajax]', fn.handleSingleActionAjax)
     on('submit', '.sign-in-form', fn.handleSignInAjax)
     fn.setupPINMasking()
     fn.setupSpecialFields()
   },
 
-  handleAjax: (e) => {
+  handleSingleActionAjax: (e) => {
     e.preventDefault()
 
     const $form = e.target
     const isValid = handleValidation($form)
 
     if (isValid) {
+      const $employeeCard = document.querySelector('.employee-card')
       const $formMessages = document.querySelector('.form-messages')
       const $submitButton = $form.querySelector('[type=submit]')
       fn.toggleSubmit($submitButton)
@@ -36,10 +37,8 @@ const fn = {
         .post()
         .json((res) => {
           if (res.success) {
-            $form.reset()
-
             if ($form.dataset.formHideOnSubmit) {
-              $form.style.display = 'none'
+              $employeeCard.style.display = 'none'
             }
 
             fn.removeBlur()
@@ -77,7 +76,7 @@ const fn = {
       const $submitButton = $form.querySelector('[type=submit]')
       const $pinInput = $form.querySelector('input[name="PIN"]')
       const mask = Imask($pinInput, {
-        mask: '0 0 0 0',
+        mask: '0000',
       })
       fn.toggleSubmit($submitButton)
       $pinInput.value = mask.unmaskedValue
@@ -127,7 +126,7 @@ const fn = {
     const $pinInput = document.querySelector('input[name="PIN"]')
     if ($pinInput) {
       Imask($pinInput, {
-        mask: '0 0 0 0',
+        mask: '0000',
       })
     }
   },

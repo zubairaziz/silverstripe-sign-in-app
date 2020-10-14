@@ -198,12 +198,46 @@ class FormController extends Controller
         return $this->redirectBack();
     }
 
-    public function handlelunchout($success)
+    public function handlesignout($success, $employee)
+    {
+        if (Director::is_ajax($this->getRequest())) {
+            if (!SecurityToken::inst()->checkRequest($this->getRequest())) {
+                return $this->httpError(400);
+            }
+
+            $settings = MessageSettings::current_settings();
+
+            $firstName = $employee->FirstName;
+            $lastName = $employee->LastName;
+            $fullName = $employee->FullName;
+
+            if ($success) {
+                $message = $settings->SignOutMessage;
+                $message = preg_replace('/\[FirstName\]/', $firstName, $message);
+                $message = preg_replace('/\[LastName\]/', $lastName, $message);
+                $message = preg_replace('/\[FullName\]/', $fullName, $message);
+            } else {
+                $message = 'Oops. Something went wrong.';
+            }
+
+            $this->getResponse()->addHeader('Content-Type', 'application/json');
+
+            $response = [
+                'success' => $success,
+                'message' => $message,
+            ];
+
+            return Convert::array2json($response);
+        }
+
+        return $this->redirectBack();
+    }
+
+    public function handlelunchout($success, $employee)
     {
         if (Director::is_ajax($this->getRequest())) {
             $settings = MessageSettings::current_settings();
 
-            $employee = $this->getSession()->get('Employee');
             $firstName = $employee->FirstName;
             $lastName = $employee->LastName;
             $fullName = $employee->FullName;
@@ -230,13 +264,20 @@ class FormController extends Controller
         return $this->redirectBack();
     }
 
-    public function handlelunchin($success)
+    public function handlelunchin($success, $employee)
     {
         if (Director::is_ajax($this->getRequest())) {
             $settings = MessageSettings::current_settings();
+
+            $firstName = $employee->FirstName;
+            $lastName = $employee->LastName;
+            $fullName = $employee->FullName;
 
             if ($success) {
                 $message = $settings->LunchIn;
+                $message = preg_replace('/\[FirstName\]/', $firstName, $message);
+                $message = preg_replace('/\[LastName\]/', $lastName, $message);
+                $message = preg_replace('/\[FullName\]/', $fullName, $message);
             } else {
                 $message = 'Sorry, there was a problem with this action';
             }
@@ -254,13 +295,20 @@ class FormController extends Controller
         return $this->redirectBack();
     }
 
-    public function handleappointmentout($success)
+    public function handleappointmentout($success, $employee)
     {
         if (Director::is_ajax($this->getRequest())) {
             $settings = MessageSettings::current_settings();
+
+            $firstName = $employee->FirstName;
+            $lastName = $employee->LastName;
+            $fullName = $employee->FullName;
 
             if ($success) {
                 $message = $settings->AppointmentOut;
+                $message = preg_replace('/\[FirstName\]/', $firstName, $message);
+                $message = preg_replace('/\[LastName\]/', $lastName, $message);
+                $message = preg_replace('/\[FullName\]/', $fullName, $message);
             } else {
                 $message = 'Sorry, there was a problem with this action';
             }
@@ -278,13 +326,20 @@ class FormController extends Controller
         return $this->redirectBack();
     }
 
-    public function handleappointmentin($success)
+    public function handleappointmentin($success, $employee)
     {
         if (Director::is_ajax($this->getRequest())) {
             $settings = MessageSettings::current_settings();
 
+            $firstName = $employee->FirstName;
+            $lastName = $employee->LastName;
+            $fullName = $employee->FullName;
+
             if ($success) {
                 $message = $settings->AppointmentIn;
+                $message = preg_replace('/\[FirstName\]/', $firstName, $message);
+                $message = preg_replace('/\[LastName\]/', $lastName, $message);
+                $message = preg_replace('/\[FullName\]/', $fullName, $message);
             } else {
                 $message = 'Sorry, there was a problem with this action';
             }

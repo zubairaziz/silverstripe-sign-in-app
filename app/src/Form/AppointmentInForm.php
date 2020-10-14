@@ -40,8 +40,9 @@ class AppointmentInForm extends Form
 
         parent::__construct($controller, $name, $fields, $actions, $required);
 
-        $this->addExtraClass('Appointment-form');
+        $this->addExtraClass('appointment-form');
         $this->setAttribute('data-form-ajax', true);
+        $this->setAttribute('data-form-hide-on-submit', true);
     }
 
     public function forTemplate()
@@ -69,7 +70,7 @@ class AppointmentInForm extends Form
 
         Util::signOut();
 
-        return $this->controller->handleappointmentin($success);
+        return $this->controller->handleappointmentin($success, $employee);
     }
 
     public function Link($action = null)

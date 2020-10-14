@@ -1,5 +1,6 @@
 <div id="$HolderID" class="field<% if $extraClass %> $extraClass<% end_if %>">
-  <% if $Title %><label for="$ID">$Title<% if Required || IsRequiredPasswordField %> <sup>*</sup><% end_if %></label><% end_if %>
+  <% if $Title %><label for="$ID">$Title<% if Required || IsRequiredPasswordField %>
+    <sup>*</sup><% end_if %></label><% end_if %>
   <div class="form-field-wrapper">
     $Field
   </div>

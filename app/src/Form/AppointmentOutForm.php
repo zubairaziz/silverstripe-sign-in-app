@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Page\HomePage;
+use App\Util\Util;
 use DateTime;
 use DateTimeZone;
 use SilverStripe\Control\Controller;
@@ -39,8 +40,9 @@ class AppointmentOutForm extends Form
 
         parent::__construct($controller, $name, $fields, $actions, $required);
 
-        $this->addExtraClass('Appointment-form');
+        $this->addExtraClass('appointment-form');
         $this->setAttribute('data-form-ajax', true);
+        $this->setAttribute('data-form-hide-on-submit', true);
     }
 
     public function forTemplate()
@@ -68,8 +70,7 @@ class AppointmentOutForm extends Form
 
         Util::signOut();
 
-
-        return $this->controller->handleappointmentout($success);
+        return $this->controller->handleappointmentout($success, $employee);
     }
 
     public function Link($action = null)

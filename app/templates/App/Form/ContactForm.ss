@@ -14,7 +14,7 @@
     </div>
   </fieldset>
 
-  <div class="form-messages text-center py-4"></div>
+  <div class="py-4 text-center form-messages"></div>
   <div class="form-error-message"></div>
 
   <% loop HiddenFields %>

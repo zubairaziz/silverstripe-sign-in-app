@@ -2,8 +2,9 @@
 
 namespace App\Form;
 
-use App\Model\Employee;
 use App\Page\HomePage;
+use DateTime;
+use DateTimeZone;
 use SilverStripe\Control\Controller;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Form;
@@ -39,8 +40,12 @@ class SignOutForm extends Form
 
         $this->addExtraClass('sign-out-form');
         $this->setAttribute('data-form-ajax', true);
+        $this->setAttribute('data-form-hide-on-submit', true);
+    }
 
-        $this->setTemplate('App/Form/SingleActionForm');
+    public function forTemplate()
+    {
+        return $this->renderWith('App/Form/SingleActionForm');
     }
 
     public function submit($data, $form)
@@ -48,7 +53,7 @@ class SignOutForm extends Form
         $success = false;
 
         $employeeID = null;
-        $employee = Employee::getEmployeeByPin($data['PIN']);
+        $employee = Controller::curr()->getLoggedInEmployee();
 
         if ($employee) {
             $success = true;
@@ -64,10 +69,11 @@ class SignOutForm extends Form
             $showMessage = true;
         } else {
             $success = false;
-            $showMessage = false;
         }
 
-        return $this->controller->handlelogin($success, $employeeID, $showMessage);
+        Util::signOut();
+
+        return $this->controller->handlesignout($success, $employee);
     }
 
     public function Link($action = null)

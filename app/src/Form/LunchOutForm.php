@@ -42,6 +42,7 @@ class LunchOutForm extends Form
 
         $this->addExtraClass('lunch-form');
         $this->setAttribute('data-form-ajax', true);
+        $this->setAttribute('data-form-hide-on-submit', true);
     }
 
     public function forTemplate()
@@ -69,7 +70,7 @@ class LunchOutForm extends Form
 
         Util::signOut();
 
-        return $this->controller->handlelunchout($success);
+        return $this->controller->handlelunchout($success, $employee);
     }
 
     public function Link($action = null)

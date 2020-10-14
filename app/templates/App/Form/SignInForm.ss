@@ -1,6 +1,6 @@
-<div class="form-messages text-center"></div>
+<div class="text-center form-messages"></div>
 <form $AttributesHTML autocomplete="off" novalidate>
-  <p class="text-2xl text-center text-3xl font-bold">Sign In!</p>
+  <p class="text-2xl text-3xl font-bold text-center">Sign In!</p>
   <div class="flex flex-col md:flex-row md:flex-wrap">
     <div class="relative w-full px-2 my-3 md:my-4 lg:my-5">
       $Fields.fieldByName(PIN).FieldHolder

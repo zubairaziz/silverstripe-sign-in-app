@@ -138,6 +138,13 @@ class Employee extends DataObject
         return $today->SignInTime;
     }
 
+    public function hasSignedOut()
+    {
+        $this->generateTimesheet();
+        $today = $this->getTodaysTimesheet();
+        return $today->SignOutTime;
+    }
+
     public function IsLunch()
     {
         $this->generateTimesheet();
@@ -206,7 +213,7 @@ class Employee extends DataObject
                 $color = $this->OOTOReason;
             }
         }
-        if ($today->SignInTime) {
+        if ($today->SignInTime && !$today->SignOutTime) {
             $color = 'green';
         }
         if ($today->LunchOutTime && !$today->LunchInTime) {
