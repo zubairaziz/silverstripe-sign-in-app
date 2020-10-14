@@ -1,7 +1,6 @@
 import './styles/index.css'
 import 'alpinejs'
 import FastClick from 'fastclick'
-require('video.js')
 
 if ('addEventListener' in document) {
   document.addEventListener(
@@ -11,6 +10,15 @@ if ('addEventListener' in document) {
     },
     false
   )
+}
+
+if ('serviceWorker' in navigator) {
+  // Use the window load event to keep the page load performant
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register(
+      '/_resources/app/client/dist/service-worker.js'
+    )
+  })
 }
 
 document.addEventListener('DOMContentLoaded', () => {

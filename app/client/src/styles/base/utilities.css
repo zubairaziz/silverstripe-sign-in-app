@@ -68,7 +68,7 @@
 .wysiwyg {
   h1,
   h2 {
-    @apply mb-2 text-2xl  text-primary;
+    @apply mb-2 text-2xl text-primary;
 
     @screen md {
       @apply text-4xl;
@@ -126,7 +126,7 @@
 }
 
 .title-outline {
-  @apply text-xl  leading-none;
+  @apply text-xl leading-none;
 
   @screen lg {
     @apply text-4xl;

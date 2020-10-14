@@ -1,5 +1,5 @@
 .date-time {
-  @apply w-full grid place-content-center text-center;
+  @apply grid w-full text-center place-content-center;
 
   .clock {
     @apply text-5xl;

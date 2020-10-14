@@ -21,3 +21,12 @@
 /* Sections*/
 
 @import 'components/print';
+
+/* Whitelist */
+/* div {
+  @apply text-red-800 bg-red-200 bg-red-500 border-red-700;
+}
+
+div {
+  @apply text-green-800 bg-green-200 bg-green-500 border-green-700;
+} */

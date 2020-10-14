@@ -13,6 +13,7 @@ const chokidar = require('chokidar')
 const { merge } = require('webpack-merge')
 const path = require('path')
 const webpack = require('webpack')
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 const DEV_MODE = process.env.NODE_ENV !== 'production'
 const PROD_MODE = !DEV_MODE
@@ -252,6 +253,7 @@ if (PROD_MODE) {
       new ImageminPlugin({
         test: ['images/**'],
       }),
+      new WorkboxPlugin.GenerateSW(),
     ],
     optimization: {
       minimizer: [
