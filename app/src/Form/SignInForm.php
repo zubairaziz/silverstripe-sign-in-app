@@ -64,10 +64,10 @@ class SignInForm extends Form
             $showMessage = false;
             $session = $this->controller->getSession();
             if ($employee->hasSignedIn()) {
-                $session->set('LoggedIn', true);
-                $session->set('EmployeeID', $employee->ID);
-                $session->set('Employee', $employee);
                 $employeeID = $employee->ID;
+                $session->set('LoggedIn', true);
+                $session->set('EmployeeID', $employeeID);
+                $session->set('Employee', $employee);
             } else {
                 $tz = 'America/New_York';
                 $timestamp = time();
@@ -83,6 +83,6 @@ class SignInForm extends Form
             $showMessage = false;
         }
 
-        return $this->controller->handlelogin($success, $employeeID, $showMessage);
+        return $this->controller->handlelogin($success, $employee, $showMessage);
     }
 }

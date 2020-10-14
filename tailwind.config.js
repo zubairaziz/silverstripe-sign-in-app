@@ -6,16 +6,6 @@ module.exports = {
   separator: ':',
   purge: {
     content: ['app/templates/**/*.ss', 'app/client/src/scripts/**/*.js'],
-    whitelist: [
-      'bg-red-500',
-      'border-red-700',
-      'bg-red-200',
-      'text-red-800',
-      'bg-green-500',
-      'border-green-700',
-      'bg-green-200',
-      'text-green-800',
-    ],
   },
   theme: {
     fontSize: {

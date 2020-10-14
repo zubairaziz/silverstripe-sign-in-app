@@ -36,6 +36,15 @@ class PageController extends ContentController
         return Employee::get()->filter(['ActiveEmployee' => true]);
     }
 
+    public function getBackgroundColor()
+    {
+        $backgroundSettings = BackgroundSettings::current_settings();
+        if ($backgroundSettings->UseBackgroundColor) {
+            return $backgroundSettings->BackgroundColor;
+        }
+        return null;
+    }
+
     public function getBackgroundImages()
     {
         $backgroundSettings = BackgroundSettings::current_settings();
@@ -50,15 +59,6 @@ class PageController extends ContentController
         $backgroundSettings = BackgroundSettings::current_settings();
         if ($backgroundSettings->BackgroundVideo()->exists()) {
             return $backgroundSettings->BackgroundVideo();
-        }
-        return null;
-    }
-
-    public function getAnimationDuration()
-    {
-        $backgroundSettings = BackgroundSettings::current_settings();
-        if ($num = $backgroundSettings->BackgroundImages()->count()) {
-            return $num * 6;
         }
         return null;
     }

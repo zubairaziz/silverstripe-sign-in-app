@@ -1,6 +1,4 @@
-// eslint-disable-next-line prettier/prettier
 import { on } from 'delegated-events'
-// eslint-disable-next-line prettier/prettier
 import { handleValidation, handleBlur } from '../common/validation'
 import Imask from 'imask'
 
@@ -60,11 +58,9 @@ const fn = {
         })
         .finally(() => {
           fn.toggleSubmit($submitButton)
-          // if (isLoginForm) {
           setTimeout(() => {
             location.reload()
           }, 2500)
-          // }
         })
     }
   },

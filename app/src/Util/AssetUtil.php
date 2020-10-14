@@ -10,9 +10,6 @@ use SilverStripe\View\Requirements;
 class AssetUtil
 {
     private static $manifestCache = null;
-    private static $assetIconSymbolsCache = null;
-    private static $assetIconInlineCache = [];
-    private static $spritemapFile = 'spritemap.svg';
     private static $themeDir = 'app/client';
 
     /**
@@ -73,89 +70,6 @@ class AssetUtil
     public static function getAssetInline($path)
     {
         return file_get_contents(self::getAbsResourcePath($path));
-    }
-
-    /**
-     * Returns an SVG icon based on a spritemap file
-     *
-     * Requires this webpack plugin to be used and configured properly
-     * https://github.com/cascornelissen/svg-spritemap-webpack-plugin
-     *
-     * The viewBox attribute is extracted from the spritemap symbol
-     * and applied to the parent <svg> so it's easier to work with in CSS
-     */
-    public static function getAssetIcon($name)
-    {
-        $spritemapPath = self::getAsset(self::$spritemapFile);
-        $symbols = self::getAssetIconSymbols();
-
-        // Special cases where we want to preserve the colors of the original SVG
-        $useImage = [];
-
-        if (in_array($name, $useImage)) {
-            return self::getAssetIconInline($name);
-        }
-
-        if (array_key_exists("sprite-{$name}", $symbols)) {
-            $symbol = $symbols["sprite-$name"];
-
-            return sprintf('
-                <svg data-icon="%s" aria-hidden="true" viewBox="%s">
-                    <use xlink:href="%s#sprite-%s"></use>
-                </svg>
-            ', $name, $symbol->getAttribute('viewBox'), $spritemapPath, $name);
-        }
-    }
-
-    /**
-     * Returns an SVG icon based on file
-     */
-    public static function getAssetIconInline($name)
-    {
-        if (array_key_exists($name, self::$assetIconInlineCache)) {
-            return self::$assetIconInlineCache[$name];
-        }
-
-        $svg = new \DomDocument;
-        $svg->validateOnParse = true;
-        $svg->load(self::getAbsResourcePath("images/{$name}.svg"));
-        $svg->getElementsByTagName('svg')[0]->setAttribute('data-icon', $name);
-
-        $svgHtml = $svg->saveHTML();
-
-        self::$assetIconInlineCache[$name] = $svgHtml;
-
-        return $svgHtml;
-    }
-
-    /**
-     * Loads all the symbols (icons) in the SVG spritemap file
-     */
-    private static function getAssetIconSymbols()
-    {
-        if (!is_null(self::$assetIconSymbolsCache)) {
-            return self::$assetIconSymbolsCache;
-        }
-
-        $spritemapAbsPath = self::getAbsResourcePath(self::$spritemapFile);
-
-        if (!file_exists($spritemapAbsPath)) {
-            return [];
-        }
-
-        $spritemap = new \DomDocument;
-        $spritemap->validateOnParse = true;
-        $spritemap->load($spritemapAbsPath);
-        $symbolNodes = $spritemap->getElementsByTagName('symbol');
-        $symbols = [];
-
-        foreach ($symbolNodes as $node) {
-            $symbols[$node->getAttribute('id')] = $node;
-        }
-
-        self::$assetIconSymbolsCache = $symbols;
-
-        return self::$assetIconSymbolsCache;
     }
 
     /**

@@ -48,40 +48,40 @@ class MessageSettings extends DataObject
             TextareaField::create(
                 'SignInMessage',
                 'Sign In Message'
-            ),
+            )->showVariableHelper(),
             TextareaField::create(
                 'SignOutMessage',
                 'Sign Out Message'
-            )
+            )->showVariableHelper()
         ]);
 
         $fields->addFieldsToTab('Root.Messages.Lunch', [
             TextareaField::create(
                 'LunchOut',
                 'Out to Lunch Message'
-            ),
+            )->showVariableHelper(),
             TextareaField::create(
                 'LunchIn',
                 'Back from Lunch Message'
-            ),
+            )->showVariableHelper()
         ]);
 
         $fields->addFieldsToTab('Root.Messages.Appointment', [
             TextareaField::create(
                 'AppointmentOut',
                 'Out to Appointment Message'
-            ),
+            )->showVariableHelper(),
             TextareaField::create(
                 'AppointmentIn',
                 'Back from Appointment Message'
-            ),
+            )->showVariableHelper()
         ]);
 
         $fields->addFieldsToTab('Root.Messages.Birthday', [
             TextareaField::create(
                 'BirthdayMessage',
                 'Birthday Message'
-            ),
+            )->showVariableHelper()
         ]);
 
 

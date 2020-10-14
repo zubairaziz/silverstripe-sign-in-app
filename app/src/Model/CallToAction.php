@@ -5,9 +5,7 @@ namespace App\Model;
 use App\Extension\Sortable;
 use App\Form\Field\DBVideoURL;
 use App\Security\CMSPermissionProvider;
-use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\File;
-use SilverStripe\Assets\Image;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
 use SilverStripe\Forms\DropdownField;
@@ -152,13 +150,13 @@ class CallToAction extends DataObject
     {
         switch ($this->Type) {
             case 'Internal':
-                return sprintf('Internal Link (%s)', $this->InternalLink()->Title);
+                return "Internal Link ({$this->InternalLink()->Title})";
                 break;
             case 'Anchor':
-                return sprintf('Page Anchor (%s)', $this->AnchorTarget);
+                return "Page Anchor ({$this->AnchorTarget})";
                 break;
             case 'External':
-                return sprintf('External Link (%s)', $this->ExternalLink);
+                return "External Link ({$this->ExternalLink})";
                 break;
             case 'Donate':
                 return 'Donation Form';

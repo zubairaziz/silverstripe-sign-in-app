@@ -33,7 +33,7 @@ class ContactFormSubmission extends DataObject
 
     public function getTitle()
     {
-        return sprintf('%s %s', $this->FirstName, $this->LastName);
+        return "{$this->FirstName} {$this->LastName}";
     }
 
     public function getExportFields()

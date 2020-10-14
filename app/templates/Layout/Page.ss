@@ -1,6 +1,4 @@
 <article>
-  <%-- <% include PageHeader %> --%>
-
   <div class="container">
     <section class="page-container">
       $Content

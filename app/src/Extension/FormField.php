@@ -7,6 +7,28 @@ use SilverStripe\Core\Extension;
 class FormField extends Extension
 {
     /**
+     * Displays a helper message for using variables
+     */
+    public function showVariableHelper()
+    {
+        $currentTitle = trim($this->owner->RightTitle());
+        $helper = 'Available variables: [FirstName], [LastName], [FullName]';
+
+        // If there is already a RightTitle, append our message to the end
+        if ($currentTitle) {
+            if (substr($currentTitle, -1) != '.') {
+                $helper = "{$currentTitle}. {$helper}";
+            } else {
+                $helper = "{$currentTitle} {$helper}";
+            }
+        }
+
+        $this->owner->setRightTitle($helper);
+
+        return $this->owner;
+    }
+
+    /**
      * Displays a helper message for using special emphasis characters
      */
     public function showEmphasisHelper()
@@ -17,9 +39,9 @@ class FormField extends Extension
         // If there is already a RightTitle, append our message to the end
         if ($currentTitle) {
             if (substr($currentTitle, -1) != '.') {
-                $helper = sprintf('%s. %s', $currentTitle, $helper);
+                $helper = "{$currentTitle}. {$helper}";
             } else {
-                $helper = sprintf('%s %s', $currentTitle, $helper);
+                $helper = "{$currentTitle} {$helper}";
             }
         }
 
@@ -34,14 +56,14 @@ class FormField extends Extension
     public function showSuggestedSizeHelper(string $sizeStr)
     {
         $currentTitle = trim($this->owner->RightTitle());
-        $helper = sprintf('Suggested size: %s.', $sizeStr);
+        $helper = "Suggested size: {$sizeStr}.";
 
         // If there is already a RightTitle, append our message to the end
         if ($currentTitle) {
             if (substr($currentTitle, -1) != '.') {
-                $helper = sprintf('%s. %s', $currentTitle, $helper);
+                $helper = "{$currentTitle}. {$helper}";
             } else {
-                $helper = sprintf('%s %s', $currentTitle, $helper);
+                $helper = "{$currentTitle} {$helper}";
             }
         }
 
@@ -61,9 +83,9 @@ class FormField extends Extension
         // If there is already a RightTitle, append our message to the end
         if ($currentTitle) {
             if (substr($currentTitle, -1) != '.') {
-                $helper = sprintf('%s. %s', $currentTitle, $helper);
+                $helper = "{$currentTitle}. {$helper}";
             } else {
-                $helper = sprintf('%s %s', $currentTitle, $helper);
+                $helper = "{$currentTitle} {$helper}";
             }
         }
 

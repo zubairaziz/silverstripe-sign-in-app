@@ -134,7 +134,7 @@ class FormController extends Controller
         return $this->redirectBack();
     }
 
-    public function handlelogin($success, $employeeID = null, $showMessage = false)
+    public function handlelogin($success, $employee = null, $showMessage = false)
     {
         if (Director::is_ajax($this->getRequest())) {
             if (!SecurityToken::inst()->checkRequest($this->getRequest())) {
@@ -143,8 +143,15 @@ class FormController extends Controller
 
             $settings = MessageSettings::current_settings();
 
+            $firstName = $employee->FirstName;
+            $lastName = $employee->LastName;
+            $fullName = $employee->FullName;
+
             if ($success) {
                 $message = $settings->SignInMessage;
+                $message = preg_replace('/\[FirstName\]/', $firstName, $message);
+                $message = preg_replace('/\[LastName\]/', $lastName, $message);
+                $message = preg_replace('/\[FullName\]/', $fullName, $message);
             } else {
                 $message = 'Incorrect PIN';
             }
@@ -155,16 +162,13 @@ class FormController extends Controller
                 $response = [
                     'success' => $success,
                     'message' => $message,
-                    'employee' => $employeeID
                 ];
             } else {
                 $response = [
                     'success' => $success,
                     'message' => null,
-                    'employee' => $employeeID
                 ];
             }
-
 
             return Convert::array2json($response);
         }
@@ -196,6 +200,33 @@ class FormController extends Controller
 
     public function handlelunchout($success)
     {
+        if (Director::is_ajax($this->getRequest())) {
+            $settings = MessageSettings::current_settings();
+
+            $employee = $this->getSession()->get('Employee');
+            $firstName = $employee->FirstName;
+            $lastName = $employee->LastName;
+            $fullName = $employee->FullName;
+
+            if ($success) {
+                $message = $settings->LunchOut;
+                $message = preg_replace('/\[FirstName\]/', $firstName, $message);
+                $message = preg_replace('/\[LastName\]/', $lastName, $message);
+                $message = preg_replace('/\[FullName\]/', $fullName, $message);
+            } else {
+                $message = 'Sorry, there was a problem with this action';
+            }
+
+            $this->getResponse()->addHeader('Content-Type', 'application/json');
+
+            $response = [
+                'success' => $success,
+                'message' => $message,
+            ];
+
+            return Convert::array2json($response);
+        }
+
         return $this->redirectBack();
     }
 
@@ -295,7 +326,6 @@ class FormController extends Controller
     public function getSession()
     {
         $session = $this->getRequest()->getSession();
-        // Debug::show($session);
         return $session;
     }
 }

@@ -6,4 +6,20 @@
       filter: grayscale(90%);
     }
   }
+  .status-indicator {
+    &.is-red {
+      @apply bg-red-500 border-red-700;
+    }
+    &.is-green {
+      @apply bg-green-500 border-green-700;
+    }
+  }
+  .status-text {
+    &.is-red {
+      @apply text-red-800 bg-red-200;
+    }
+    &.is-green {
+      @apply text-green-800 bg-green-200;
+    }
+  }
 }

@@ -24,3 +24,7 @@ a:not([class]) {
     @apply no-underline text-primary-darker;
   }
 }
+
+.welcome-text {
+  text-shadow: 1px 1px 10px #0008;
+}

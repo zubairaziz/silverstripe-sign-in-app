@@ -90,7 +90,7 @@ class Employee extends DataObject
 
     public function getFullName()
     {
-        return sprintf('%s %s', $this->FirstName, $this->LastName);
+        return "{$this->FirstName} {$this->LastName}";
     }
 
     public static function getEmployeeByPin($pin)

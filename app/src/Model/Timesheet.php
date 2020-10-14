@@ -49,7 +49,7 @@ class Timesheet extends DataObject
 
     public function getTitle()
     {
-        return sprintf('%s - %s', $this->dbObject('Date')->Nice(), $this->Employee()->getTitle());
+        return "{$this->dbObject('Date')->Nice()} - {$this->Employee()->getTitle()}";
     }
 
     public function getCMSFields()

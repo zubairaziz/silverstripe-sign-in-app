@@ -46,7 +46,7 @@ class FileDownloadController extends Controller
 
     public static function createLinkFromFile($file)
     {
-        $url = sprintf('/_downloadfile/%s-%s', $file->ID, $file->FileHash);
+        $url = "/_downloadfile/{$file->ID}-{$file->FileHash}";
 
         return Director::absoluteURL($url);
     }

@@ -209,11 +209,7 @@ class CalendarSettings extends DataObject
                 new ArrayData([
                     'Name' => $employee->getTitle(),
                     'Birthday' => $employee->dbObject('Birthday')->Nice(),
-                    'NiceBirthday' => sprintf(
-                        '%s %s',
-                        $employee->dbObject('Birthday')->Month(),
-                        $employee->dbObject('Birthday')->DayOfMonth()
-                    ),
+                    'NiceBirthday' => "{$employee->dbObject('Birthday')->Month()} {$employee->dbObject('Birthday')->DayOfMonth()}",
                     'Day' => $employee->dbObject('Birthday')->DayOfMonth(),
                     'Month' => $employee->dbObject('Birthday')->Month()
                 ])

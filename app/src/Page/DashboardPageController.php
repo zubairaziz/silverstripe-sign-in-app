@@ -79,7 +79,7 @@ class DashboardPageController extends PaginatedPageController implements Filtera
             $filterValue = $this->searchTerm;
         }
 
-        $heading = sprintf('<strong>Searching:</strong> %s', $filterValue);
+        $heading = "<strong>Searching:</strong> {$filterValue}";
 
         return DBField::create_field('HTMLText', $heading);
     }

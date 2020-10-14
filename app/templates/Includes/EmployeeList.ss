@@ -1,22 +1,22 @@
-<div class="pt-4 mx-auto max-w-screen-xl" x-data="loadEmployees()">
-  <div class="relative group text-gray-600">
+<div class="max-w-screen-xl pt-4 mx-auto" x-data="loadEmployees()">
+  <div class="relative text-gray-600 group">
     <input x-ref="searchField" x-model="search" x-on:keydown.window.prevent.slash="$refs.searchField.focus()"
       placeholder="Search for an employee..." type="search"
-      class="relative group block w-full bg-gray-200 focus:outline-none focus:bg-white focus:shadow text-gray-600 rounded-lg px-4 py-3" />
+      class="relative block w-full px-4 py-3 text-gray-600 bg-gray-200 rounded-lg group focus:outline-none focus:bg-white focus:shadow" />
   </div>
-  <div class="mt-4 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4 h-full">
+  <div class="grid h-full grid-cols-2 gap-4 mt-4 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
     <template x-for="item in filteredEmployees" :key="item">
-      <div class="employee-badge grid place-content-center text-center rounded shadow p-3">
-        <figure class="group relative grid place-content-center mb-2">
+      <div class="grid p-3 text-center rounded shadow employee-badge place-content-center">
+        <figure class="relative grid mb-2 group place-content-center">
           <img :src="`${item.profile_image}`" alt=""
             :class="`relative inline-block h-24 w-24 rounded-full text-white mx-auto is-${item.employee_status_color}`">
           <div
-            :class="`absolute w-4 h-4 bg-${item.employee_status_color}-500 border border-${item.employee_status_color}-700 rounded-full bottom-0 right-0 transform -translate-y-1 -translate-x-2`">
+            :class="`status-indicator is-${item.employee_status_color} border absolute w-4 h-4 rounded-full bottom-0 right-0 transform -translate-y-1 -translate-x-2`">
           </div>
         </figure>
         <div class="text-sm">
-          <p class="text-gray-800 text-lg leading-none my-1" x-text="item.employee_name"></p>
-          <p :class="`px-2 py-1 text-xs rounded-full bg-${item.employee_status_color}-200 text-${item.employee_status_color}-800`"
+          <p class="my-1 text-lg leading-none text-gray-800" x-text="item.employee_name"></p>
+          <p :class="`status-text is-${item.employee_status_color} px-2 py-1 text-xs rounded-full`"
             x-text="item.employee_status"></p>
         </div>
       </div>

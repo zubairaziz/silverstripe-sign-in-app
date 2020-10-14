@@ -7,10 +7,14 @@ use App\Security\CMSPermissionProvider;
 use App\Util\Util;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\File;
+use SilverStripe\Forms\CheckboxField;
+use SilverStripe\Forms\FieldGroup;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\TabSet;
 use SilverStripe\ORM\DataObject;
+use TractorCow\Colorpicker\Color;
+use TractorCow\Colorpicker\Forms\ColorField;
 
 class BackgroundSettings extends DataObject
 {
@@ -21,6 +25,11 @@ class BackgroundSettings extends DataObject
 
     private static $extensions = [
         AppSettings::class
+    ];
+
+    private static $db = [
+        'UseBackgroundColor' => 'Boolean',
+        'BackgroundColor' => Color::class
     ];
 
     private static $has_one = [
@@ -41,6 +50,14 @@ class BackgroundSettings extends DataObject
             TabSet::create('Root')
         );
 
+        $fields->addFieldsToTab('Root.Background.Solid Color', [
+            FieldGroup::create(
+                'Enable Background Color',
+                CheckboxField::create('UseBackgroundColor', 'Use Solid Background Color')
+            ),
+            ColorField::create('BackgroundColor', 'Background Color')
+        ]);
+
         $fields->addFieldsToTab('Root.Background.Image', [
             GridField::create(
                 'BackgroundImages',
@@ -57,10 +74,16 @@ class BackgroundSettings extends DataObject
             )->setAllowedExtensions(['mp4', 'wav', 'webm'])
         ]);
 
-
         $this->extend('updateCMSFields', $fields);
 
         return $fields;
+    }
+
+    public function populateDefaults()
+    {
+        $this->BackgroundColor = '514A6B';
+
+        parent::populateDefaults();
     }
 
     public static function current_settings()

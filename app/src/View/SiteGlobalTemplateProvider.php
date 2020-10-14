@@ -3,6 +3,7 @@
 namespace App\View;
 
 use App\Form\FormController;
+use App\Model\MessageSettings;
 use App\Util\AssetUtil;
 use App\Util\TextUtil;
 use App\Util\Util;
@@ -29,20 +30,13 @@ class SiteTemplateGlobalProvider implements TemplateGlobalProvider
             'AppointmentOutForm' => 'AppointmentOutForm',
             'LunchInForm' => 'LunchInForm',
             'AppointmentInForm' => 'AppointmentInForm',
+            'IsLive' => 'IsLive',
             'SiteCSS' => 'SiteCSS',
             'SiteLiveCSS' => 'SiteLiveCSS',
             'SiteJS' => 'SiteJS',
             'Asset' => 'Asset',
             'AssetInline' => [
                 'method' => 'AssetInline',
-                'casting' => 'HTMLFragment'
-            ],
-            'AssetIcon' => [
-                'method' => 'AssetIcon',
-                'casting' => 'HTMLFragment'
-            ],
-            'AssetIconInline' => [
-                'method' => 'AssetIconInline',
                 'casting' => 'HTMLFragment'
             ],
             'TextEmphasize' => [
@@ -61,7 +55,8 @@ class SiteTemplateGlobalProvider implements TemplateGlobalProvider
                 'method' => 'TextEmphasizeFromEnd',
                 'casting' => 'HTMLFragment'
             ],
-            'IsLive' => 'IsLive'
+            'WelcomeMessage' => 'WelcomeMessage',
+            'BirthdayMessage' => 'BirthdayMessage',
         ];
     }
 
@@ -182,16 +177,6 @@ class SiteTemplateGlobalProvider implements TemplateGlobalProvider
         return AssetUtil::getAssetInline($path);
     }
 
-    public static function AssetIcon($name)
-    {
-        return AssetUtil::getAssetIcon($name);
-    }
-
-    public static function AssetIconInline($name)
-    {
-        return AssetUtil::getAssetIconInline($name);
-    }
-
     public static function TextEmphasize($text)
     {
         return TextUtil::emphasize($text);
@@ -210,5 +195,11 @@ class SiteTemplateGlobalProvider implements TemplateGlobalProvider
     public static function TextEmphasizeFromEnd($text, $numWords = 1)
     {
         return TextUtil::emphasizeFromEnd($text, $numWords);
+    }
+
+    public static function WelcomeMessage()
+    {
+        $settings = MessageSettings::current_settings();
+        return $settings->WelcomeMessage;
     }
 }
