@@ -36,7 +36,11 @@ class Employee extends DataObject
         'Email' => 'Varchar',
         'Phone' => 'Varchar',
         'Birthday' => 'Date',
+        'BirthdayMonth' => 'Int',
+        'BirthdayDate' => 'Int',
         'Anniversary' => 'Date',
+        'AnniversaryMonth' => 'Int',
+        'AnniversaryDate' => 'Int',
         'PIN' => 'Int',
         'ActiveEmployee' => 'Boolean'
     ];
@@ -228,6 +232,10 @@ class Employee extends DataObject
         return $color;
     }
 
+    public function getBirthdayMonth()
+    {
+    }
+
     public function checkPinAvailability($pin)
     {
         if (self::get()->exclude('ID', $this->ID)->filter('PIN', $pin)->first()) {
@@ -300,6 +308,30 @@ class Employee extends DataObject
     {
         parent::onBeforeWrite();
 
+        $birthday = $this->Birthday;
+        $bDate = date_parse_from_format("Y-m-d", $birthday);
+        $anniversary = $this->Anniversary;
+        $aDate = date_parse_from_format("Y-m-d", $anniversary);
+
         $this->Email = trim($this->Email);
+        $this->BirthdayMonth = $bDate["month"];
+        $this->BirthdayDate = $bDate["day"];
+        $this->AnniversaryMonth = $aDate["month"];
+        $this->AnniversaryDate = $aDate["day"];
+    }
+
+    public function onAfterWrite()
+    {
+        $birthday = $this->Birthday;
+        $bDate = date_parse_from_format("Y-m-d", $birthday);
+        $anniversary = $this->Anniversary;
+        $aDate = date_parse_from_format("Y-m-d", $anniversary);
+
+        $this->BirthdayMonth = $bDate["month"];
+        $this->BirthdayDate = $bDate["day"];
+        $this->AnniversaryMonth = $aDate["month"];
+        $this->AnniversaryDate = $aDate["day"];
+
+        parent::onAfterWrite();
     }
 }

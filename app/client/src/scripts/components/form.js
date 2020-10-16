@@ -1,6 +1,6 @@
 import { on } from 'delegated-events'
 import { handleValidation, handleBlur } from '../common/validation'
-import Imask from 'imask'
+// import Imask from 'imask'
 
 const fn = {
   init: () => {
@@ -15,7 +15,7 @@ const fn = {
     })
     on('submit', '[data-form-ajax]', fn.handleSingleActionAjax)
     on('submit', '.sign-in-form', fn.handleSignInAjax)
-    fn.setupPINMasking()
+    fn.setupSignForm()
     fn.setupSpecialFields()
   },
 
@@ -74,12 +74,6 @@ const fn = {
     if (isValid) {
       const $formMessages = document.querySelector('.form-messages')
       const $submitButton = $form.querySelector('[type=submit]')
-      const $pinInput = $form.querySelector('input[name="PIN"]')
-      const mask = Imask($pinInput, {
-        mask: '0000',
-      })
-      fn.toggleSubmit($submitButton)
-      $pinInput.value = mask.unmaskedValue
 
       ajax
         .url($form.action)
@@ -122,11 +116,26 @@ const fn = {
     }
   },
 
-  setupPINMasking: () => {
-    const $pinInput = document.querySelector('input[name="PIN"]')
-    if ($pinInput) {
-      Imask($pinInput, {
-        mask: '0000',
+  setupSignForm: () => {
+    const $form = document.querySelector('.sign-in-form')
+    if ($form) {
+      // const $trigger = document.querySelector('.sign-in-trigger')
+      const $pinInput1 = $form.querySelector('input[name="PIN1"]')
+      const $pinInput2 = $form.querySelector('input[name="PIN2"]')
+      const $pinInput3 = $form.querySelector('input[name="PIN3"]')
+      const $pinInput4 = $form.querySelector('input[name="PIN4"]')
+      const $submitButton = $form.querySelector('[type=submit')
+      $pinInput1.addEventListener('keypress', () => {
+        $pinInput2.focus()
+      })
+      $pinInput2.addEventListener('keypress', () => {
+        $pinInput3.focus()
+      })
+      $pinInput3.addEventListener('keypress', () => {
+        $pinInput4.focus()
+      })
+      $pinInput4.addEventListener('keyup', () => {
+        $submitButton.click()
       })
     }
   },

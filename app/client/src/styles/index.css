@@ -13,6 +13,7 @@
 @import 'components/form';
 @import 'components/clock';
 @import 'components/employee-badge';
+@import 'components/employee-card';
 @import 'components/tabset';
 @import 'components/calendar';
 @import '../../../../node_modules/@splidejs/splide/dist/css/splide.min.css';

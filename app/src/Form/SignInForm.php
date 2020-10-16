@@ -19,14 +19,30 @@ class SignInForm extends Form
         $page = HomePage::get()->first();
 
         $fields = FieldList::create([
-            TextField::create('PIN', '')
+            // TextField::create('PIN', '')
+            //     ->setAttribute('inputmode', 'numeric')
+            //     ->addExtraClass('text-center text-xl tracking-widest')
+            //     ->setAttribute('pattern', '\d{4}')
+            TextField::create('PIN1', '')
                 ->setAttribute('inputmode', 'numeric')
-                ->addExtraClass('text-center text-xl tracking-widest')
-                ->setAttribute('data-mask', '####')
-                // ->setAttribute('placeholder', '____')
-                // ->setAttribute('type', 'number')
-                // ->setAttribute('maxlength', 4)
-                // ->setAttribute('max', '9999')
+                ->addExtraClass('text-center text-xl md:text-3xl md:tracking-widest')
+                ->setAttribute('pattern', '\d{1}')
+                ->setAttribute('data-pin-input', true),
+            TextField::create('PIN2', '')
+                ->setAttribute('inputmode', 'numeric')
+                ->addExtraClass('text-center text-xl md:text-3xl md:tracking-widest')
+                ->setAttribute('pattern', '\d{1}')
+                ->setAttribute('data-pin-input', true),
+            TextField::create('PIN3', '')
+                ->setAttribute('inputmode', 'numeric')
+                ->addExtraClass('text-center text-xl md:text-3xl md:tracking-widest')
+                ->setAttribute('pattern', '\d{1}')
+                ->setAttribute('data-pin-input', true),
+            TextField::create('PIN4', '')
+                ->setAttribute('inputmode', 'numeric')
+                ->addExtraClass('text-center text-xl md:text-3xl md:tracking-widest')
+                ->setAttribute('pattern', '\d{1}')
+                ->setAttribute('data-pin-input', true)
         ]);
 
         $actions = FieldList::create(
@@ -57,7 +73,8 @@ class SignInForm extends Form
         $success = false;
 
         $employeeID = null;
-        $employee = Employee::getEmployeeByPin($data['PIN']);
+        $pin = "{$data['PIN1']}{$data['PIN2']}{$data['PIN3']}{$data['PIN4']}";
+        $employee = Employee::getEmployeeByPin($pin);
 
         if ($employee) {
             $success = true;

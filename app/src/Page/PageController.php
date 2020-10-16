@@ -2,6 +2,7 @@
 
 use App\Model\BackgroundSettings;
 use App\Model\Employee;
+use App\Util\Util;
 use SilverStripe\CMS\Controllers\ContentController;
 use SilverStripe\Dev\Debug;
 
@@ -36,6 +37,40 @@ class PageController extends ContentController
         return Employee::get()->filter(['ActiveEmployee' => true]);
     }
 
+    public function getBirthdayEmployees()
+    {
+        $date = Util::getTodaysDate();
+        $d = date_parse_from_format("Y-m-d", $date);
+        $month = $d["month"];
+        $day = $d["day"];
+
+        return Employee::get()
+            ->filter([
+                'ActiveEmployee' => true,
+                'BirthdayMonth' => $month,
+            ])
+            ->exclude([
+                'BirthdayDate:LessThan' => $day
+            ]);
+    }
+
+    public function getAnniversaryEmployees()
+    {
+        $date = Util::getTodaysDate();
+        $d = date_parse_from_format("Y-m-d", $date);
+        $month = $d["month"];
+        $day = $d["day"];
+
+        return Employee::get()
+            ->filter([
+                'ActiveEmployee' => true,
+                'AnniversaryMonth' => $month,
+            ])
+            ->exclude([
+                'AnniversaryDate:LessThan' => $day
+            ]);
+    }
+
     public function getBackgroundColor()
     {
         $backgroundSettings = BackgroundSettings::current_settings();
@@ -68,11 +103,5 @@ class PageController extends ContentController
         $session = $this->getRequest()->getSession();
         Debug::show($session);
         return $session;
-    }
-
-    public function getDebug()
-    {
-        $this->getSession();
-        return 'Debug';
     }
 }

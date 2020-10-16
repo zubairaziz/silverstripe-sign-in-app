@@ -1,9 +1,9 @@
-<nav class="flex absolute top-0 right-0 p-4 z-50">
+<nav class="absolute top-0 right-0 z-50 flex p-4">
   <% if IsLoggedIn %>
   $LogOutForm($IsLoggedIn)
   <% else %>
-  <button role="button" class="ml-4 z-50" @click="showModal = true">
-    <svg class="transform rotate-180 w-12 h-12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1"
+  <button role="button" class="z-50 ml-4 sign-in-trigger" @click="showModal = true">
+    <svg class="w-12 h-12 transform rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1"
       stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
@@ -14,8 +14,8 @@
     </span>
   </button>
   <% end_if %>
-  <a href="#" data-tab="#tab-1" role="button" class="ml-4 z-50">
-    <svg xmlns="http://www.w3.org/2000/svg" class="transform w-12 h-12" viewBox="0 0 24 24" stroke-width="1"
+  <a href="#" data-tab="#tab-1" role="button" class="z-50 ml-4">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 transform" viewBox="0 0 24 24" stroke-width="1"
       stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <circle cx="9" cy="7" r="4" />
@@ -27,8 +27,8 @@
       Employees
     </span>
   </a>
-  <a href="#" data-tab="#tab-2" role="button" class="ml-4 z-50">
-    <svg xmlns="http://www.w3.org/2000/svg" class="transform w-12 h-12" viewBox="0 0 24 24" stroke-width="1"
+  <a href="#" data-tab="#tab-2" role="button" class="z-50 ml-4">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 transform" viewBox="0 0 24 24" stroke-width="1"
       stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <rect x="4" y="5" width="16" height="16" rx="2" />
@@ -41,8 +41,8 @@
       Calendar
     </span>
   </a>
-  <a href="#" data-tab="#tab-3" role="button" class="ml-4 z-50">
-    <svg xmlns="http://www.w3.org/2000/svg" class="transform w-12 h-12" viewBox="0 0 24 24" stroke-width="1"
+  <a href="#" data-tab="#tab-3" role="button" class="z-50 ml-4">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 transform" viewBox="0 0 24 24" stroke-width="1"
       stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-1" />

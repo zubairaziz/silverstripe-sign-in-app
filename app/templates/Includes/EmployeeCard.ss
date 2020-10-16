@@ -1,4 +1,4 @@
-<div class="w-screen max-w-screen-sm p-4 bg-gray-100 border border-gray-300 rounded-lg shadow-lg">
+<div class="w-screen p-4 bg-gray-100 border border-gray-300 rounded-lg shadow-lg employee-card-holder">
   <div class="text-center form-messages"></div>
   <div class="flex flex-wrap overflow-hidden employee-card">
     <div class="flex flex-col w-full md:w-1/3">
@@ -29,7 +29,7 @@
       <% else %>
       $AppointmentOutForm($IsLunch)
       <% end_if %>
-    <% if not hasSignedOut %>$SignOutForm($AppointmentOrLunch)<% end_if %>
+      <% if not hasSignedOut %>$SignOutForm($AppointmentOrLunch)<% end_if %>
       $LogOutForm
     </div>
     <div class="w-full md:w-2/3">

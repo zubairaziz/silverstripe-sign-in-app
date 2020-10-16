@@ -9,16 +9,18 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin')
 const TerserJSPlugin = require('terser-webpack-plugin')
 const WebpackAssetsManifest = require('webpack-assets-manifest')
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
+const WorkboxPlugin = require('workbox-webpack-plugin')
 const chokidar = require('chokidar')
 const { merge } = require('webpack-merge')
 const path = require('path')
 const webpack = require('webpack')
-const WorkboxPlugin = require('workbox-webpack-plugin');
 
 const DEV_MODE = process.env.NODE_ENV !== 'production'
 const PROD_MODE = !DEV_MODE
 const USE_ANALYZE = process.env.ANALYZE !== undefined
 const USE_SOURCEMAPS = process.env.SOURCEMAPS !== undefined
+const USE_SYNC = process.env.SYNC !== undefined
 const THEME_PATH = path.resolve(__dirname, 'app/client')
 
 const PATHS = {
@@ -229,6 +231,21 @@ if (USE_ANALYZE) {
     new BundleAnalyzerPlugin({
       analyzerMode: 'server',
     })
+  )
+}
+
+if (USE_SYNC) {
+  WebpackConfig.plugins.push(
+    new BrowserSyncPlugin(
+      {
+        host: 'localhost',
+        port: 3000,
+        proxy: 'http://signinapp.test:8080/',
+      },
+      {
+        reload: false,
+      }
+    )
   )
 }
 
