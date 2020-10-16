@@ -15,6 +15,7 @@
       </svg>
       <% end_if %>
       <h2 class="text-xl text-center text-gray-800">$FullName</h2>
+      <% if not hasSignedOut %>
       <% if $TodaysTimesheet.LunchOutTime %>
       <% if not $TodaysTimesheet.LunchInTime %>
       $LunchInForm($IsAppointment)
@@ -29,24 +30,35 @@
       <% else %>
       $AppointmentOutForm($IsLunch)
       <% end_if %>
+      <% end_if %>
       <% if not hasSignedOut %>$SignOutForm($AppointmentOrLunch)<% end_if %>
       $LogOutForm
     </div>
     <div class="w-full md:w-2/3">
       <h3 class="mt-4 mb-2 text-3xl font-bold text-center">Today's Activity</h3>
       <ul class="text-center">
-        <li class="mb-1"><strong class="font-bold">Sign In:</strong> $TodaysTimesheet.SignInTime.Nice</li>
+        <li class="mb-1"><strong class="font-bold">
+            Sign In:
+          </strong> $TodaysTimesheet.SignInTime.Format('h:m a')
+          <% if $TodaysTimesheet.SignOutTime %>
+          <span> - $TodaysTimesheet.SignOutTime.Format('h:m a')</span>
+          <% end_if %>
+        </li>
         <% if $TodaysTimesheet.LunchOutTime %>
-        <li class="mb-1"><strong class="font-bold">Lunch:</strong> $TodaysTimesheet.LunchOutTime.Nice
+        <li class="mb-1"><strong class="font-bold">
+            Lunch:
+          </strong> $TodaysTimesheet.LunchOutTime.Format('h:m a')
           <% if $TodaysTimesheet.LunchInTime %>
-          <span> - $TodaysTimesheet.LunchInTime.Nice</span>
+          <span> - $TodaysTimesheet.LunchInTime.Format('h:m a')</span>
           <% end_if %>
         </li>
         <% end_if %>
         <% if $TodaysTimesheet.AppointmentOutTime %>
-        <li class="mb-1"><strong class="font-bold">Appointment:</strong> $TodaysTimesheet.AppointmentOutTime.Nice
+        <li class="mb-1"><strong class="font-bold">
+            Appointment:
+          </strong> $TodaysTimesheet.AppointmentOutTime.Format('h:m a')
           <% if $TodaysTimesheet.AppointmentInTime %>
-          <span> - $TodaysTimesheet.AppointmentInTime.Nice</span>
+          <span> - $TodaysTimesheet.AppointmentInTime.Format('h:m a')</span>
           <% end_if %>
         </li>
         <% end_if %>

@@ -124,6 +124,7 @@
         "tailwindcss": "^1.9.1",
         "validate.js": "^0.13.1",
         "verge": "^1.10.2",
+        "what-input": "^5.2.10",
         "wretch": "^1.7.3"
     }
 }

@@ -1,10 +1,12 @@
 <!--Metric Card-->
 <div class="relative z-0 w-full p-3 dashboard-card md:w-1/2 xl:w-1/3">
   <div class="relative p-2 bg-white border rounded shadow">
+    <% if BirthdayEmployees.Count %>
     <button
-      class="absolute inset-0 w-full h-full -m-2 transform translate-x-2 translate-y-2 bg-transparent cursor-pointer dashboard-toggle z-1">
+    class="absolute inset-0 w-full h-full -m-2 transform translate-x-2 translate-y-2 bg-transparent cursor-pointer dashboard-toggle z-1">
       <div class="sr-only">Toggle</div>
     </button>
+    <% end_if %>
     <div class="flex flex-row items-center">
       <div class="flex-shrink pr-4">
         <div class="p-3 text-green-600 rounded">
@@ -26,6 +28,7 @@
       </div>
     </div>
   </div>
+  <% if BirthdayEmployees.Count %>
   <div
     class="hidden overflow-hidden transition-transform ease-out origin-top transform border rounded shadow dashboard-content">
     <ul class="w-full">
@@ -41,12 +44,13 @@
           <% end_if %>
           <div class="flex items-center justify-between w-full pr-3">
             <span>$FullName</span>
-            <span>$Birthday.Nice</span>
+            <span>$Birthday.Format('MMMM d')</span>
           </div>
         </a>
       </li>
       <% end_loop %>
     </ul>
   </div>
+  <% end_if %>
 </div>
 <!--/Metric Card-->

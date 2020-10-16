@@ -23,7 +23,7 @@ class LateSignIn extends DataObject
     ];
 
     private static $has_one = [
-        'Owner' => DataObject::class,
+        'Owner' => Employee::class,
     ];
 
     private static $summary_fields = [

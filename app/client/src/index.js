@@ -1,5 +1,6 @@
 import './styles/index.css'
 import 'alpinejs'
+import 'what-input'
 import FastClick from 'fastclick'
 
 document.addEventListener(

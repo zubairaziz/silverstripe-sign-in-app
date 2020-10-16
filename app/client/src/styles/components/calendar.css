@@ -4,11 +4,11 @@
   }
 
   .fc-button-primary:disabled {
-    @apply cursor-not-allowed bg-primary-light border-primary-light;
+    @apply cursor-not-allowed bg-primary-400 border-primary-400;
   }
 
   .fc-button-primary:not(:disabled).fc-button-active,
   .fc-button-primary:not(:disabled):active {
-    @apply bg-primary-darkest;
+    @apply bg-primary-800;
   }
 }

@@ -6,8 +6,8 @@
     <dd style="margin: 0 0 15px 0">$Value</dd>
   <% end_loop %>
 
-  <hr>
+  <%-- <hr>
 
-  <dt style="font-weight: bold">Submit Date</dt>
-  <dd style="margin: 0 0 15px 0">$Submission.Created.Nice</dd>
+  <dt style="font-weight: bold">Date</dt>
+  <dd style="margin: 0 0 15px 0">$Submission.Created.Nice</dd> --%>
 </dl>

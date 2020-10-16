@@ -4,7 +4,7 @@
 }
 
 [data-icon='circle-check'] {
-  @apply relative text-primary;
+  @apply relative text-primary-500;
   top: 3px;
 }
 
@@ -18,10 +18,10 @@ strong {
 }
 
 a:not([class]) {
-  @apply underline transition-all duration-300 ease-in-out text-primary;
+  @apply underline transition-all duration-300 ease-in-out text-primary-500;
 
   &:hover {
-    @apply no-underline text-primary-darker;
+    @apply no-underline text-primary-700;
   }
 }
 

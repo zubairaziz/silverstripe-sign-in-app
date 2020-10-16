@@ -276,6 +276,17 @@ class Employee extends DataObject
         ]);
     }
 
+    public function getEmailFields()
+    {
+        $fields = [
+            'Name' => $this->getTitle(),
+            'Sign-In Time' => $this->getTodaysTimesheet()->dbObject('SignInTime')->Format('h:m a'),
+            'Date' => $this->getTodaysTimesheet()->dbObject('Date')->Nice(),
+        ];
+
+        return $fields;
+    }
+
     public function validate()
     {
         $result = parent::validate();

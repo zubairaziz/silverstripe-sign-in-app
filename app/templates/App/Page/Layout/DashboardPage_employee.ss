@@ -1,6 +1,6 @@
 <div class="absolute inset-0 w-screen h-full bg-gray-200">
   <div class="absolute top-0 left-0">
-    <div class="w-24 h-24 bg-primary block rounded-full absolute z-0 transform -translate-x-8 -translate-y-10"></div>
+    <div class="w-24 h-24 bg-primary-500block rounded-full absolute z-0 transform -translate-x-8 -translate-y-10"></div>
     <a href="$Link" class="absolute top-0 left-0 p-2 text-gray-100 hover:text-gray-200">Back</a>
   </div>
   <% with Employee %>

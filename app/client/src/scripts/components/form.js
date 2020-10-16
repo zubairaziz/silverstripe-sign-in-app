@@ -1,6 +1,6 @@
 import { on } from 'delegated-events'
 import { handleValidation, handleBlur } from '../common/validation'
-// import Imask from 'imask'
+import IMask from 'imask'
 
 const fn = {
   init: () => {
@@ -15,7 +15,7 @@ const fn = {
     })
     on('submit', '[data-form-ajax]', fn.handleSingleActionAjax)
     on('submit', '.sign-in-form', fn.handleSignInAjax)
-    fn.setupSignForm()
+    fn.setupSignInForm()
     fn.setupSpecialFields()
   },
 
@@ -74,6 +74,7 @@ const fn = {
     if (isValid) {
       const $formMessages = document.querySelector('.form-messages')
       const $submitButton = $form.querySelector('[type=submit]')
+      const $inputs = $form.querySelectorAll('input')
 
       ajax
         .url($form.action)
@@ -87,6 +88,10 @@ const fn = {
               $form.style.display = 'none'
             } else {
               $signInModal.style.display = 'none'
+              $form.reset()
+              $inputs.forEach(($input) => {
+                $input.value = ''
+              })
               setTimeout(() => {
                 location.reload()
               }, 250)
@@ -109,6 +114,10 @@ const fn = {
         })
         .finally(() => {
           fn.toggleSubmit($submitButton)
+          $form.reset()
+          $inputs.forEach(($input) => {
+            $input.value = ''
+          })
           setTimeout(() => {
             location.reload()
           }, 2500)
@@ -116,26 +125,42 @@ const fn = {
     }
   },
 
-  setupSignForm: () => {
+  setupSignInForm: () => {
     const $form = document.querySelector('.sign-in-form')
     if ($form) {
-      // const $trigger = document.querySelector('.sign-in-trigger')
       const $pinInput1 = $form.querySelector('input[name="PIN1"]')
       const $pinInput2 = $form.querySelector('input[name="PIN2"]')
       const $pinInput3 = $form.querySelector('input[name="PIN3"]')
       const $pinInput4 = $form.querySelector('input[name="PIN4"]')
       const $submitButton = $form.querySelector('[type=submit')
+      const maskOptions = {
+        mask: Number,
+        signed: false, // disallow negative
+        thousandsSeparator: '', // any single char
+        min: 0,
+        max: 9,
+      }
+      const mask1 = IMask($pinInput1, maskOptions)
+      const mask2 = IMask($pinInput2, maskOptions)
+      const mask3 = IMask($pinInput3, maskOptions)
+      const mask4 = IMask($pinInput4, maskOptions)
       $pinInput1.addEventListener('keypress', () => {
+        mask1.updateValue()
         $pinInput2.focus()
       })
       $pinInput2.addEventListener('keypress', () => {
+        mask2.updateValue()
         $pinInput3.focus()
       })
       $pinInput3.addEventListener('keypress', () => {
+        mask3.updateValue()
         $pinInput4.focus()
       })
       $pinInput4.addEventListener('keyup', () => {
-        $submitButton.click()
+        mask4.updateValue()
+        if ($pinInput4.value.length > 0) {
+          $submitButton.click()
+        }
       })
     }
   },

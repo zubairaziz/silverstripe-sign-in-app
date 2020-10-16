@@ -6,7 +6,7 @@
   </div>
   <div class="grid h-full grid-cols-2 gap-4 mt-4 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
     <template x-for="item in filteredEmployees" :key="item">
-      <div class="grid p-3 text-center rounded shadow employee-badge place-content-center">
+      <div class="grid p-3 text-center bg-gray-100 rounded shadow employee-badge place-content-center">
         <figure class="relative grid mb-2 group place-content-center">
           <img :src="`${item.profile_image}`" alt=""
             :class="`relative inline-block h-24 w-24 rounded-full text-white mx-auto is-${item.employee_status_color}`">

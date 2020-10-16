@@ -1,5 +1,5 @@
 <div class="text-center form-messages"></div>
-<form $AttributesHTML autocomplete="off" novalidate>
+<form $AttributesHTML autocomplete="off">
   <p class="text-3xl font-bold text-center">Sign In!</p>
   <div class="flex flex-row">
     <div class="relative w-1/4 px-2 my-3 md:my-4 lg:my-5">

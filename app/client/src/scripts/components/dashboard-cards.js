@@ -1,4 +1,4 @@
-import { slideToggle } from '../common/slide'
+import { slideDown, slideUp } from '../common/slide'
 import { on } from 'delegated-events'
 
 const fn = {
@@ -9,7 +9,26 @@ const fn = {
   handleToggle: (e) => {
     const $container = e.target.closest('.dashboard-card')
     const $content = $container.querySelector('.dashboard-content')
-    slideToggle($content)
+    const $allContents = document.querySelectorAll('.dashboard-content')
+    if ($content) {
+      if ($content.classList.contains('active')) {
+        $allContents.forEach(($allContent) => {
+          $allContent.classList.remove('active')
+        })
+      } else {
+        $allContents.forEach(($allContent) => {
+          $allContent.classList.remove('active')
+        })
+        $content.classList.add('active')
+      }
+      $allContents.forEach(($allContent) => {
+        if ($allContent.classList.contains('active')) {
+          slideDown($allContent)
+        } else {
+          slideUp($allContent)
+        }
+      })
+    }
   },
 }
 

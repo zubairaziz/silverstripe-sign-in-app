@@ -71,6 +71,25 @@ class PageController extends ContentController
             ]);
     }
 
+    public function getLateEmployees()
+    {
+        $date = Util::getTodaysDate();
+
+        $employees = Employee::get()
+            ->filter([
+                'ActiveEmployee' => true,
+            ]);
+        foreach ($employees as $employee) {
+            if ($employee->LateSignIns()->count() >= 1) {
+                // Do nothing
+            } else {
+                $employees = $employees->exclude('ID', $employee->ID);
+            }
+        }
+        // $employees = $employees->sort('LateSignIns.First.Date', 'DESC');
+        return $employees;
+    }
+
     public function getBackgroundColor()
     {
         $backgroundSettings = BackgroundSettings::current_settings();

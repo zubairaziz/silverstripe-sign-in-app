@@ -45,7 +45,7 @@ class IconField extends DropdownField
         'stocks',
         'tax-bill',
         'text-bubbles-circle',
-        'traffic-light',
+        'traffic400',
         'translation-bubbles',
     ];
 

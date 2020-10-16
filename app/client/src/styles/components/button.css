@@ -21,22 +21,22 @@
 }
 
 .button-primary {
-  @apply text-white border border-primary bg-primary;
+  @apply text-white border border-primary-500 bg-primary-500;
 
   &:hover,
   &:focus,
   &:active {
-    @apply text-white bg-primary-darker border-primary-darker;
+    @apply text-white bg-primary-700 border-primary-700;
   }
 }
 
 .button-secondary {
-  @apply text-white border border-secondary bg-secondary;
+  @apply text-white border border-secondary-500 bg-secondary-500;
 
   &:hover,
   &:focus,
   &:active {
-    @apply text-white bg-secondary-darker border-secondary-darker;
+    @apply text-white bg-secondary-700 border-secondary-700;
   }
 }
 
