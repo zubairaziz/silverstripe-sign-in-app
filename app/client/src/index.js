@@ -1,6 +1,7 @@
 import './styles/index.css'
 import 'alpinejs'
 import 'what-input'
+import '../../../node_modules/flatpickr/dist/flatpickr.min.css'
 import FastClick from 'fastclick'
 
 document.addEventListener(

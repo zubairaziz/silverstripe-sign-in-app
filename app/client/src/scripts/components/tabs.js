@@ -66,7 +66,7 @@ const fn = {
 
   handleLinkClick: () => {
     const $tabs = document.querySelectorAll('.tab')
-    const $anchors = document.querySelectorAll('a')
+    const $anchors = document.querySelectorAll('a:not(.dashboard-link)')
     $anchors.forEach(($anchor) => {
       $anchor.onclick = () => {
         fn.activateTabset()

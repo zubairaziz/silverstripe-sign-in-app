@@ -33,7 +33,7 @@
     class="hidden overflow-hidden transition-transform ease-out origin-top transform border rounded shadow dashboard-content">
     <ul class="w-full">
       <% loop BirthdayEmployees.Sort('BirthdayDate', ASC) %>
-      <li class="w-full p-1 group hover:bg-gray-400 <% if Even %>bg-gray-200<% end_if %>">
+      <li class="w-full p-1 group hover:bg-gray-400 <% if Even %>bg-gray-200<% else %>bg-gray-100<% end_if %>">
         <a class="flex items-center justify-start" href="$Link">
           <% if Image %>
           <img src="$Image.FocusFill(100, 100).AbsoluteURL" alt="" class="block w-16 h-16 p-2 mr-5 rounded-full" />

@@ -1,12 +1,12 @@
-import ScrollReveal from 'scrollreveal'
+// import ScrollReveal from 'scrollreveal'
 
-const fn = {
-  init: () => {
-    ScrollReveal().reveal('[data-reveal]', { duration: 300, scale: 0.75 })
-  },
-}
+// const fn = {
+//   init: () => {
+//     ScrollReveal().reveal('[data-reveal]', { duration: 300, scale: 0.75 })
+//   },
+// }
 
-export default {
-  can: () => document.querySelectorAll('[data-reveal]').length,
-  run: fn.init,
-}
+// export default {
+//   can: () => document.querySelectorAll('[data-reveal]').length,
+//   run: fn.init,
+// }
