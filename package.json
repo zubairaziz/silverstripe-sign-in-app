@@ -50,7 +50,8 @@
             "Selectors": true,
             "ajax": true,
             "state": true,
-            "FullCalendar": true
+            "FullCalendar": true,
+            "moment": true
         },
         "ignorePatterns": [
             "node_modules"

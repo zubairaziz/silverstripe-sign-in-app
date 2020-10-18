@@ -53,6 +53,10 @@ const WebpackConfig = {
     },
   },
 
+  externals: {
+    moment: 'moment',
+  },
+
   module: {
     rules: [
       {

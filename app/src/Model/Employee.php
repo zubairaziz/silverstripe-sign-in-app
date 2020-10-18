@@ -97,6 +97,24 @@ class Employee extends DataObject
         return "{$this->FirstName} {$this->LastName}";
     }
 
+    public function getWeeklySnapshotData($fromDate = null, $toDate = null)
+    {
+        if (is_null($fromDate) && is_null($toDate)) {
+            $monday = strtotime("last monday");
+            $monday = date('w', $monday)==date('w') ? $monday+7*86400 : $monday;
+            $sunday = strtotime(date("Y-m-d", $monday) . " +6 days");
+            $fromDate = date("Y-m-d", $monday);
+            $toDate = date("Y-m-d", $sunday);
+        }
+
+        $filters = [
+            'Date:LessThanOrEqual' => $toDate,
+            'Date:GreaterThanOrEqual' => $fromDate,
+        ];
+        $records = $this->Timesheets()->filter($filters)->sort('Date', 'ASC');
+        return $records;
+    }
+
     public static function getEmployeeByPin($pin)
     {
         $employee = null;

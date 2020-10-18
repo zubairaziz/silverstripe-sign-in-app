@@ -5,7 +5,7 @@
     </h2>
     <table class="relative w-full rounded-b table-auto">
       <% with TodaysTimesheet %>
-      <tr class="relative px-2 py-1 bg-gray-100 border-t border-b md:px-4 md:py-2">
+      <tr class="relative px-2 py-1 bg-white border-t border-b md:px-4 md:py-2">
         <th class="px-2 py-1 text-left border-r md:w-48 md:px-4 md:py-2">Sign In</th>
         <td class="px-2 py-1 text-left md:px-4 md:py-2">
           <input class="w-full bg-transparent outline-none focus:outline-none focus:font-weight:bold time-picker"
@@ -23,7 +23,7 @@
           </button>
         </td>
       </tr>
-      <tr class="relative px-2 py-1 bg-gray-200 border-b md:px-4 md:py-2">
+      <tr class="relative px-2 py-1 bg-gray-100 border-b md:px-4 md:py-2">
         <th class="px-2 py-1 text-left border-r md:w-48 md:px-4 md:py-2">Sign Out</th>
         <td class="px-2 py-1 text-left md:px-4 md:py-2">
           <input class="w-full bg-transparent outline-none focus:outline-none focus:font-weight:bold time-picker"
@@ -41,7 +41,7 @@
           </button>
         </td>
       </tr>
-      <tr class="relative px-2 py-1 bg-gray-100 border-b md:px-4 md:py-2">
+      <tr class="relative px-2 py-1 bg-white border-b md:px-4 md:py-2">
         <th class="px-2 py-1 text-left border-r md:w-48 md:px-4 md:py-2">Lunch Out</th>
         <td class="px-2 py-1 text-left md:px-4 md:py-2">
           <input class="w-full bg-transparent outline-none focus:outline-none focus:font-weight:bold time-picker"
@@ -59,7 +59,7 @@
           </button>
         </td>
       </tr>
-      <tr class="relative px-2 py-1 bg-gray-200 border-b md:px-4 md:py-2">
+      <tr class="relative px-2 py-1 bg-gray-100 border-b md:px-4 md:py-2">
         <th class="px-2 py-1 text-left border-r md:w-48 md:px-4 md:py-2">Lunch In</th>
         <td class="px-2 py-1 text-left md:px-4 md:py-2">
           <input class="w-full bg-transparent outline-none focus:outline-none focus:font-weight:bold time-picker"
@@ -77,7 +77,7 @@
           </button>
         </td>
       </tr>
-      <tr class="relative px-2 py-1 bg-gray-100 border-b md:px-4 md:py-2">
+      <tr class="relative px-2 py-1 bg-white border-b md:px-4 md:py-2">
         <th class="px-2 py-1 text-left border-r md:w-48 md:px-4 md:py-2">Appointment Out</th>
         <td class="px-2 py-1 text-left md:px-4 md:py-2">
           <input class="w-full bg-transparent outline-none focus:outline-none focus:font-weight:bold time-picker"
@@ -95,7 +95,7 @@
           </button>
         </td>
       </tr>
-      <tr class="relative px-2 py-1 bg-gray-200 border-b md:px-4 md:py-2">
+      <tr class="relative px-2 py-1 bg-gray-100 border-b md:px-4 md:py-2">
         <th class="px-2 py-1 text-left border-r md:w-48 md:px-4 md:py-2">Appointment In</th>
         <td class="px-2 py-1 text-left md:px-4 md:py-2">
           <input class="w-full bg-transparent outline-none focus:outline-none focus:font-weight:bold time-picker"
