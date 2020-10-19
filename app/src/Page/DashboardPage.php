@@ -3,6 +3,7 @@
 namespace App\Page;
 
 use App\Extension\SinglePageInstance;
+use App\Model\Employee;
 use Page;
 use SilverStripe\SiteConfig\SiteConfig;
 
@@ -41,5 +42,10 @@ class DashboardPage extends Page
         $data = SiteConfig::current_site_config()->getSiteStructuredData();
 
         return json_encode($data);
+    }
+
+    public function getChildren()
+    {
+        return Employee::get()->filter(['ActiveEmployee' => true]);
     }
 }

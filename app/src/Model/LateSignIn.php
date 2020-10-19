@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-use App\Security\CMSPermissionProvider;
+use App\Security\APIPermissionProvider;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\ReadonlyField;
 use SilverStripe\Forms\TabSet;
@@ -11,9 +11,10 @@ use SilverStripe\ORM\DataObject;
 
 class LateSignIn extends DataObject
 {
-    use CMSPermissionProvider;
+    use APIPermissionProvider;
 
     protected $instanceDate;
+    private static $api_access = true;
 
     private static $table_name = 'LateSignIn';
     private static $default_sort = 'Date DESC';

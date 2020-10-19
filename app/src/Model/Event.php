@@ -3,7 +3,7 @@
 namespace App\Model;
 
 use App\Form\Field\RRuleField;
-use App\Security\CMSPermissionProvider;
+use App\Security\APIPermissionProvider;
 use Cake\Chronos\Chronos;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\DatetimeField;
@@ -20,9 +20,10 @@ use When\When;
 
 class Event extends DataObject
 {
-    use CMSPermissionProvider;
+    use APIPermissionProvider;
 
     protected $instanceDate;
+    private static $api_access = true;
 
     private static $table_name = 'Event';
     private static $default_sort = 'Start DESC';

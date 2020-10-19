@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-use App\Security\CMSPermissionProvider;
+use App\Security\APIPermissionProvider;
 use App\Util\Util;
 use SilverStripe\Forms\FieldGroup;
 use SilverStripe\Forms\FieldList;
@@ -11,7 +11,8 @@ use SilverStripe\ORM\DataObject;
 
 class Timesheet extends DataObject
 {
-    use CMSPermissionProvider;
+    use APIPermissionProvider;
+    private static $api_access = true;
 
     private static $table_name = 'Timesheet';
 

@@ -5,7 +5,7 @@ namespace App\Model;
 use App\Extension\Sluggable;
 use App\Form\Field\PINField;
 use App\Page\DashboardPage;
-use App\Security\CMSPermissionProvider;
+use App\Security\APIPermissionProvider;
 use App\Util\Util;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\Image;
@@ -22,7 +22,9 @@ use SilverStripe\ORM\DataObject;
 
 class Employee extends DataObject
 {
-    use CMSPermissionProvider;
+    use APIPermissionProvider;
+
+    private static $api_access = true;
 
     private static $table_name = 'Employee';
 

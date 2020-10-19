@@ -55,4 +55,9 @@ class SiteConfig extends DataExtension
 
         return $data;
     }
+
+    public function canView($member = null, $context = [])
+    {
+        return true;
+    }
 }

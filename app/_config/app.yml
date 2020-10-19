@@ -12,3 +12,14 @@ Upload_Validator:
   default_max_file_size:
     '[image]': '5m'
     '[doc]': '10m'
+
+SilverStripe\Gatsby\GraphQL\Types\SyncResultTypeCreator:
+  included_dataobjects:
+    pages: 'App\Page\*'
+    models: 'App\Model\*'
+    assets: 'SilverStripe\Assets\*'
+    siteconfig: 'SilverStripe\SiteConfig\SiteConfig'
+    sitetree: 'SilverStripe\CMS\Model\SiteTree'
+  excluded_dataobjects:
+    security: 'App\Security\*'
+    email: 'App\Email\*'

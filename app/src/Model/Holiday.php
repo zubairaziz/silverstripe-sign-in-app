@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-use App\Security\CMSPermissionProvider;
+use App\Security\APIPermissionProvider;
 use Cake\Chronos\Chronos;
 use SilverStripe\Forms\DatetimeField;
 use SilverStripe\Forms\FieldGroup;
@@ -17,9 +17,10 @@ use When\When;
 
 class Holiday extends DataObject
 {
-    use CMSPermissionProvider;
+    use APIPermissionProvider;
 
     protected $instanceDate;
+    private static $api_access = true;
 
     private static $table_name = 'Holiday';
     private static $default_sort = 'Start DESC';
